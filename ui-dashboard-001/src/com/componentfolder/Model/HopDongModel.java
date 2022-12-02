@@ -11,48 +11,50 @@ import java.util.Date;
  * @author User
  */
 public class HopDongModel {
-
-    private String id;
+    private String mahd;
+    private String idnv;
+    private String idkh;
     private Date ngayTao;
     private Date ngayHetHan;
     private int tinhTrang;
-    private KhachHangModel khm;
-    private NhanVienModel nvm;
+    private String sourceAnh;
+    ;
 
     public HopDongModel() {
     }
 
-    public HopDongModel(String id, Date ngayTao, Date ngayHetHan, int tinhTrang, KhachHangModel khm, NhanVienModel nvm) {
-        this.id = id;
+    public HopDongModel(String mahd, String idnv, String idkh, Date ngayTao, Date ngayHetHan, int tinhTrang, String sourceAnh) {
+        this.mahd = mahd;
+        this.idnv = idnv;
+        this.idkh = idkh;
         this.ngayTao = ngayTao;
         this.ngayHetHan = ngayHetHan;
         this.tinhTrang = tinhTrang;
-        this.khm = khm;
-        this.nvm = nvm;
+        this.sourceAnh = sourceAnh;
     }
 
-    public String getId() {
-        return id;
+    public String getMahd() {
+        return mahd;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setMahd(String mahd) {
+        this.mahd = mahd;
     }
 
-    public KhachHangModel getKhm() {
-        return khm;
+    public String getIdnv() {
+        return idnv;
     }
 
-    public void setKhm(KhachHangModel khm) {
-        this.khm = khm;
+    public void setIdnv(String idnv) {
+        this.idnv = idnv;
     }
 
-    public NhanVienModel getNvm() {
-        return nvm;
+    public String getIdkh() {
+        return idkh;
     }
 
-    public void setNvm(NhanVienModel nvm) {
-        this.nvm = nvm;
+    public void setIdkh(String idkh) {
+        this.idkh = idkh;
     }
 
     public Date getNgayTao() {
@@ -79,9 +81,23 @@ public class HopDongModel {
         this.tinhTrang = tinhTrang;
     }
 
-    @Override
-    public String toString() {
-        return id;
+    public String getSourceAnh() {
+        return sourceAnh;
     }
 
+    public void setSourceAnh(String sourceAnh) {
+        this.sourceAnh = sourceAnh;
+    }
+
+    
+
+   
+
+    
+   
+
+    
+
+    
+    
 }

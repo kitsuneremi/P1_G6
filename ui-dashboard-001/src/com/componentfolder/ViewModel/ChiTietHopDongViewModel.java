@@ -9,53 +9,33 @@ package ViewModel;
  * @author User
  */
 public class ChiTietHopDongViewModel {
-        private String idhd;
-        private String idxe;
-        private Float donGia;
-        private int soLuong;
+        private String mahd;
+        private String bienso;
         private Float tiencoc;
 
     public ChiTietHopDongViewModel() {
     }
 
-    public ChiTietHopDongViewModel(String idhd, String idxe, Float donGia, int soLuong, Float tiencoc) {
-        this.idhd = idhd;
-        this.idxe = idxe;
-        this.donGia = donGia;
-        this.soLuong = soLuong;
+    public ChiTietHopDongViewModel(String mahd, String bienso, Float tiencoc) {
+        this.mahd = mahd;
+        this.bienso = bienso;
         this.tiencoc = tiencoc;
     }
 
-    public String getIdhd() {
-        return idhd;
+    public String getMahd() {
+        return mahd;
     }
 
-    public void setIdhd(String idhd) {
-        this.idhd = idhd;
+    public void setMahd(String mahd) {
+        this.mahd = mahd;
     }
 
-    public String getIdxe() {
-        return idxe;
+    public String getBienso() {
+        return bienso;
     }
 
-    public void setIdxe(String idxe) {
-        this.idxe = idxe;
-    }
-
-    public Float getDonGia() {
-        return donGia;
-    }
-
-    public void setDonGia(Float donGia) {
-        this.donGia = donGia;
-    }
-
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+    public void setBienso(String bienso) {
+        this.bienso = bienso;
     }
 
     public Float getTiencoc() {
@@ -65,6 +45,9 @@ public class ChiTietHopDongViewModel {
     public void setTiencoc(Float tiencoc) {
         this.tiencoc = tiencoc;
     }
+
+    
+
     
    
         

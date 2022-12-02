@@ -11,32 +11,27 @@ import java.util.Date;
  * @author User
  */
 public class HopDongViewModel {
-
-    private String id;
-    private String idnv;
-    private String idkh;
-    private Date ngaytao;
-    private Date ngayhethan;
-    private int tinhTrangXe;
+       
+        private String idnv;
+        private String idkh;
+        private Date ngaytao;
+        private Date ngayhethan;
+        private int tinhTrangXe;
+        private String sourceAnh;
+        private String mahd;
+        
 
     public HopDongViewModel() {
     }
 
-    public HopDongViewModel(String id, String idnv, String idkh, Date ngaytao, Date ngayhethan, int tinhTrangXe) {
-        this.id = id;
+    public HopDongViewModel(String idnv, String idkh, Date ngaytao, Date ngayhethan, int tinhTrangXe, String sourceAnh, String mahd) {
         this.idnv = idnv;
         this.idkh = idkh;
         this.ngaytao = ngaytao;
         this.ngayhethan = ngayhethan;
         this.tinhTrangXe = tinhTrangXe;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.sourceAnh = sourceAnh;
+        this.mahd = mahd;
     }
 
     public String getIdnv() {
@@ -59,8 +54,16 @@ public class HopDongViewModel {
         return ngaytao;
     }
 
+    public void setNgaytao(Date ngaytao) {
+        this.ngaytao = ngaytao;
+    }
+
     public Date getNgayhethan() {
         return ngayhethan;
+    }
+
+    public void setNgayhethan(Date ngayhethan) {
+        this.ngayhethan = ngayhethan;
     }
 
     public int getTinhTrangXe() {
@@ -71,20 +74,34 @@ public class HopDongViewModel {
         this.tinhTrangXe = tinhTrangXe;
     }
 
-    public String hienThiTinhTrang() {
+    public String getSourceAnh() {
+        return sourceAnh;
+    }
+
+    public void setSourceAnh(String sourceAnh) {
+        this.sourceAnh = sourceAnh;
+    }
+
+    public String getMahd() {
+        return mahd;
+    }
+
+    public void setMahd(String mahd) {
+        this.mahd = mahd;
+    }
+
+   
+    
+    
+  
+
+  
+    
+    public String hienThiTinhTrang(){
         if (tinhTrangXe == 0) {
             return "chưa ký";
-        } else {
+        }else
             return "đã ký";
-        }
     }
-
-    public void setNgayTao(Date ngayTao) {
-        this.ngaytao = ngayTao;
-    }
-
-    public void setNgayHetHan(Date ngayHetHan) {
-        this.ngayhethan = ngayHetHan;
-    }
-
+        
 }

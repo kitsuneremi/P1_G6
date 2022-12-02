@@ -13,6 +13,7 @@ import Repository.HopDongRepo;
 import Service.HopDongService;
 import ViewModel.ChiTietHopDongViewModel;
 import ViewModel.HopDongViewModel;
+import ViewModel.InHopDongViewModel;
 import java.util.ArrayList;
 
 /**
@@ -28,34 +29,31 @@ public class HopDongServiceImpl implements HopDongService{
     }
 
     @Override
-    public ArrayList<NhanVienModel> getCbNhanVien() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ArrayList<String> getCbNhanVien() {
+        return hopDongRepo.getCbNV();
     }
 
     @Override
-    public ArrayList<KhachHangModel> getCbKhachHang() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ArrayList<String> getCbKhachHang() {
+        return hopDongRepo.getCbKH();
     }
 
     @Override
     public Boolean add(HopDongModel hopDongModel) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hopDongRepo.add(hopDongModel);
     }
 
     @Override
     public Boolean delete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hopDongRepo.deleteHopDong(id);
     }
 
     @Override
     public Boolean update(HopDongModel hopDongModel, String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hopDongRepo.update(hopDongModel, id);
     }
 
-    @Override
-    public Boolean findbyName(String ten) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 
     @Override
     public String tenNhanVien(String id) {
@@ -83,20 +81,64 @@ public class HopDongServiceImpl implements HopDongService{
     }
 
     @Override
-    public Boolean DeleteChiTiet(String id) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Boolean DeleteChiTiet(String idhd) {
+        return hopDongRepo.DeleteChiTiet(idhd);
 
     }
 
     @Override
-    public ArrayList<ChiTietXeModel> getCbid() {
+    public ArrayList<String> getCbid() {
         return hopDongRepo.getCbid();
     }
 
     @Override
-    public ArrayList<HopDongModel> getCbHd() {
+    public ArrayList<String> getCbHd() {
         return hopDongRepo.getCbHD();
     }
+
+    @Override
+    public Boolean updateChiTiet(ChiTietHopDongModel chiTietHopDongModel, String idhd) {
+        return hopDongRepo.updateChiTiet(chiTietHopDongModel, idhd);
+    }
+
+   
+
+    @Override
+    public String idnhanvien(String ten) {
+        return hopDongRepo.idnhanvien(ten);
+    }
+
+    @Override
+    public String idkhachhang(String ten) {
+        return hopDongRepo.idkhachhang(ten);
+    }
+
+    @Override
+    public String bienso(String id) {
+        return hopDongRepo.bienso(id);
+    }
+
+    @Override
+    public String idchitietxe(String bienso) {
+        return hopDongRepo.idchitietxe(bienso);
+    }
+
+    @Override
+    public ArrayList<String> getCbLoai() {
+        return hopDongRepo.getCbLoai();
+    }
+
+    @Override
+    public Boolean update2(HopDongModel hopDongModel, String id) {
+        return hopDongRepo.update2(hopDongModel, id);
+    }
+
+    @Override
+    public ArrayList<InHopDongViewModel> getListIn() {
+        return hopDongRepo.getListIn();
+    }
+
+    
 
     
     

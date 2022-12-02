@@ -9,53 +9,33 @@ package Model;
  * @author User
  */
 public class ChiTietHopDongModel {
-        private String idhd;
-        private String idxe;
-        private Float dongGia;
-        private int soLuong;
+        private String mahd;
+        private String bienso;      
         private Float tienCoc;
 
     public ChiTietHopDongModel() {
     }
 
-    public ChiTietHopDongModel(String idhd, String idxe, Float dongGia, int soLuong, Float tienCoc) {
-        this.idhd = idhd;
-        this.idxe = idxe;
-        this.dongGia = dongGia;
-        this.soLuong = soLuong;
+    public ChiTietHopDongModel(String mahd, String bienso, Float tienCoc) {
+        this.mahd = mahd;
+        this.bienso = bienso;
         this.tienCoc = tienCoc;
     }
 
-    public String getIdhd() {
-        return idhd;
+    public String getMahd() {
+        return mahd;
     }
 
-    public void setIdhd(String idhd) {
-        this.idhd = idhd;
+    public void setMahd(String mahd) {
+        this.mahd = mahd;
     }
 
-    public String getIdxe() {
-        return idxe;
+    public String getBienso() {
+        return bienso;
     }
 
-    public void setIdxe(String idxe) {
-        this.idxe = idxe;
-    }
-
-    public Float getDongGia() {
-        return dongGia;
-    }
-
-    public void setDongGia(Float dongGia) {
-        this.dongGia = dongGia;
-    }
-
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+    public void setBienso(String bienso) {
+        this.bienso = bienso;
     }
 
     public Float getTienCoc() {
@@ -65,5 +45,8 @@ public class ChiTietHopDongModel {
     public void setTienCoc(Float tienCoc) {
         this.tienCoc = tienCoc;
     }
+
+   
+    
         
 }

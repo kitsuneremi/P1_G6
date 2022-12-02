@@ -9,8 +9,10 @@ import com.ViewGiaoDienChinh.event.EventMenuSelected;
 import com.ViewGiaoDienChinh.form.Form_1;
 import com.ViewGiaoDienChinh.form.Form_2;
 import com.ViewGiaoDienChinh.form.Form_3;
-import com.ViewGiaoDienChinh.form.Form_4;
+import com.raven.form.Form_hopdong1;
+
 import com.raven.form.Form_Home;
+import com.raven.form.Form_hopdong;
 import java.awt.Color;
 import javax.swing.JComponent;
 
@@ -27,7 +29,9 @@ public class Main extends javax.swing.JFrame {
     private Form_1 form1;
     private Form_2 form2;
     private Form_3 form3;
-    private Form_4 form4;
+    private Form_hopdong formchitiethopdong;
+    private Form_hopdong1 formhd;
+    
 
     public Main() {
         initComponents();
@@ -36,7 +40,10 @@ public class Main extends javax.swing.JFrame {
         form1 = new Form_1();
         form2 = new Form_2();
         form3 = new Form_3();
-        form4 = new Form_4();
+        formchitiethopdong = new Form_hopdong();
+        formhd = new Form_hopdong1();
+        
+        
         menu.initMoving(Main.this);
         menu.addEventMenuSelected(new EventMenuSelected() {
             @Override
@@ -48,9 +55,19 @@ public class Main extends javax.swing.JFrame {
                 } else if (index == 2) {
                     setForm(form2);
                 } else if (index == 3) {
-                    setForm(form3);
-                } else if(index == 4){
-                    setForm(form4);
+                    setForm(form2);
+                }else if(index == 4){
+                    setForm(formchitiethopdong);
+                }else if(index == 5){
+                    setForm(formhd);
+                }else if(index ==6){
+                    setForm(form1);
+                }else if(index == 9){
+                    setForm(form1);
+                }else if(index == 10){
+                    setForm(home);
+                }else if(index == 11){
+                    setForm(formhd);
                 }
             }
         });
