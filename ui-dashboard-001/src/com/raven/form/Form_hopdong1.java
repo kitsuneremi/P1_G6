@@ -81,8 +81,8 @@ HopDongService hopDongService = new HopDongServiceImpl();
        defaultTableModel.setRowCount(0);
        for(HopDongViewModel x:list){
            defaultTableModel.addRow(new Object[]{
-               x.getMahd(),hopDongService.tenNhanVien(x.getIdnv()),hopDongService.tenKhachHang(x.getIdkh()),x.getNgaytao(),
-               x.getNgayhethan(),x.hienThiTinhTrang(),x.getSourceAnh(),
+               x.getMahd(),hopDongService.tenNhanVien(x.getIdnv()),hopDongService.tenKhachHang(x.getIdkh()),x.getNgayTao(),
+               x.getNgayHetHan(),x.hienThiTinhTrang(),x.getSourceAnh(),
            });
            
            

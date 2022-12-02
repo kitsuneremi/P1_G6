@@ -7,7 +7,7 @@ package com.raven.form;
 import Model.ChiTietHopDongModel;
 import Model.ChiTietXeModel;
 import Model.HopDongModel;
-import Repository.ResizeAnhcuaLoc;
+
 import Service.HopDongService;
 import Service.Impl.HopDongServiceImpl;
 import View.InHopDong;
@@ -67,8 +67,8 @@ public class Form_hopdong extends javax.swing.JPanel {
        defaultTableModel.setRowCount(0);
        for(HopDongViewModel x:list){
            defaultTableModel.addRow(new Object[]{
-               x.getMahd(),hopDongService.tenNhanVien(x.getIdnv()),hopDongService.tenKhachHang(x.getIdkh()),x.getNgaytao(),
-               x.getNgayhethan(),x.hienThiTinhTrang(),x.getSourceAnh(),
+               x.getMahd(),hopDongService.tenNhanVien(x.getIdnv()),hopDongService.tenKhachHang(x.getIdkh()),x.getNgayTao(),
+               x.getNgayHetHan(),x.hienThiTinhTrang(),x.getSourceAnh(),
            });
            
            
@@ -902,6 +902,10 @@ public class Form_hopdong extends javax.swing.JPanel {
 
     private void txt_search1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search1KeyPressed
         // TODO add your handling code here:
+        defaultTableModel = (DefaultTableModel) tbl_hopdong.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(defaultTableModel);
+        tbl_hopdong.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txt_search1.getText().trim()));
     }//GEN-LAST:event_txt_search1KeyPressed
 
     private void txt_search1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search1KeyReleased

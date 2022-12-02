@@ -14,8 +14,8 @@ public class HopDongViewModel {
        
         private String idnv;
         private String idkh;
-        private Date ngaytao;
-        private Date ngayhethan;
+        private Date ngayTao;
+        private Date ngayHetHan;
         private int tinhTrangXe;
         private String sourceAnh;
         private String mahd;
@@ -24,11 +24,11 @@ public class HopDongViewModel {
     public HopDongViewModel() {
     }
 
-    public HopDongViewModel(String idnv, String idkh, Date ngaytao, Date ngayhethan, int tinhTrangXe, String sourceAnh, String mahd) {
+    public HopDongViewModel(String idnv, String idkh, Date ngayTao, Date ngayHetHan, int tinhTrangXe, String sourceAnh, String mahd) {
         this.idnv = idnv;
         this.idkh = idkh;
-        this.ngaytao = ngaytao;
-        this.ngayhethan = ngayhethan;
+        this.ngayTao = ngayTao;
+        this.ngayHetHan = ngayHetHan;
         this.tinhTrangXe = tinhTrangXe;
         this.sourceAnh = sourceAnh;
         this.mahd = mahd;
@@ -50,20 +50,20 @@ public class HopDongViewModel {
         this.idkh = idkh;
     }
 
-    public Date getNgaytao() {
-        return ngaytao;
+    public Date getNgayTao() {
+        return ngayTao;
     }
 
-    public void setNgaytao(Date ngaytao) {
-        this.ngaytao = ngaytao;
+    public void setNgayTao(Date ngayTao) {
+        this.ngayTao = ngayTao;
     }
 
-    public Date getNgayhethan() {
-        return ngayhethan;
+    public Date getNgayHetHan() {
+        return ngayHetHan;
     }
 
-    public void setNgayhethan(Date ngayhethan) {
-        this.ngayhethan = ngayhethan;
+    public void setNgayHetHan(Date ngayHetHan) {
+        this.ngayHetHan = ngayHetHan;
     }
 
     public int getTinhTrangXe() {
