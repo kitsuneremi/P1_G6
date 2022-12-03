@@ -7,6 +7,7 @@ package com.componentfolder.Service.Impl;
 import com.componentfolder.ViewModel.ChiTietHopDongViewModel;
 import com.componentfolder.ViewModel.InHopDongViewModel;
 import com.componentfolder.Model.ChiTietHopDongModel;
+import com.componentfolder.Model.ChiTietXeModel;
 import com.componentfolder.Model.HopDongModel;
 import com.componentfolder.Repository.HopDongRepo;
 import com.componentfolder.Service.HopDongService;
@@ -133,6 +134,11 @@ public class HopDongServiceImpl implements HopDongService{
     @Override
     public ArrayList<InHopDongViewModel> getListIn() {
         return hopDongRepo.getListIn();
+    }
+
+    @Override
+    public Boolean update3(ChiTietXeModel chiTietXeModel, String bienSo) {
+        return hopDongRepo.update3(chiTietXeModel, bienSo);
     }
 
     

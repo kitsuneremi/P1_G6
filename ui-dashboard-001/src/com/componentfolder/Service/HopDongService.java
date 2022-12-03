@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import com.componentfolder.ViewModel.ChiTietHopDongViewModel;
 import com.componentfolder.ViewModel.InHopDongViewModel;
 import com.componentfolder.Model.ChiTietHopDongModel;
+import com.componentfolder.Model.ChiTietXeModel;
 import com.componentfolder.Model.HopDongModel;
 import com.componentfolder.ViewModel.HopDongViewModel;
 
@@ -32,6 +33,7 @@ public interface HopDongService {
         public Boolean delete(String id);
         public Boolean update (HopDongModel hopDongModel,String id);  
         public Boolean update2(HopDongModel hopDongModel,String id);
+        public Boolean update3(ChiTietXeModel chiTietXeModel,String bienSo);
         //ChiTietHopDong  
         public ArrayList<ChiTietHopDongViewModel> getListChiTiet();
         //Combobox chitiethopdong
@@ -42,6 +44,7 @@ public interface HopDongService {
         public Boolean addChiTiet(ChiTietHopDongModel chiTietHopDongModel);
         public Boolean DeleteChiTiet(String idhd);
         public Boolean updateChiTiet(ChiTietHopDongModel chiTietHopDongModel,String idhd);
+        
         
         public String tenXe(String id);
         //inhopdong 

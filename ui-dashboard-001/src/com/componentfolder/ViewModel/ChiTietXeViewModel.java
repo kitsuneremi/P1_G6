@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ViewModel;
+package com.componentfolder.ViewModel;
 
 /**
  *
@@ -84,6 +84,16 @@ public class ChiTietXeViewModel {
 
     public void setBienSo(int bienSo) {
         this.bienSo = bienSo;
+    }
+    public String hienthiTrangThai(){
+        if(tinhTrangXe ==0){
+            return " có thể cho thuê";
+        }if(tinhTrangXe == 1){
+            return "đang cho thuê";
+        }if(tinhTrangXe == 2){
+            return "đang hỏng hóc";
+        }else
+            return "đang bảo dưỡng";
     }
         
 }

@@ -316,7 +316,7 @@ public class HopDongRepo {
     }
     public ArrayList<String> getCbHD(){
          ArrayList<String> list = new ArrayList<>();
-        String sql ="Select mahopdong from hopdong";
+        String sql ="Select mahopdong from hopdong ";
           try(Connection con = connections.getConnection();
                     PreparedStatement ps = con.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
@@ -397,6 +397,19 @@ public class HopDongRepo {
         }
         return listHopDongViewModels;
     }
+       public Boolean update3(ChiTietXeModel chiTietXeModel,String bienso){
+           String sql ="UPDATE chitietxe set tinhTrangXe = ? where bienso =?";
+           try(Connection con = connections.getConnection();
+                   PreparedStatement ps = con.prepareStatement(sql)) {
+               ps.setObject(1, chiTietXeModel.getTinhTrangXe());
+               ps.setObject(2, bienso);
+               ps.executeUpdate();
+               return true;
+               
+           } catch (Exception e) {
+               return false;
+           }
+       }
     
     
     
