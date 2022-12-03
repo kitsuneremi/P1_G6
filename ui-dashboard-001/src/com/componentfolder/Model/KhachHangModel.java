@@ -10,15 +10,15 @@ package com.componentfolder.Model;
  * @author lilyp
  */
 public class KhachHangModel {
-    private String id ,ten, sdt, cccd;
+    private String email ,ten, sdt, cccd;
     private int gioitinh;
     private String makh;
 
     public KhachHangModel() {
     }
 
-    public KhachHangModel(String id, String ten, String sdt, String cccd, int gioitinh, String makh) {
-        this.id = id;
+    public KhachHangModel(String email, String ten, String sdt, String cccd, int gioitinh, String makh) {
+        this.email = email;
         this.ten = ten;
         this.sdt = sdt;
         this.cccd = cccd;
@@ -26,12 +26,12 @@ public class KhachHangModel {
         this.makh = makh;
     }
 
-    public String getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTen() {
