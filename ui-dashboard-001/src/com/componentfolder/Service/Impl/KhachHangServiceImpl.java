@@ -5,7 +5,7 @@
  */
 package com.componentfolder.Service.Impl;
 
-import ViewModel.KhachHangViewModel;
+import com.componentfolder.ViewModel.KhachHangViewModel;
 import com.componentfolder.Model.KhachHangModel;
 import com.componentfolder.Repository.KhachHangRepo;
 import com.componentfolder.Service.KhachHangService;
@@ -37,6 +37,11 @@ public class KhachHangServiceImpl implements KhachHangService {
     @Override
     public int getcountDB() {
         return khrp.getcountDB(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<KhachHangViewModel> search(String tenn) {
+        return khrp.search(tenn);//To change body of generated methods, choose Tools | Templates.
     }
 
 }
