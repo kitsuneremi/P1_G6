@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.componentfolder.Model;
+package Model;
 
 import java.util.Date;
 
@@ -12,8 +12,8 @@ import java.util.Date;
  */
 public class HopDongModel {
     private String mahd;
-    private String idnv;
-    private String idkh;
+    private NhanVienModel idnv;
+    private KhachHangModel idkh;
     private Date ngayTao;
     private Date ngayHetHan;
     private int tinhTrang;
@@ -23,7 +23,7 @@ public class HopDongModel {
     public HopDongModel() {
     }
 
-    public HopDongModel(String mahd, String idnv, String idkh, Date ngayTao, Date ngayHetHan, int tinhTrang, String sourceAnh) {
+    public HopDongModel(String mahd, NhanVienModel idnv, KhachHangModel idkh, Date ngayTao, Date ngayHetHan, int tinhTrang, String sourceAnh) {
         this.mahd = mahd;
         this.idnv = idnv;
         this.idkh = idkh;
@@ -41,19 +41,19 @@ public class HopDongModel {
         this.mahd = mahd;
     }
 
-    public String getIdnv() {
+    public NhanVienModel getIdnv() {
         return idnv;
     }
 
-    public void setIdnv(String idnv) {
+    public void setIdnv(NhanVienModel idnv) {
         this.idnv = idnv;
     }
 
-    public String getIdkh() {
+    public KhachHangModel getIdkh() {
         return idkh;
     }
 
-    public void setIdkh(String idkh) {
+    public void setIdkh(KhachHangModel idkh) {
         this.idkh = idkh;
     }
 
@@ -88,6 +88,8 @@ public class HopDongModel {
     public void setSourceAnh(String sourceAnh) {
         this.sourceAnh = sourceAnh;
     }
+
+   
 
     
 

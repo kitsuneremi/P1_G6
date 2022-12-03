@@ -5,10 +5,9 @@
  */
 package com.raven.form;
 
-
-import com.componentfolder.Model.HopDongModel;
-import com.componentfolder.Service.HopDongService;
-import com.componentfolder.Service.Impl.HopDongServiceImpl;
+import Service.HopDongService;
+import Service.Impl.HopDongServiceImpl;
+import View.HopDongView;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.text.ParseException;
@@ -16,8 +15,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
-import com.componentfolder.View.InHopDong;
-import com.componentfolder.ViewModel.HopDongViewModel;
+import Model.HoaDonHoanTraModel;
+import Model.HopDongModel;
+import Model.KhachHangModel;
+import Model.NhanVienModel;
+import Service.HopDongService;
+import Service.Impl.HopDongServiceImpl;
+import View.InHopDong;
+import ViewModel.HopDongViewModel;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -34,6 +40,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
+
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -105,6 +112,8 @@ HopDongService hopDongService = new HopDongServiceImpl();
         jLabel19 = new javax.swing.JLabel();
         rdo_chuaky = new javax.swing.JRadioButton();
         rdo_daky = new javax.swing.JRadioButton();
+        txt_ngaytao = new com.toedter.calendar.JDateChooser();
+        txt_ngayhethan = new com.toedter.calendar.JDateChooser();
         txt_tenkhachhang = new javax.swing.JTextField();
         lbl_find = new javax.swing.JLabel();
         txt_findtenkhach = new javax.swing.JTextField();
@@ -119,6 +128,8 @@ HopDongService hopDongService = new HopDongServiceImpl();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         btn_clear = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(242, 242, 242));
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -210,6 +221,10 @@ HopDongService hopDongService = new HopDongServiceImpl();
         rdo_daky.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         rdo_daky.setText("đã ký");
 
+        txt_ngaytao.setDateFormatString("yyyy-MM-dd");
+
+        txt_ngayhethan.setDateFormatString("yyyy-MM-dd");
+
         txt_tenkhachhang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txt_tenkhachhangMousePressed(evt);
@@ -248,9 +263,6 @@ HopDongService hopDongService = new HopDongServiceImpl();
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_thongtinthemMouseClicked(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txt_thongtinthemMousePressed(evt);
-            }
         });
 
         javax.swing.GroupLayout Panel_printLayout = new javax.swing.GroupLayout(Panel_print);
@@ -285,23 +297,29 @@ HopDongService hopDongService = new HopDongServiceImpl();
                     .addComponent(jLabel16)
                     .addComponent(jLabel18))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txt_thongtinthem, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
+                .addGroup(Panel_printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_ngayhethan, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_ngaytao, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_thongtinthem, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
         );
         Panel_printLayout.setVerticalGroup(
             Panel_printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_printLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(Panel_printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16)
-                    .addComponent(txt_tenkhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(Panel_printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Panel_printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel15)
+                        .addComponent(jLabel16)
+                        .addComponent(txt_tenkhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_ngaytao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(Panel_printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel17)
                     .addGroup(Panel_printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_tennv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel18)))
+                        .addComponent(jLabel18))
+                    .addComponent(txt_ngayhethan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(Panel_printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel_printLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
@@ -387,7 +405,7 @@ HopDongService hopDongService = new HopDongServiceImpl();
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -482,31 +500,6 @@ HopDongService hopDongService = new HopDongServiceImpl();
         tr.setRowFilter(RowFilter.regexFilter(txt_findtenkhach.getText().trim()));
     }//GEN-LAST:event_txt_findtenkhachKeyPressed
 
-    private void txt_thongtinthemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_thongtinthemMouseClicked
-        // TODO add your handling code here:
-
-        // TODO add your handling code here:
-        try {
-            // TODO add your handling code here:
-            JFileChooser jfc = new JFileChooser("C:\\Users\\Admin\\Downloads\\DuAn1\\src\\icon");
-            jfc.showOpenDialog(null);
-            File file = jfc.getSelectedFile();
-            Image img = ImageIO.read(file);
-            sourceAnh = file.getName();
-            txt_thongtinthem.setText("");
-            int width = txt_thongtinthem.getWidth();
-            int height = txt_thongtinthem.getHeight();
-            txt_thongtinthem.setIcon(new ImageIcon(img.getScaledInstance(width, height, 0)));
-        } catch (IOException ex) {
-           
-        }
-
-    }//GEN-LAST:event_txt_thongtinthemMouseClicked
-
-    private void txt_thongtinthemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_thongtinthemMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_thongtinthemMousePressed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
@@ -536,8 +529,14 @@ HopDongService hopDongService = new HopDongServiceImpl();
 
         HopDongModel hopDongModel = new HopDongModel();
         hopDongModel.setMahd(txt_mahd.getText().toString());
-        hopDongModel.setIdnv(hopDongService.idnhanvien(txt_tennv.getText().toString()));
-        hopDongModel.setIdkh(hopDongService.idkhachhang(txt_tenkhachhang.getText().toString()));
+        NhanVienModel nhanVienModel = new NhanVienModel();
+        KhachHangModel khachHangModel = new KhachHangModel();
+        
+        hopDongModel.setMahd(txt_mahd.getText().toString());
+        nhanVienModel.setId(hopDongService.idnhanvien(txt_tennv.getText().toString()));
+        hopDongModel.setIdnv(nhanVienModel);
+        khachHangModel.setId(hopDongService.idkhachhang(txt_tenkhachhang.getText().toString()));
+        hopDongModel.setIdkh(khachHangModel);
 
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -642,6 +641,24 @@ HopDongService hopDongService = new HopDongServiceImpl();
 
     }//GEN-LAST:event_btn_clearActionPerformed
 
+    private void txt_thongtinthemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_thongtinthemMouseClicked
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            JFileChooser jfc = new JFileChooser("C:\\Users\\Admin\\Downloads\\DuAn1\\src\\icon");
+            jfc.showOpenDialog(null);
+            File file = jfc.getSelectedFile();
+            Image img = ImageIO.read(file);
+            sourceAnh = file.getName();
+            txt_thongtinthem.setText("");
+            int width = txt_thongtinthem.getWidth();
+            int height = txt_thongtinthem.getHeight();
+            txt_thongtinthem.setIcon(new ImageIcon(img.getScaledInstance(width, height, 0)));
+        } catch (IOException ex) {
+
+        }
+    }//GEN-LAST:event_txt_thongtinthemMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel_print;
@@ -667,6 +684,8 @@ HopDongService hopDongService = new HopDongServiceImpl();
     private javax.swing.JTable tbl_hopdong;
     private javax.swing.JTextField txt_findtenkhach;
     private javax.swing.JTextField txt_mahd;
+    private com.toedter.calendar.JDateChooser txt_ngayhethan;
+    private com.toedter.calendar.JDateChooser txt_ngaytao;
     private javax.swing.JTextField txt_tenkhachhang;
     private javax.swing.JTextField txt_tennv;
     private javax.swing.JLabel txt_thongtinthem;

@@ -4,22 +4,29 @@
  * and open the template in the editor.
  */
 package com.raven.form;
+import Model.ChiTietHopDongModel;
+import Model.ChiTietXeModel;
+import Model.HopDongModel;
+import Model.KhachHangModel;
+import Model.NhanVienModel;
 
+import Service.HopDongService;
 import Service.Impl.HopDongServiceImpl;
+import View.InHopDong;
 import ViewModel.ChiTietHopDongViewModel;
-import com.componentfolder.Model.ChiTietHopDongModel;
-import com.componentfolder.Model.HopDongModel;
-import com.componentfolder.Service.HopDongService;
-import com.componentfolder.Service.Impl.HopDongServiceImpl;
-import com.componentfolder.View.InHopDong;
-import com.componentfolder.ViewModel.HopDongViewModel;
+import ViewModel.HopDongViewModel;
 import java.awt.Color;
 import java.awt.Image;
+import java.beans.Customizer;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -102,7 +109,6 @@ public class Form_hopdong extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -114,6 +120,8 @@ public class Form_hopdong extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         btn_addhopdong = new javax.swing.JButton();
         btn_updatehd = new javax.swing.JButton();
+        txt_ngaytao = new com.toedter.calendar.JDateChooser();
+        txt_ngayhethan = new com.toedter.calendar.JDateChooser();
         jLabel15 = new javax.swing.JLabel();
         txt_tennv = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -143,16 +151,6 @@ public class Form_hopdong extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_hopdong = new javax.swing.JTable();
-
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Print.png"))); // NOI18N
-        jButton2.setText("In hợp đồng");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         setBackground(new java.awt.Color(0, 0, 0));
 
@@ -206,6 +204,10 @@ public class Form_hopdong extends javax.swing.JPanel {
             }
         });
 
+        txt_ngaytao.setDateFormatString("yyyy-MM-dd");
+
+        txt_ngayhethan.setDateFormatString("yyyy-MM-dd");
+
         jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Mã hợp đồng");
@@ -219,31 +221,10 @@ public class Form_hopdong extends javax.swing.JPanel {
         jLabel17.setText("Thông tin thêm");
 
         txt_thongtinthem.setText("Nhấn vào đây để thêm ảnh");
-        txt_thongtinthem.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_thongtinthemMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txt_thongtinthemMousePressed(evt);
-            }
-        });
 
-        txt_search1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_search1MouseClicked(evt);
-            }
-        });
-        txt_search1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_search1ActionPerformed(evt);
-            }
-        });
         txt_search1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_search1KeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_search1KeyReleased(evt);
             }
         });
 
@@ -293,57 +274,66 @@ public class Form_hopdong extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(txt_ngaytao, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_ngayhethan, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13))))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
+                        .addComponent(jLabel14)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel16)
-                                    .addComponent(txt_tennv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(8, 8, 8)
-                                .addComponent(txt_thongtinthem, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
+                                .addGap(4, 4, 4)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel17)
+                                            .addComponent(jLabel16)
+                                            .addComponent(txt_tennv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(8, 8, 8)
+                                        .addComponent(txt_thongtinthem, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel11)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel12))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(txt_tenkhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGap(30, 30, 30)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(rdo_daky)
-                                            .addComponent(rdo_chuaky))))
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel15)
-                                    .addComponent(txt_mahd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel11)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel12))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(txt_tenkhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(rdo_daky)
+                                                    .addComponent(rdo_chuaky))))
+                                        .addGap(10, 10, 10)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel15)
+                                            .addComponent(txt_mahd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(btn_addhopdong)
+                                            .addComponent(btn_updatehd)
+                                            .addComponent(btn_xoahopdong)))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btn_addhopdong)
-                                    .addComponent(btn_updatehd)
-                                    .addComponent(btn_xoahopdong)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_ngayhethan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(txt_ngaytao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -470,7 +460,7 @@ public class Form_hopdong extends javax.swing.JPanel {
         );
 
         jPanel8.setBackground(new java.awt.Color(12, 93, 118));
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi tiết hợp đồng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(255, 0, 51))); // NOI18N
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Chi tiết hợp đồng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(255, 0, 51))); // NOI18N
 
         jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -536,7 +526,7 @@ public class Form_hopdong extends javax.swing.JPanel {
         );
 
         jPanel6.setBackground(new java.awt.Color(47, 157, 191));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hợp Đồng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(255, 0, 0))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Hợp Đồng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(255, 0, 0))); // NOI18N
         jPanel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
 
         tbl_hopdong.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -678,11 +668,14 @@ public class Form_hopdong extends javax.swing.JPanel {
             txt_mahd.setText("");
             return;
         }
-
+        NhanVienModel nhanVienModel = new NhanVienModel();
+        KhachHangModel khachHangModel = new KhachHangModel();
         HopDongModel hopDongModel = new HopDongModel();
         hopDongModel.setMahd(txt_mahd.getText().toString());
-        hopDongModel.setIdnv(hopDongService.idnhanvien(txt_tennv.getText().toString()));
-        hopDongModel.setIdkh(hopDongService.idkhachhang(txt_tenkhachhang.getText().toString()));
+        nhanVienModel.setId(hopDongService.idnhanvien(txt_tennv.getText().toString()));
+        hopDongModel.setIdnv(nhanVienModel);
+        khachHangModel.setId(hopDongService.idkhachhang(txt_tenkhachhang.getText().toString()));
+        hopDongModel.setIdkh(khachHangModel);
 
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -717,9 +710,14 @@ public class Form_hopdong extends javax.swing.JPanel {
 
         }else{
             HopDongModel hopDongModel = new HopDongModel();
+            NhanVienModel nhanVienModel = new NhanVienModel();
+            KhachHangModel khachHangModel = new KhachHangModel();
             String id = txt_mahd.getText().toString();
-            hopDongModel.setIdnv(hopDongService.idnhanvien(txt_tennv.getText().toString()));
-            hopDongModel.setIdkh(hopDongService.idkhachhang(txt_tenkhachhang.getText().toString()));
+            hopDongModel.setMahd(txt_mahd.getText().toString());
+        nhanVienModel.setId(hopDongService.idnhanvien(txt_tennv.getText().toString()));
+        hopDongModel.setIdnv(nhanVienModel);
+        khachHangModel.setId(hopDongService.idkhachhang(txt_tenkhachhang.getText().toString()));
+        hopDongModel.setIdkh(khachHangModel);
             try {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String date1 = sdf.format(txt_ngaytao.getDate());
@@ -744,30 +742,35 @@ public class Form_hopdong extends javax.swing.JPanel {
             }else
             JOptionPane.showMessageDialog(this, "thất bại");
     }//GEN-LAST:event_btn_updatehdActionPerformed
-
-    private void txt_thongtinthemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_thongtinthemMouseClicked
+    }
+    private void txt_searchchitietKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchchitietKeyPressed
         // TODO add your handling code here:
+         defaultTableModel = (DefaultTableModel) tbl_chitiet.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(defaultTableModel);
+        tbl_chitiet.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txt_searchchitiet.getText().trim()));
+    }//GEN-LAST:event_txt_searchchitietKeyPressed
 
-        try {
-            // TODO add your handling code here:
-            JFileChooser jfc = new JFileChooser("C:\\Users\\Admin\\Downloads\\DuAn1\\src\\icon");
-            jfc.showOpenDialog(null);
-            File file = jfc.getSelectedFile();
-            Image img = ImageIO.read(file);
-            sourceAnh = file.getName();
-            txt_thongtinthem.setText("");
-            int width = txt_thongtinthem.getWidth();
-            int height = txt_thongtinthem.getHeight();
-
-            txt_thongtinthem.setIcon(new ImageIcon(img.getScaledInstance(width, height, 0)));
-        } catch (IOException ex) {
-          
-        }
-    }//GEN-LAST:event_txt_thongtinthemMouseClicked
-
-    private void txt_thongtinthemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_thongtinthemMousePressed
+    private void tbl_chitietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_chitietMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_thongtinthemMousePressed
+         int row = tbl_chitiet.getSelectedRow();
+        cbo_idhopdong.setSelectedItem(tbl_chitiet.getValueAt(row, 0).toString());
+        cbo_bienso.setSelectedItem(tbl_chitiet.getValueAt(row, 1).toString());
+        txt_tiencoc.setText(tbl_chitiet.getValueAt(row, 2).toString());
+    }//GEN-LAST:event_tbl_chitietMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        new InHopDong().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txt_search1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search1KeyPressed
+        // TODO add your handling code here:
+        defaultTableModel = (DefaultTableModel) tbl_hopdong.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(defaultTableModel);
+        tbl_hopdong.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txt_search1.getText().trim()));
+    }//GEN-LAST:event_txt_search1KeyPressed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
@@ -788,7 +791,9 @@ public class Form_hopdong extends javax.swing.JPanel {
             return;
         }
         ChiTietHopDongModel chiTietHopDongModel = new ChiTietHopDongModel();
-        chiTietHopDongModel.setMahd(cbo_idhopdong.getSelectedItem().toString());
+        HopDongModel hopDongModel = new HopDongModel();
+        hopDongModel.setMahd(cbo_idhopdong.getSelectedItem().toString());
+        chiTietHopDongModel.setMahd(hopDongModel);
         chiTietHopDongModel.setBienso(cbo_bienso.getSelectedItem().toString());
         chiTietHopDongModel.setTienCoc(Float.parseFloat(txt_tiencoc.getText().toString()));
         if(hopDongService.addChiTiet(chiTietHopDongModel)){
@@ -806,7 +811,9 @@ public class Form_hopdong extends javax.swing.JPanel {
 
         }else{
             ChiTietHopDongModel chiTietHopDongModel = new ChiTietHopDongModel();
-            chiTietHopDongModel.setMahd(cbo_idhopdong.getSelectedItem().toString());
+            HopDongModel hopDongModel = new HopDongModel();
+            hopDongModel.setMahd(cbo_idhopdong.getSelectedItem().toString());
+            chiTietHopDongModel.setMahd(hopDongModel);
             chiTietHopDongModel.setBienso(cbo_bienso.getSelectedItem().toString());
 
             chiTietHopDongModel.setTienCoc(Float.parseFloat(txt_tiencoc.getText().toString()));
@@ -821,7 +828,7 @@ public class Form_hopdong extends javax.swing.JPanel {
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         // TODO add your handling code here:
-        ArrayList<ChiTietHopDongModel> list = new ArrayList<>();
+          ArrayList<ChiTietHopDongModel> list = new ArrayList<>();
         int row = tbl_chitiet.getSelectedRow();
         if(row == -1){
             JOptionPane.showMessageDialog(this, "hãy chọn một dòng rồi ấn nút xóa");
@@ -837,60 +844,12 @@ public class Form_hopdong extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "that bai");
             }
         }
-
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_clearchitietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearchitietActionPerformed
         // TODO add your handling code here:
         txt_tiencoc.setText("");
     }//GEN-LAST:event_btn_clearchitietActionPerformed
-
-    private void txt_searchchitietKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchchitietKeyPressed
-        // TODO add your handling code here:
-        defaultTableModel = (DefaultTableModel) tbl_chitiet.getModel();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(defaultTableModel);
-        tbl_chitiet.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(txt_searchchitiet.getText().trim()));
-    }//GEN-LAST:event_txt_searchchitietKeyPressed
-
-    private void tbl_chitietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_chitietMouseClicked
-        // TODO add your handling code here:
-        int row = tbl_chitiet.getSelectedRow();
-        cbo_idhopdong.setSelectedItem(tbl_chitiet.getValueAt(row, 0).toString());
-        cbo_bienso.setSelectedItem(tbl_chitiet.getValueAt(row, 1).toString());
-        txt_tiencoc.setText(tbl_chitiet.getValueAt(row, 2).toString());
-    }//GEN-LAST:event_tbl_chitietMouseClicked
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        new InHopDong().setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void txt_search1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_search1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_search1MouseClicked
-
-    private void txt_search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_search1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_search1ActionPerformed
-
-    private void txt_search1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search1KeyPressed
-        // TODO add your handling code here:
-        defaultTableModel = (DefaultTableModel) tbl_hopdong.getModel();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(defaultTableModel);
-        tbl_hopdong.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(txt_search1.getText().trim()));
-    }//GEN-LAST:event_txt_search1KeyPressed
-
-    private void txt_search1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_search1KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -903,7 +862,6 @@ public class Form_hopdong extends javax.swing.JPanel {
     private javax.swing.JButton btn_xoahopdong;
     private javax.swing.JComboBox<String> cbo_bienso;
     private javax.swing.JComboBox<String> cbo_idhopdong;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -929,6 +887,8 @@ public class Form_hopdong extends javax.swing.JPanel {
     private javax.swing.JTable tbl_chitiet;
     private javax.swing.JTable tbl_hopdong;
     private javax.swing.JTextField txt_mahd;
+    private com.toedter.calendar.JDateChooser txt_ngayhethan;
+    private com.toedter.calendar.JDateChooser txt_ngaytao;
     private javax.swing.JTextField txt_search1;
     private javax.swing.JTextField txt_searchchitiet;
     private javax.swing.JTextField txt_tenkhachhang;
