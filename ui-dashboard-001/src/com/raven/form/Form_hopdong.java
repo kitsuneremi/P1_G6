@@ -242,11 +242,6 @@ public class Form_hopdong extends javax.swing.JPanel {
                 btn_addActionPerformed(evt);
             }
         });
-        btn_add.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btn_addKeyPressed(evt);
-            }
-        });
 
         btn_update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/componentfolder/Image/Gear.png"))); // NOI18N
         btn_update.setText("Sửa");
@@ -822,25 +817,20 @@ public class Form_hopdong extends javax.swing.JPanel {
          HopDongModel hopDongModel = new HopDongModel();
             String id = txt_idchitiet.getText().toString();
             int tinhTrang = 1;
+            String bienso =txt_bienso.getText().toString();
+        int tinhTrangXe = 1;
+        
+        ChiTietXeModel chiTietXeModel = new ChiTietXeModel();
+        chiTietXeModel.setTinhTrangXe(tinhTrangXe);
             
             hopDongModel.setTinhTrang(tinhTrang);
             if(hopDongService.update(hopDongModel, id)){
                 
                 loadHd(hopDongService.getList());
-            }
-    }//GEN-LAST:event_btn_addMousePressed
-
-    private void btn_addKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_addKeyPressed
-        // TODO add your handling code here:
-         String bienso =txt_bienso.getText().toString();
-        int tinhTrangXe = 1;
-        
-        ChiTietXeModel chiTietXeModel = new ChiTietXeModel();
-        chiTietXeModel.setTinhTrangXe(tinhTrangXe);
-        if(hopDongService.update3(chiTietXeModel, bienso)){
+            }if(hopDongService.update3(chiTietXeModel, bienso)){
             loadHd(hopDongService.getList());
         }
-    }//GEN-LAST:event_btn_addKeyPressed
+    }//GEN-LAST:event_btn_addMousePressed
 
     private void btn_deleteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_deleteMousePressed
         // TODO add your handling code here:
