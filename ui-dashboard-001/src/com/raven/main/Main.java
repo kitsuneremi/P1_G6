@@ -29,7 +29,7 @@ public class Main extends javax.swing.JFrame {
     private Form_1 form1;
     private Form_2 form2;
     private Form_3 form3;
-    private Form_hoadon form4;
+    //private Form_hoadon form4;
     private Form_hopdong formchitiethopdong;
     private Form_hopdong1 formhd;
     
@@ -41,7 +41,7 @@ public class Main extends javax.swing.JFrame {
         form1 = new Form_1();
         form2 = new Form_2();
         form3 = new Form_3();
-        form4 = new Form_hoadon();
+        //form4 = new Form_hoadon();
         
         formchitiethopdong = new Form_hopdong();
         formhd = new Form_hopdong1();
@@ -61,8 +61,8 @@ public class Main extends javax.swing.JFrame {
                     setForm(form2);
                 }else if(index == 4){
                     setForm(formchitiethopdong);
-                }else if(index == 5){
-                    setForm(form4);
+               // }else if(index == 5){
+                  //  setForm(form4);
                 }else if(index ==6){
                     setForm(home);
                 }else if(index == 9){

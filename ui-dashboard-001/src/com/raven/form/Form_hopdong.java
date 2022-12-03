@@ -60,7 +60,7 @@ public class Form_hopdong extends javax.swing.JPanel {
         addGr();
         Panel_chitiet.setVisible(false);
         txt_searchchitiet.setVisible(false);
-        jLabel8.setVisible(false);
+        LBL_THUE.setVisible(false);
     }
     ButtonGroup btn = new ButtonGroup();
     void addGr(){
@@ -134,7 +134,7 @@ public class Form_hopdong extends javax.swing.JPanel {
         txt_ngaytao = new javax.swing.JTextField();
         txt_ngayhethan = new javax.swing.JTextField();
         txt_searchchitiet = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
+        LBL_THUE = new javax.swing.JLabel();
         Panel_chitiet = new javax.swing.JPanel();
         btn_add = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
@@ -147,6 +147,7 @@ public class Form_hopdong extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         cbo_idhopdong = new javax.swing.JComboBox<>();
         btn_in = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         JtablePanel = new javax.swing.JTabbedPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_hopdong = new javax.swing.JTable();
@@ -236,10 +237,10 @@ public class Form_hopdong extends javax.swing.JPanel {
             }
         });
 
-        jLabel18.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/componentfolder/Image/Search.png"))); // NOI18N
-        jLabel18.setText("Tìm kiếm thông tin thuê");
+        LBL_THUE.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        LBL_THUE.setForeground(new java.awt.Color(255, 255, 255));
+        LBL_THUE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/componentfolder/Image/Search.png"))); // NOI18N
+        LBL_THUE.setText("Tìm kiếm thông tin thuê");
 
         Panel_chitiet.setBackground(new java.awt.Color(12, 93, 118));
         Panel_chitiet.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Hợp đồng thuê xe", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(255, 0, 51))); // NOI18N
@@ -362,6 +363,15 @@ public class Form_hopdong extends javax.swing.JPanel {
                     .addComponent(btn_delete)))
         );
 
+        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/componentfolder/Image/Left.png"))); // NOI18N
+        jButton1.setText("Clear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -404,7 +414,9 @@ public class Form_hopdong extends javax.swing.JPanel {
                             .addComponent(jLabel17))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btn_addhopdong, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_addhopdong, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(btn_updatehd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -413,7 +425,7 @@ public class Form_hopdong extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
                     .addComponent(txt_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18)
+                    .addComponent(LBL_THUE)
                     .addComponent(txt_searchchitiet, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Panel_chitiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -431,7 +443,7 @@ public class Form_hopdong extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18)
+                        .addComponent(LBL_THUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_searchchitiet, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -465,11 +477,13 @@ public class Form_hopdong extends javax.swing.JPanel {
                             .addComponent(jLabel10)
                             .addComponent(txt_ngayhethan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_xoahopdong)
                             .addComponent(btn_updatehd)
                             .addComponent(btn_addhopdong))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         JtablePanel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -783,11 +797,11 @@ public class Form_hopdong extends javax.swing.JPanel {
         if(row == 1){
             Panel_chitiet.setVisible(true);
             txt_searchchitiet.setVisible(true);
-            jLabel8.setVisible(true);
+            LBL_THUE.setVisible(true);
         }if(row==0){
             Panel_chitiet.setVisible(false);
             txt_searchchitiet.setVisible(false);
-            jLabel8.setVisible(false);
+            LBL_THUE.setVisible(false);
         }
     }//GEN-LAST:event_JtablePanelMouseClicked
 
@@ -796,9 +810,20 @@ public class Form_hopdong extends javax.swing.JPanel {
         new InHopDong().setVisible(true);
     }//GEN-LAST:event_btn_inActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        txt_mahd.setText("");
+        txt_ngayhethan.setText("");
+        txt_tenkhachhang.setText("");
+        txt_ngaytao.setText("");
+        txt_tenkhachhang.setText("");
+        txt_tennv.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane JtablePanel;
+    private javax.swing.JLabel LBL_THUE;
     private javax.swing.JPanel Panel_chitiet;
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_addhopdong;
@@ -810,6 +835,7 @@ public class Form_hopdong extends javax.swing.JPanel {
     private javax.swing.JButton btn_xoahopdong;
     private javax.swing.JComboBox<String> cbo_bienso;
     private javax.swing.JComboBox<String> cbo_idhopdong;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -818,7 +844,6 @@ public class Form_hopdong extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
