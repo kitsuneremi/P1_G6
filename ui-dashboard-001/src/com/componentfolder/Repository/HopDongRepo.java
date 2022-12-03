@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Repository;
+package com.componentfolder.Repository;
 
-import Model.ChiTietHopDongModel;
-import Model.ChiTietXeModel;
-import Model.HopDongModel;
-import Model.KhachHangModel;
-import Model.NhanVienModel;
+import com.componentfolder.Model.ChiTietHopDongModel;
+import com.componentfolder.Model.ChiTietXeModel;
+import com.componentfolder.Model.HopDongModel;
+import com.componentfolder.Model.KhachHangModel;
+import com.componentfolder.Model.NhanVienModel;
 import Utilities.DBConnections;
 import ViewModel.ChiTietHopDongViewModel;
-import ViewModel.HopDongViewModel;
+import com.componentfolder.ViewModel.HopDongViewModel;
 import ViewModel.InHopDongViewModel;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -85,7 +85,7 @@ public class HopDongRepo {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 KhachHangModel khachHangModel = new KhachHangModel();
-                khachHangModel.setId(rs.getString(1));
+                khachHangModel.setMakh(rs.getString(1));
                 khachHangModel.setTen(rs.getString(2));
                 list.add(khachHangModel);
             }
@@ -101,7 +101,7 @@ public class HopDongRepo {
                 PreparedStatement ps = con.prepareStatement(sql)){
             ps.setObject(1, hopDongModel.getMahd());           
             ps.setObject(2, hopDongModel.getIdnv().getId());
-            ps.setObject(3, hopDongModel.getIdkh().getId());
+            ps.setObject(3, hopDongModel.getIdkh().getMakh());
             ps.setDate(4, new java.sql.Date(hopDongModel.getNgayTao().getTime()));
             ps.setDate(5, new java.sql.Date(hopDongModel.getNgayHetHan().getTime()));
             ps.setInt(6, hopDongModel.getTinhTrang());
@@ -133,7 +133,7 @@ public class HopDongRepo {
         try(Connection con = connections.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setObject(1, hopDongModel.getIdnv().getId());
-            ps.setObject(2, hopDongModel.getIdkh().getId());
+            ps.setObject(2, hopDongModel.getIdkh().getMakh());
             ps.setObject(3, hopDongModel.getNgayTao());
             ps.setObject(4, hopDongModel.getNgayHetHan());
             ps.setObject(5, hopDongModel.getTinhTrang());

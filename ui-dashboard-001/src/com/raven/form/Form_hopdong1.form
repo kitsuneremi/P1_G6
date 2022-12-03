@@ -90,7 +90,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Image/Clien list.png"/>
+              <Image iconType="3" name="/com/componentfolder/Image/Clien list.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="TH&#xd4;NG TIN H&#x1ee2;P &#x110;&#x1ed2;NG THU&#xca; XE"/>
           </Properties>
@@ -106,9 +106,6 @@
               <Font name="Dialog" size="14" style="1"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabbedPane2MousePressed"/>
-          </Events>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
@@ -208,11 +205,13 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txt_ngayhethan" min="-2" pref="232" max="-2" attributes="0"/>
-                      <Component id="txt_ngaytao" min="-2" pref="232" max="-2" attributes="0"/>
                       <Component id="txt_thongtinthem" min="-2" pref="213" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txt_ngayhethan" alignment="0" pref="193" max="32767" attributes="0"/>
+                          <Component id="txt_ngaytao" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -220,13 +219,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace pref="14" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_tenkhachhang" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="txt_ngaytao" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_tenkhachhang" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_ngaytao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
@@ -234,8 +231,8 @@
                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                           <Component id="txt_tennv" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_ngayhethan" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="txt_ngayhethan" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -335,20 +332,7 @@
             <Property name="text" type="java.lang.String" value="&#x111;&#xe3; k&#xfd;"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="txt_ngaytao">
-          <Properties>
-            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
-          </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="txt_ngayhethan">
-          <Properties>
-            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="txt_tenkhachhang">
-          <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_tenkhachhangMousePressed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_find">
           <Properties>
@@ -363,7 +347,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txt_findtenkhach">
           <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_findtenkhachMousePressed"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_findtenkhachKeyPressed"/>
           </Events>
         </Component>
@@ -412,6 +395,10 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_thongtinthemMouseClicked"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JTextField" name="txt_ngaytao">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_ngayhethan">
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
@@ -444,9 +431,9 @@
                       <Component id="btn_clear" alignment="1" max="32767" attributes="0"/>
                       <Component id="jButton4" alignment="1" max="32767" attributes="0"/>
                       <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btn_add" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -454,7 +441,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="btn_add" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btn_clear" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -467,7 +454,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btn_add">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -476,12 +463,12 @@
               <Font name="Dialog" size="18" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Image/Key.png"/>
+              <Image iconType="3" name="/com/componentfolder/Image/Add.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="T&#x1ea1;o H&#x1ee3;p &#x110;&#x1ed3;ng"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_addActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
@@ -493,12 +480,11 @@
               <Font name="Dialog" size="18" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Image/Print.png"/>
+              <Image iconType="3" name="/com/componentfolder/Image/Print preview.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="In h&#x1ee3;p &#x111;&#x1ed3;ng"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
           </Events>
         </Component>
@@ -509,6 +495,9 @@
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="18" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/com/componentfolder/Image/Gear.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Update tr&#x1ea1;ng th&#xe1;i"/>
           </Properties>
@@ -525,7 +514,7 @@
               <Font name="Dialog" size="18" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Image/Left.png"/>
+              <Image iconType="3" name="/com/componentfolder/Image/Left.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Clear"/>
           </Properties>

@@ -4,6 +4,8 @@
  */
 package com.componentfolder.Model;
 
+import com.componentfolder.Model.KhachHangModel;
+import com.componentfolder.Model.NhanVienModel;
 import java.util.Date;
 
 /**
@@ -89,4 +91,17 @@ public class HopDongModel {
         this.sourceAnh = sourceAnh;
     }
 
+   
+
+    
+
+   
+
+    
+   
+
+    
+
+    
+    
 }
