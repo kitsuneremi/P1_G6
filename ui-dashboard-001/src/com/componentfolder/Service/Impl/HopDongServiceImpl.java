@@ -4,8 +4,8 @@
  */
 package com.componentfolder.Service.Impl;
 
-import ViewModel.ChiTietHopDongViewModel;
-import ViewModel.InHopDongViewModel;
+import com.componentfolder.ViewModel.ChiTietHopDongViewModel;
+import com.componentfolder.ViewModel.InHopDongViewModel;
 import com.componentfolder.Model.ChiTietHopDongModel;
 import com.componentfolder.Model.HopDongModel;
 import com.componentfolder.Repository.HopDongRepo;

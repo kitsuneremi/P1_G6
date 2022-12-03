@@ -5,8 +5,8 @@
 package com.componentfolder.Service;
 
 import java.util.ArrayList;
-import ViewModel.ChiTietHopDongViewModel;
-import ViewModel.InHopDongViewModel;
+import com.componentfolder.ViewModel.ChiTietHopDongViewModel;
+import com.componentfolder.ViewModel.InHopDongViewModel;
 import com.componentfolder.Model.ChiTietHopDongModel;
 import com.componentfolder.Model.HopDongModel;
 import com.componentfolder.ViewModel.HopDongViewModel;

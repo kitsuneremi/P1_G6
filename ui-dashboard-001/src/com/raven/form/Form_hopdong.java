@@ -13,7 +13,7 @@ import com.componentfolder.Model.NhanVienModel;
 import com.componentfolder.Service.HopDongService;
 import com.componentfolder.Service.Impl.HopDongServiceImpl;
 import com.componentfolder.View.InHopDong;
-import ViewModel.ChiTietHopDongViewModel;
+import com.componentfolder.ViewModel.ChiTietHopDongViewModel;
 import com.componentfolder.ViewModel.HopDongViewModel;
 import java.awt.Color;
 import java.awt.Image;

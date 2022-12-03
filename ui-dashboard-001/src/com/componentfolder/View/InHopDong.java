@@ -6,7 +6,7 @@ package com.componentfolder.View;
 
 import com.componentfolder.Service.HopDongService;
 import com.componentfolder.Service.Impl.HopDongServiceImpl;
-import ViewModel.InHopDongViewModel;
+import com.componentfolder.ViewModel.InHopDongViewModel;
 import com.raven.main.Main;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
