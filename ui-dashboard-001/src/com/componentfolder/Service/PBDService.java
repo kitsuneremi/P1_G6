@@ -2,11 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package Service;
+package com.componentfolder.Service;
 
-
-import Model.PBD;
 import ViewModel.PBDViewModel;
+import com.componentfolder.Model.PBD;
 import java.util.ArrayList;
 
 /**

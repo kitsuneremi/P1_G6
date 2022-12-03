@@ -2,15 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package Service;
+package com.componentfolder.Service;
 
-import Model.HoaDonTraXeModel;
-import Repository.HoaDonTraXeRepo;
-
+import com.componentfolder.Repository.HoaDonTraXeRepo;
 import ViewModel.HoaDonTraXeViewModel;
-import ViewModel.HopDongViewModel;
 import ViewModel.KhachHangViewModel;
-
+import com.componentfolder.Model.HoaDonTraXeModel;
+import com.componentfolder.ViewModel.HopDongViewModel;
 import java.util.ArrayList;
 
 /**

@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Repository;
+package com.componentfolder.Repository;
 
-import Model.ChiTietXe;
-import Model.LoaiXe;
-import Model.PBD;
-import Model.Xe;
 import Utilities.DBConnections;
+import com.componentfolder.Model.ChiTietXe;
+import com.componentfolder.Model.LoaiXe;
+import com.componentfolder.Model.PBD;
+import com.componentfolder.Model.Xe;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +33,7 @@ public class ChiTietXeRepository {
                 loaiXe.setId(rs.getString(3));
                 PBD phieuBD = new PBD();
                 phieuBD.setId(rs.getString(4));
-                ChiTietXe ctXe = new ChiTietXe(rs.getString(1), xe, loaiXe, con, rs.getFloat(5), rs.getString(6), rs.getInt(7), rs.getString(8));
+                ChiTietXe ctXe = new ChiTietXe(rs.getString(1), xe, loaiXe,phieuBD, rs.getFloat(5), rs.getString(6), rs.getInt(7), rs.getString(8));
                 listChiTietXe.add(ctXe);
                 
             }

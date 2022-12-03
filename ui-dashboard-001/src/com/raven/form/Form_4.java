@@ -2,17 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.ViewGiaoDienChinh.form;
+package com.raven.form;
 
 import java.io.FileOutputStream;
 import javax.swing.JOptionPane;
-import Model.HoaDonTraXeModel;
-import Model.HopDongModel;
-import Model.KhachHangModel;
-import Model.ViPhamModel;
-import Repository.HoaDonTraXeRepo;
+import com.componentfolder.Repository.HoaDonTraXeRepo;
 import ViewModel.HoaDonTraXeViewModel;
-import ViewModel.HopDongViewModel;
+import com.componentfolder.Model.HoaDonTraXeModel;
+import com.componentfolder.Model.HopDongModel;
+import com.componentfolder.Model.KhachHangModel;
+import com.componentfolder.Model.ViPhamModel;
+import com.componentfolder.ViewModel.HopDongViewModel;
 import java.awt.Desktop;
 import java.awt.HeadlessException;
 import java.io.ByteArrayOutputStream;
@@ -108,12 +108,12 @@ public class Form_4 extends javax.swing.JPanel {
         dtm.setRowCount(0);
         for (HopDongViewModel h : list) {
             Object[] rowData = {
-                h.getId(),
-                traxerepo.getkh(h.getId()).getTen(),
+                h.getMahd(),
+                traxerepo.getkh(h.getMahd()).getTen(),
                 traxerepo.getnv(h.getIdnv()),
                 h.getTinhTrangXe() == 0 ? "0" : "1",
-                convertdate(h.getNgaytao()),
-                convertdate(h.getNgayhethan()),
+                convertdate(h.getNgayTao()),
+                convertdate(h.getNgayHetHan()),
                 h.getIdkh(),
                 h.getIdnv()
             };
@@ -121,22 +121,13 @@ public class Form_4 extends javax.swing.JPanel {
         }
     }
 
-    void pre_test() {
-        DefaultTableModel dtm = (DefaultTableModel) tblhoadon.getModel();
-        System.out.println(dtm.getValueAt(0, 5));
-        System.out.println(dtm.getValueAt(0, 6));
-    }
-
     HoaDonTraXeModel gethoadonformdata() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
         HoaDonTraXeModel hdtxm = new HoaDonTraXeModel();
 
-        KhachHangModel khm = new KhachHangModel();
-        khm.setId(txtidkhachhang12.getText());
-
         HopDongModel hdm = new HopDongModel();
-        hdm.setId(txtidhopdong11.getText());
+        hdm.setMahd(txtidhopdong11.getText());
+        hdm.setIdkh(txtidkhachhang12.getText());
         try {
             hdm.setNgayHetHan(sdf.parse(txtngayhethan12.getText()));
             hdm.setNgayTao(sdf.parse(txtngaytao12.getText()));
@@ -154,7 +145,6 @@ public class Form_4 extends javax.swing.JPanel {
             return null;
         }
         hdtxm.setVipham(new ViPhamModel(cbbvipham.getSelectedIndex(), ""));
-        hdm.setKhm(khm);
         hdtxm.setHdm(hdm);
         return hdtxm;
     }

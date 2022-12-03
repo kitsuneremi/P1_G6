@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package com.componentfolder.Model;
 
 import java.util.Date;
 
@@ -17,6 +17,7 @@ public class HoaDonTraXeModel {
     private double phiphatsinh, tongtien;
     private ViPhamModel vipham;
     private HopDongModel hdm;
+    private String mota;
 
     public String getId() {
         return id;
@@ -57,12 +58,21 @@ public class HoaDonTraXeModel {
     public void setVipham(ViPhamModel vipham) {
         this.vipham = vipham;
     }
+
     public HopDongModel getHdm() {
         return hdm;
     }
 
     public void setHdm(HopDongModel hdm) {
         this.hdm = hdm;
+    }
+
+    public String getMota() {
+        return mota;
+    }
+
+    public void setMota(String mota) {
+        this.mota = mota;
     }
 
 }

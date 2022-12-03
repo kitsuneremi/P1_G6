@@ -2,19 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package Service;
+package com.componentfolder.Service;
 
-import Model.ChiTietHopDongModel;
 import java.util.ArrayList;
-import Model.ChiTietXeModel;
-import Model.HopDongModel;
-import Model.KhachHangModel;
-
-import Model.NhanVienModel;
 import ViewModel.ChiTietHopDongViewModel;
-
-import ViewModel.HopDongViewModel;
 import ViewModel.InHopDongViewModel;
+import com.componentfolder.Model.ChiTietHopDongModel;
+import com.componentfolder.Model.HopDongModel;
+import com.componentfolder.ViewModel.HopDongViewModel;
 
 /**
  *

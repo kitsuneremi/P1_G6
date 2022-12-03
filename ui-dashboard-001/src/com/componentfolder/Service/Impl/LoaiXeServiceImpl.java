@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Service.Impl;
+package com.componentfolder.Service.Impl;
 
-import Model.LoaiXe;
-import Repository.LoaiXeRepository;
-import Service.LoaiXeServices;
+
+import com.componentfolder.Model.LoaiXe;
+import com.componentfolder.Repository.LoaiXeRepository;
+import com.componentfolder.Service.LoaiXeServices;
 import java.util.List;
 
 /**

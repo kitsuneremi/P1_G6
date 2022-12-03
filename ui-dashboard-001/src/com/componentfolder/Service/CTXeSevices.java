@@ -1,7 +1,8 @@
-package Service;
+package com.componentfolder.Service;
 
 
-import Model.ChiTietXe;
+
+import com.componentfolder.Model.ChiTietXe;
 import java.util.List;
 
 /*

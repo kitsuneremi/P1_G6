@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Repository;
+package com.componentfolder.Repository;
 
 
-import Model.PBD;
 import Utilities.DBConnections;
 import ViewModel.PBDViewModel;
+import com.componentfolder.Model.PBD;
 import java.util.ArrayList;
 import java.sql.*;
 

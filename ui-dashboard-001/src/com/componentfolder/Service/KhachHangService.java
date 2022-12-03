@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service;
+package com.componentfolder.Service;
 
-import Model.KhachHangModel;
 import ViewModel.KhachHangViewModel;
+import com.componentfolder.Model.KhachHangModel;
 import java.util.ArrayList;
 
 /**

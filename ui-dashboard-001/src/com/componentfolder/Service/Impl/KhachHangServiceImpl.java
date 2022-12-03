@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service.Impl;
+package com.componentfolder.Service.Impl;
 
-import Model.KhachHangModel;
-import Repository.KhachHangRepo;
-import Service.KhachHangService;
 import ViewModel.KhachHangViewModel;
+import com.componentfolder.Model.KhachHangModel;
+import com.componentfolder.Repository.KhachHangRepo;
+import com.componentfolder.Service.KhachHangService;
 import java.util.ArrayList;
 
 /**
  *
  * @author HA NGUYEN
  */
-public class KhachHangServiceImpl implements KhachHangService{
+public class KhachHangServiceImpl implements KhachHangService {
+
     KhachHangRepo khrp = new KhachHangRepo();
 
     @Override
@@ -35,9 +36,7 @@ public class KhachHangServiceImpl implements KhachHangService{
 
     @Override
     public int getcountDB() {
-        return  khrp.getcountDB(); //To change body of generated methods, choose Tools | Templates.
+        return khrp.getcountDB(); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    
 }

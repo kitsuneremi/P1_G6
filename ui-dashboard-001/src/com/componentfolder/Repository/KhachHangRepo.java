@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Repository;
+package com.componentfolder.Repository;
 
-import Model.KhachHangModel;
+
 import Utilities.DBConnections_Ha;
 import ViewModel.KhachHangViewModel;
+import com.componentfolder.Model.KhachHangModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

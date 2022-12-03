@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Service.Impl;
+package com.componentfolder.Service.Impl;
 
-import Model.ChiTietXe;
-import Repository.ChiTietXeRepository;
-import Service.CTXeSevices;
+import com.componentfolder.Model.ChiTietXe;
+import com.componentfolder.Repository.ChiTietXeRepository;
+import com.componentfolder.Service.CTXeSevices;
 import java.util.List;
 
 /**
