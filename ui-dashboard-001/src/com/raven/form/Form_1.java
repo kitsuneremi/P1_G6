@@ -24,7 +24,7 @@ public class Form_1 extends javax.swing.JPanel {
      */
     public Form_1() {
         initComponents();
-        if (txtTimK.getText() == "") {
+        if (btnTimKiem.getText() == "") {
             LoadData();
         }
     }
@@ -57,77 +57,71 @@ public class Form_1 extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblDSKH = new javax.swing.JTable();
         txtTimK = new javax.swing.JTextField();
         btnTimKiem = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDSKH = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(106, 106, 106));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Danh Sách Khách Hàng");
 
+        txtTimK.setForeground(new java.awt.Color(153, 153, 153));
+        txtTimK.setText("Nhập Mã/Tên/SĐT/CCCD Hoặc Email");
+
+        btnTimKiem.setText("Tìm Kiếm");
+
         tblDSKH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã KH", "Tên", "SĐT", "Giới Tính", "CCCD", "Email"
+                "Mã KH", "Tên", "Số Điện Thoại", "Giới Tính", "CCCD", "Email"
             }
         ));
         jScrollPane1.setViewportView(tblDSKH);
-
-        txtTimK.setForeground(new java.awt.Color(204, 204, 204));
-        txtTimK.setText("Nhập Mã/Tên/SĐT/CCCD/Email");
-        txtTimK.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTimKFocusGained(evt);
-            }
-        });
-
-        btnTimKiem.setText("Tìm Kiếm");
-        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimKiemActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtTimK, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(106, 106, 106)
+                                .addComponent(txtTimK, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(62, 62, 62)
+                                .addComponent(btnTimKiem))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTimK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTimKiem))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGap(74, 74, 74)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
         // TODO add your handling code here:                                          
         // TODO add your handling code here:
-        String searchh = txtTimK.getText();       
+        String searchh = btnTimKiem.getText();       
         ArrayList<KhachHangViewModel> listkh= khachHangService.search(searchh);
         defaultTableModel = (DefaultTableModel) tblDSKH.getModel();
         defaultTableModel.setRowCount(0);
@@ -147,10 +141,10 @@ public class Form_1 extends javax.swing.JPanel {
 
     private void txtTimKFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKFocusGained
         // TODO add your handling code here:
-        if(txtTimK.getText().equals("Nhập Mã/Tên/SĐT/CCCD Hoặc Email")){
-            txtTimK.setText("");
-            txtTimK.setForeground(Color.BLACK);
-        }if (txtTimK.getText().equals("")) {
+        if(btnTimKiem.getText().equals("Nhập Mã/Tên/SĐT/CCCD Hoặc Email")){
+            btnTimKiem.setText("");
+            btnTimKiem.setForeground(Color.BLACK);
+        }if (btnTimKiem.getText().equals("")) {
             LoadData();
         }
     }//GEN-LAST:event_txtTimKFocusGained

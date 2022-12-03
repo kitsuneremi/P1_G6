@@ -5,8 +5,7 @@
  */
 package com.componentfolder.Repository;
 
-import Utilities.DBConnections_Ha;
-import ViewModel.KhachHangViewModel;
+import com.componentfolder.Utilities.DBConnections_Ha;
 import com.componentfolder.Model.DangNhap;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

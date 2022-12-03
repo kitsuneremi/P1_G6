@@ -5,8 +5,8 @@
 package com.componentfolder.Service.Impl;
 
 
-import ViewModel.HoaDonTraXeViewModel;
-import ViewModel.KhachHangViewModel;
+import com.componentfolder.ViewModel.HoaDonTraXeViewModel;
+import com.componentfolder.ViewModel.KhachHangViewModel;
 import com.componentfolder.Model.HoaDonTraXeModel;
 import com.componentfolder.Service.HoaDonTraXeService;
 import com.componentfolder.ViewModel.HopDongViewModel;

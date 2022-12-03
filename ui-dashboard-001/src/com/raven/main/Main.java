@@ -55,22 +55,22 @@ public class Main extends javax.swing.JFrame {
                     setForm(home);
                 } else if (index == 1) {
                     setForm(form1);
-                } else if (index == 2) {
-                    setForm(form2);
-                } else if (index == 3) {
-                    setForm(form2);
-                }else if(index == 4){
-                    setForm(formchitiethopdong);
+//                } else if (index == 2) {
+//                    setForm(form2);
+//                } else if (index == 3) {
+//                    setForm(form2);
+//                }else if(index == 4){
+//                    setForm(formchitiethopdong);
                // }else if(index == 5){
                   //  setForm(form4);
-                }else if(index ==6){
-                    setForm(home);
-                }else if(index == 9){
-                    setForm(home);
-                }else if(index == 10){
-                    setForm(home);
-                }else if(index == 11){
-                    setForm(formhd);
+//                }else if(index ==6){
+//                    setForm(home);
+//                }else if(index == 9){
+//                    setForm(home);
+//                }else if(index == 10){
+//                    setForm(home);
+//                }else if(index == 11){
+//                    setForm(formhd);
                 }
             }
         });

@@ -6,7 +6,7 @@
 package com.componentfolder.Repository;
 
 
-import Utilities.DBConnections_Ha;
+import com.componentfolder.Utilities.DBConnections_Ha;
 import com.componentfolder.ViewModel.KhachHangViewModel;
 import com.componentfolder.Model.KhachHangModel;
 import java.sql.Connection;

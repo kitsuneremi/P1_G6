@@ -5,8 +5,8 @@
 package com.componentfolder.Service;
 
 import com.componentfolder.Repository.HoaDonTraXeRepo;
-import ViewModel.HoaDonTraXeViewModel;
-import ViewModel.KhachHangViewModel;
+import com.componentfolder.ViewModel.HoaDonTraXeViewModel;
+import com.componentfolder.ViewModel.KhachHangViewModel;
 import com.componentfolder.Model.HoaDonTraXeModel;
 import com.componentfolder.ViewModel.HopDongViewModel;
 import java.util.ArrayList;

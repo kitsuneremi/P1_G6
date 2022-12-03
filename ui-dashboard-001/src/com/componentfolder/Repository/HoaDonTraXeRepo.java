@@ -6,9 +6,9 @@
 package com.componentfolder.Repository;
 
 import Utilities.DBConnections1;
-import ViewModel.HoaDonTraXeViewModel;
+import com.componentfolder.ViewModel.HoaDonTraXeViewModel;
 import ViewModel.ChiTietXeViewModel;
-import ViewModel.KhachHangViewModel;
+import com.componentfolder.ViewModel.KhachHangViewModel;
 import com.componentfolder.Model.HoaDonTraXeModel;
 import com.componentfolder.ViewModel.HopDongViewModel;
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class HoaDonTraXeRepo {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 KhachHangViewModel khvm = new KhachHangViewModel();
-                khvm.setId(rs.getString(1));
+                khvm.setMakh(rs.getString(1));
                 khvm.setTen(rs.getString(2));
                 return khvm;
             }
