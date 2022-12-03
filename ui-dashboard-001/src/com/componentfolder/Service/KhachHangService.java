@@ -5,7 +5,7 @@
  */
 package com.componentfolder.Service;
 
-import ViewModel.KhachHangViewModel;
+import com.componentfolder.ViewModel.KhachHangViewModel;
 import com.componentfolder.Model.KhachHangModel;
 import java.util.ArrayList;
 
@@ -18,4 +18,5 @@ public interface KhachHangService {
     public Boolean addKH(KhachHangModel kh);
     public Boolean updateKH(KhachHangModel kh);
     public int getcountDB();
+    public ArrayList<KhachHangViewModel> search(String tenn);
 }
