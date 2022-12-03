@@ -620,7 +620,7 @@ public class Form_hopdong extends javax.swing.JPanel {
         hopDongModel.setNgayTao(sdf.parse(txt_ngaytao.getText()));
         hopDongModel.setNgayHetHan(sdf.parse(txt_ngayhethan.getText()));
     } catch (ParseException ex) {
-        java.util.logging.Logger.getLogger(Form_hopdong1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        java.util.logging.Logger.getLogger(Form_hopdong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
 
         hopDongModel.setSourceAnh(sourceAnh);
@@ -657,7 +657,7 @@ public class Form_hopdong extends javax.swing.JPanel {
         hopDongModel.setNgayTao(sdf.parse(txt_ngaytao.getText()));
         hopDongModel.setNgayHetHan(sdf.parse(txt_ngayhethan.getText()));
     } catch (ParseException ex) {
-        java.util.logging.Logger.getLogger(Form_hopdong1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        java.util.logging.Logger.getLogger(Form_hopdong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
             int tinhTrang = 0;
             

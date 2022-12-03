@@ -10,7 +10,7 @@ import com.raven.form.Form_1;
 import com.raven.form.Form_2;
 import com.raven.form.Form_3;
 import com.raven.form.Form_hoadon;
-import com.raven.form.Form_hopdong1;
+
 import com.raven.form.Form_Home;
 import com.raven.form.Form_hopdong;
 import java.awt.Color;
@@ -31,7 +31,7 @@ public class Main extends javax.swing.JFrame {
     private Form_3 form3;
     //private Form_hoadon form4;
     private Form_hopdong formchitiethopdong;
-    private Form_hopdong1 formhd;
+    
     
 
     public Main() {
@@ -44,7 +44,7 @@ public class Main extends javax.swing.JFrame {
         //form4 = new Form_hoadon();
         
         formchitiethopdong = new Form_hopdong();
-        formhd = new Form_hopdong1();
+       
         
         
         menu.initMoving(Main.this);
