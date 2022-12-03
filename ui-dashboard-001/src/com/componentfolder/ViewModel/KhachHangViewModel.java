@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ViewModel;
+package com.componentfolder.ViewModel;
 
 /**
  *
@@ -11,15 +11,15 @@ package ViewModel;
  */
 public class KhachHangViewModel {
 
-    private String id ,ten, sdt, cccd;
+    private String email ,ten, sdt, cccd;
     private int gioitinh;
     private String makh;
 
     public KhachHangViewModel() {
     }
 
-    public KhachHangViewModel(String id, String ten, String sdt, String cccd, int gioitinh, String makh) {
-        this.id = id;
+    public KhachHangViewModel(String email, String ten, String sdt, String cccd, int gioitinh, String makh) {
+        this.email = email;
         this.ten = ten;
         this.sdt = sdt;
         this.cccd = cccd;
@@ -27,12 +27,12 @@ public class KhachHangViewModel {
         this.makh = makh;
     }
 
-    public String getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTen() {
