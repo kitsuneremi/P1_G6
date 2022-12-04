@@ -781,6 +781,8 @@ public class Form_hopdong extends javax.swing.JPanel {
     private void btn_clearchitietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearchitietActionPerformed
         // TODO add your handling code here:
         txt_tiencoc.setText("");
+        txt_bienso.setText("");
+        txt_idchitiet.setText("");
     }//GEN-LAST:event_btn_clearchitietActionPerformed
 
     private void JtablePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JtablePanelMouseClicked
