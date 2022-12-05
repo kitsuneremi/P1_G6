@@ -88,13 +88,13 @@ select * from nhanVien
 select * from khachHang
 select * from loaixe
 select * from ViPham
-insert into dangnhap values('nguyenmanha123','12345678','Nhân Viên')
-insert into dangnhap values('nguyenhuubinh123','12345678','Nhân Viên')
-insert into dangnhap values('nguyentrunganh123','12345678','Nhân Viên')
-insert into dangnhap values('nguyenngocminh123','12345678','Quản Lý')
-insert into dangnhap values('nguyenvietanh123','12345678','Nhân Viên')
-insert into dangnhap values('hoangvietdung123','12345678','Nhân Viên')
-insert into dangnhap values('tranngochuy123','12345678','Nhân Viên')
+insert into dangnhap values('nguyenmanha123','12345678',N'Nhân Viên')
+insert into dangnhap values('nguyenhuubinh123','12345678',N'Nhân Viên')
+insert into dangnhap values('nguyentrunganh123','12345678',N'Nhân Viên')
+insert into dangnhap values('nguyenngocminh123','12345678',N'Quản Lý')
+insert into dangnhap values('nguyenvietanh123','12345678',N'Nhân Viên')
+insert into dangnhap values('hoangvietdung123','12345678',N'Nhân Viên')
+insert into dangnhap values('tranngochuy123','12345678',N'Nhân Viên')
 
 insert into nhanVien values('NV1',N'Nguyễn Mạnh Hà','2003-11-04','0857595060',0,N'nguyenmanha123')
 insert into nhanVien values('NV2',N'Nguyễn Hữu Bình','2003-11-28','01234567733',0,N'nguyenhuubinh123')
