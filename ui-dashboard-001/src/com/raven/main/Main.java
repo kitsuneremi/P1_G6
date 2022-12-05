@@ -14,6 +14,7 @@ import com.raven.form.Form_hoadon;
 import com.raven.form.Form_hopdong;
 import java.awt.Color;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,8 +32,9 @@ public class Main extends javax.swing.JFrame {
     private Form_hoadon formhoadon;
     private Form_hopdong formchitiethopdong;
     
-
-    public Main() {
+    public Main(){}
+    
+    public Main(String chucvu) {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         home = new Form_Home();
@@ -65,8 +67,15 @@ public class Main extends javax.swing.JFrame {
                     setForm(formhoadon);
                     break;
                 case 6:
+                    if(chucvu.equals("Quản Lý")){
                     setForm(home);
                     break;
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Bạn Không Có Quyền Hạn Này!!");
+                        setForm(home);
+                        break;
+                    }
+                    
                 case 9:
                     setForm(home);
                     break;

@@ -110,13 +110,20 @@ public class Start extends javax.swing.JFrame {
         // TODO add your handling code here:
         String taikhoan = txtTaiKhoan.getText();
         String Mk = txtMk.getText();
-        
+        System.out.println(taikhoan);
+        System.out.println(Mk);
+        try{
         if (dns.get(taikhoan, Mk).equals("Quản Lý")) {
             JOptionPane.showMessageDialog(this, "Đăng nhập tài Khoản Quản Lý thành công!!");
-        }if (dns.get(taikhoan, Mk).equals("Nhân Viên")) {
+            new Main(dns.get(taikhoan, Mk)).setVisible(true);
+        } else if (dns.get(taikhoan, Mk).equals("Nhân Viên")) {
             JOptionPane.showMessageDialog(this, "Đăng nhập tài Khoản Nhân Viên thành công!!");
-        }else{JOptionPane.showMessageDialog(this, "Sai Tài Khoản Hoặc Mật Khẩu! Vui Lòng Nhập Lại!");}
-        
+            new Main(dns.get(taikhoan, Mk)).setVisible(true);
+        }else
+        {JOptionPane.showMessageDialog(this, "Sai Tài Khoản Hoặc Mật Khẩu! Vui Lòng Nhập Lại!");}
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Sai Tài Khoản Hoặc Mật Khẩu! Vui Lòng Nhập Lại!");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
