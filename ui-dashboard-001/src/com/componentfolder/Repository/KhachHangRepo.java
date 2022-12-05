@@ -61,15 +61,15 @@ public class KhachHangRepo {
     }
     public Boolean update(KhachHangModel kh){
         String sql = "Update khachhang set ten = ?,sdt = ? ,gioitinh = ?,cccd =?, email = ? Where MaKh = ?";
-         try (Connection con = connections_Ha.getConnection();){
-           PreparedStatement ps2 = con.prepareStatement(sql);
+         try (Connection con = connections_Ha.getConnection();PreparedStatement ps2 = con.prepareStatement(sql);){          
            ps2.setObject(1, kh.getTen());
            ps2.setObject(2, kh.getSdt());
            ps2.setObject(3, kh.getGioitinh());
            ps2.setObject(4, kh.getCccd());
-           ps2.setObject(5, kh.getMakh());
+           ps2.setObject(5, kh.getEmail());
            ps2.setObject(6, kh.getMakh());
            ps2.executeUpdate();
+             System.out.println(kh.getMakh());
            return true;
        } catch (Exception e) {
            e.printStackTrace();
