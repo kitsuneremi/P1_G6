@@ -27,7 +27,9 @@ public class Form_1 extends javax.swing.JPanel {
      */
     public Form_1() {
         initComponents();
-            LoadData();
+         LoadData();
+        
+        
         
     }
     public void LoadData(){
