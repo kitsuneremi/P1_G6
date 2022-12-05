@@ -13,6 +13,7 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import com.raven.main.Main;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.Executor;
@@ -39,9 +40,8 @@ public class KhachHangRetail extends javax.swing.JFrame implements Runnable, Thr
     }
     public KhachHangRetail(String ma, String ten,String sdt,String cccd,String email, String sex) {
         initComponents();
-        initWebcam();
         mane = sex;
-        txtMaKh.setText(mane);
+        txtMaKh.setText(ma); 
         txtCCCD.setText(cccd);
         txtSdt.setText(sdt);
         txtEmail.setText(email);
@@ -51,7 +51,7 @@ public class KhachHangRetail extends javax.swing.JFrame implements Runnable, Thr
         }else{rdoNu.setSelected(true);}
         btnThem.setVisible(false);
     }
- 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -171,21 +171,24 @@ public class KhachHangRetail extends javax.swing.JFrame implements Runnable, Thr
     private void btnDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        
+        
     }//GEN-LAST:event_btnDongActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        KhachHangModel kh = new KhachHangModel();        
-        kh.setMakh(txtMaKh.getText());
-        kh.setTen(txtHoTen.getText());
-        kh.setSdt(txtSdt.getText());
-        kh.setCccd(txtCCCD.getText());
-        kh.setEmail(txtEmail.getText());
+        KhachHangModel khh = new KhachHangModel();        
+        khh.setMakh(txtMaKh.getText());
+        khh.setTen(txtHoTen.getText());
+        khh.setSdt(txtSdt.getText());
+        khh.setCccd(txtCCCD.getText());
+        khh.setEmail(txtEmail.getText());
+        System.out.println(txtSdt.getText());
         if (rdoNam.isSelected()) {
-            kh.setGioitinh(0);
-        }else{ kh.setGioitinh(1);}
+            khh.setGioitinh(0);
+        }else{ khh.setGioitinh(1);}
         
-        if(khachHangService.updateKH(kh)){
+        if(khachHangService.updateKH(khh)){
         JOptionPane.showMessageDialog(null, "Sửa Thông Tin Khách Hàng thành công");
         }else{
         JOptionPane.showMessageDialog(null, "Sửa Thông Tin Khách Hàng không thành công");}
@@ -281,6 +284,7 @@ public class KhachHangRetail extends javax.swing.JFrame implements Runnable, Thr
         jPanel2.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 300));
 
         executor.execute(this);
+        
     }
 
     @Override
@@ -294,12 +298,16 @@ public class KhachHangRetail extends javax.swing.JFrame implements Runnable, Thr
 
             Result result = null;
             BufferedImage image = null;
-
-            if (webcam.isOpen()) {
+            try {
+               if (webcam.isOpen()) {
                 if ((image = webcam.getImage()) == null) {
                     continue;
                 }
+            } 
+            } catch (Exception e) {
+                webcam.close();
             }
+            
 
             LuminanceSource source = new BufferedImageLuminanceSource(image);
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
