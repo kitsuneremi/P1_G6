@@ -53,7 +53,7 @@ public class Main extends javax.swing.JFrame {
             public void selected(int index) {
                 if (index == 0) {
                     setForm(home);
-                } else if (index == 1) {
+                } else if (index == 2) {
                     setForm(form1);
 //                } else if (index == 2) {
 //                    setForm(form2);

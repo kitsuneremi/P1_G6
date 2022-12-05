@@ -9,11 +9,16 @@ import com.componentfolder.Model.ChiTietXeModel;
 import com.componentfolder.Model.HopDongModel;
 import com.componentfolder.Model.KhachHangModel;
 import com.componentfolder.Model.NhanVienModel;
+import com.componentfolder.Service.CTXeSevices;
 
 import com.componentfolder.Service.HopDongService;
+import com.componentfolder.Service.Impl.CTXeServiceImpl;
 import com.componentfolder.Service.Impl.HopDongServiceImpl;
+import com.componentfolder.Service.Impl.LoaiXeServiceImpl;
+import com.componentfolder.Service.LoaiXeServices;
 import com.componentfolder.View.InHopDong;
 import com.componentfolder.ViewModel.ChiTietHopDongViewModel;
+import com.componentfolder.ViewModel.ChiTietXeViewModel;
 import com.componentfolder.ViewModel.HopDongViewModel;
 import java.awt.Color;
 import java.awt.Image;
@@ -24,6 +29,7 @@ import java.util.ArrayList;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,6 +50,7 @@ import javax.swing.table.TableRowSorter;
 public class Form_hopdong extends javax.swing.JPanel {
        private DefaultTableModel defaultTableModel;
     private HopDongService hopDongService = new HopDongServiceImpl();
+    private CTXeSevices cTXeSevices = new CTXeServiceImpl();
     private DefaultListModel defaultListModel;
     private DefaultComboBoxModel defaultComboBoxModel;
     String sourceAnh = null;
@@ -60,11 +67,19 @@ public class Form_hopdong extends javax.swing.JPanel {
         Panel_chitiet.setVisible(false);
         txt_searchchitiet.setVisible(false);
         LBL_THUE.setVisible(false);
+       addCbid(hopDongService.getCbid());
+        
     }
     ButtonGroup btn = new ButtonGroup();
     void addGr(){
         btn.add(rdo_chuaky);
         
+    }
+     void addCbid(ArrayList<String> list){
+        defaultComboBoxModel = (DefaultComboBoxModel) cbo_bienso.getModel();
+        for(String chiTietXeModel:list){
+            defaultComboBoxModel.addElement(chiTietXeModel);
+        }
     }
     void loadHd(ArrayList<HopDongViewModel> list){
        defaultTableModel = (DefaultTableModel) tbl_hopdong.getModel();
@@ -132,8 +147,8 @@ public class Form_hopdong extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         btn_in = new javax.swing.JButton();
-        txt_bienso = new javax.swing.JTextField();
         txt_idchitiet = new javax.swing.JTextField();
+        cbo_bienso = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         JtablePanel = new javax.swing.JTabbedPane();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -201,8 +216,6 @@ public class Form_hopdong extends javax.swing.JPanel {
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Thông tin thêm");
-
-        txt_thongtinthem.setText("Nhấn vào đây để thêm ảnh");
 
         txt_search1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -285,7 +298,6 @@ public class Form_hopdong extends javax.swing.JPanel {
         jLabel19.setText("ID Hợp Đồng");
 
         btn_in.setBackground(new java.awt.Color(204, 204, 204));
-        btn_in.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btn_in.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/componentfolder/Image/Print.png"))); // NOI18N
         btn_in.setText("In hợp đồng");
         btn_in.addActionListener(new java.awt.event.ActionListener() {
@@ -302,18 +314,18 @@ public class Form_hopdong extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(Panel_chitietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel_chitietLayout.createSequentialGroup()
-                        .addGroup(Panel_chitietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(Panel_chitietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Panel_chitietLayout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_bienso))
+                                .addComponent(cbo_bienso, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(Panel_chitietLayout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_tiencoc, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Panel_chitietLayout.createSequentialGroup()
-                        .addGroup(Panel_chitietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(Panel_chitietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Panel_chitietLayout.createSequentialGroup()
                                 .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -323,8 +335,7 @@ public class Form_hopdong extends javax.swing.JPanel {
                             .addGroup(Panel_chitietLayout.createSequentialGroup()
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_idchitiet)
-                                .addGap(32, 32, 32))
+                                .addComponent(txt_idchitiet, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(Panel_chitietLayout.createSequentialGroup()
                                 .addComponent(btn_clearchitiet, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -340,7 +351,7 @@ public class Form_hopdong extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Panel_chitietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(txt_bienso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbo_bienso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Panel_chitietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -370,9 +381,9 @@ public class Form_hopdong extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel16)
@@ -400,25 +411,32 @@ public class Form_hopdong extends javax.swing.JPanel {
                                     .addComponent(txt_ngaytao, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_thongtinthem)
-                            .addComponent(jLabel17))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_addhopdong, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_updatehd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_xoahopdong, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(147, 147, 147)))
+                            .addComponent(jLabel17)
+                            .addComponent(txt_thongtinthem, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_addhopdong, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_xoahopdong, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_updatehd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(txt_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LBL_THUE)
-                    .addComponent(txt_searchchitiet, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Panel_chitiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Panel_chitiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txt_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_searchchitiet, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(LBL_THUE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,20 +446,19 @@ public class Form_hopdong extends javax.swing.JPanel {
                     .addComponent(jLabel16)
                     .addComponent(txt_tennv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)
+                        .addComponent(txt_search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LBL_THUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_searchchitiet, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_searchchitiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Panel_chitiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_thongtinthem, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -456,22 +473,24 @@ public class Form_hopdong extends javax.swing.JPanel {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel15)
                                     .addComponent(txt_mahd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(35, 35, 35)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(txt_ngaytao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txt_ngaytao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14)))
+                            .addComponent(txt_thongtinthem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addComponent(txt_ngayhethan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(btn_updatehd))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_xoahopdong)
-                            .addComponent(btn_updatehd)
                             .addComponent(btn_addhopdong))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         JtablePanel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -531,7 +550,7 @@ public class Form_hopdong extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(JtablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JtablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -684,7 +703,7 @@ public class Form_hopdong extends javax.swing.JPanel {
         
          int row = tbl_chitiet.getSelectedRow();
         txt_idchitiet.setText(tbl_chitiet.getValueAt(row, 0).toString());
-        txt_bienso.setText(tbl_chitiet.getValueAt(row, 1).toString());
+        cbo_bienso.setSelectedItem(tbl_chitiet.getValueAt(row, 1).toString());
         txt_tiencoc.setText(tbl_chitiet.getValueAt(row, 2).toString());
     }//GEN-LAST:event_tbl_chitietMouseClicked
 
@@ -718,7 +737,7 @@ public class Form_hopdong extends javax.swing.JPanel {
         HopDongModel hopDongModel = new HopDongModel();
        hopDongModel.setMahd(txt_idchitiet.getText().toString());
        chiTietHopDongModel.setMahd(hopDongModel);
-        chiTietHopDongModel.setBienso(txt_bienso.getText().toString());
+        chiTietHopDongModel.setBienso(cbo_bienso.getSelectedItem().toString());
         chiTietHopDongModel.setTienCoc(Float.parseFloat(txt_tiencoc.getText().toString()));
         
         
@@ -745,7 +764,7 @@ public class Form_hopdong extends javax.swing.JPanel {
              HopDongModel hopDongModel = new HopDongModel();
        hopDongModel.setMahd(txt_idchitiet.getText().toString());
        chiTietHopDongModel.setMahd(hopDongModel);
-            chiTietHopDongModel.setBienso(txt_bienso.getText().toString());
+            chiTietHopDongModel.setBienso(cbo_bienso.getSelectedItem().toString());
 
             chiTietHopDongModel.setTienCoc(Float.parseFloat(txt_tiencoc.getText().toString()));
             String idhd = txt_idchitiet.getText().toString();
@@ -781,7 +800,7 @@ public class Form_hopdong extends javax.swing.JPanel {
     private void btn_clearchitietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearchitietActionPerformed
         // TODO add your handling code here:
         txt_tiencoc.setText("");
-        txt_bienso.setText("");
+        
         txt_idchitiet.setText("");
     }//GEN-LAST:event_btn_clearchitietActionPerformed
 
@@ -819,7 +838,7 @@ public class Form_hopdong extends javax.swing.JPanel {
          HopDongModel hopDongModel = new HopDongModel();
             String id = txt_idchitiet.getText().toString();
             int tinhTrang = 1;
-            String bienso =txt_bienso.getText().toString();
+            String bienso =cbo_bienso.getSelectedItem().toString();
         int tinhTrangXe = 1;
         
         ChiTietXeModel chiTietXeModel = new ChiTietXeModel();
@@ -836,7 +855,7 @@ public class Form_hopdong extends javax.swing.JPanel {
 
     private void btn_deleteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_deleteMousePressed
         // TODO add your handling code here:
-         String bienso = txt_bienso.getText().toString();
+         String bienso = cbo_bienso.getSelectedItem().toString();
         int tinhTrangXe = 0;
         
         ChiTietXeModel chiTietXeModel = new ChiTietXeModel();
@@ -859,6 +878,7 @@ public class Form_hopdong extends javax.swing.JPanel {
     private javax.swing.JButton btn_update;
     private javax.swing.JButton btn_updatehd;
     private javax.swing.JButton btn_xoahopdong;
+    private javax.swing.JComboBox<String> cbo_bienso;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -877,7 +897,6 @@ public class Form_hopdong extends javax.swing.JPanel {
     private javax.swing.JRadioButton rdo_chuaky;
     private javax.swing.JTable tbl_chitiet;
     private javax.swing.JTable tbl_hopdong;
-    private javax.swing.JTextField txt_bienso;
     private javax.swing.JTextField txt_idchitiet;
     private javax.swing.JTextField txt_mahd;
     private javax.swing.JTextField txt_ngayhethan;
