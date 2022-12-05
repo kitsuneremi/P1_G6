@@ -9,9 +9,8 @@ import com.ViewGiaoDienChinh.event.EventMenuSelected;
 import com.raven.form.Form_1;
 import com.raven.form.Form_2;
 import com.raven.form.Form_3;
-import com.raven.form.Form_hoadon;
-
 import com.raven.form.Form_Home;
+import com.raven.form.Form_hoadon;
 import com.raven.form.Form_hopdong;
 import java.awt.Color;
 import javax.swing.JComponent;
@@ -29,9 +28,8 @@ public class Main extends javax.swing.JFrame {
     private Form_1 form1;
     private Form_2 form2;
     private Form_3 form3;
-    //private Form_hoadon form4;
+    private Form_hoadon formhoadon;
     private Form_hopdong formchitiethopdong;
-    
     
 
     public Main() {
@@ -41,37 +39,45 @@ public class Main extends javax.swing.JFrame {
         form1 = new Form_1();
         form2 = new Form_2();
         form3 = new Form_3();
-        //form4 = new Form_hoadon();
-        
+        formhoadon = new Form_hoadon();
         formchitiethopdong = new Form_hopdong();
-       
         
         
         menu.initMoving(Main.this);
-        menu.addEventMenuSelected(new EventMenuSelected() {
-            @Override
-            public void selected(int index) {
-                if (index == 0) {
+        menu.addEventMenuSelected((int index) -> {
+            switch (index) {
+                case 0:
                     setForm(home);
-                } else if (index == 2) {
+                    break;
+                case 1:
+                    setForm(form2);
+                    break;
+                case 2:
                     setForm(form1);
-//                } else if (index == 2) {
-//                    setForm(form2);
-//                } else if (index == 3) {
-//                    setForm(form2);
-             }else if(index == 4){
-                  setForm(formchitiethopdong);
-               // }else if(index == 5){
-                  //  setForm(form4);
-//                }else if(index ==6){
-//                    setForm(home);
-//                }else if(index == 9){
-//                    setForm(home);
-//                }else if(index == 10){
-//                    setForm(home);
-//                }else if(index == 11){
-//                    setForm(formhd);
-                }
+                    break;
+                case 3:
+                    setForm(form3);
+                    break;
+                case 4:
+                    setForm(formchitiethopdong);
+                    break;
+                case 5:
+                    setForm(formhoadon);
+                    break;
+                case 6:
+                    setForm(home);
+                    break;
+                case 9:
+                    setForm(home);
+                    break;
+                case 10:
+                    setForm(home);
+                    break;
+
+                case 11:
+                    break;
+                default:
+                    break;
             }
         });
         //  set when system open start with home form
@@ -166,10 +172,8 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Main().setVisible(true);
         });
     }
 
