@@ -1,5 +1,6 @@
 package com.componentfolder.Repository;
 
+import Utilities.DBConnections;
 import Utilities.DBConnections1;
 import com.componentfolder.Model.ChiTietHopDongModel;
 import com.componentfolder.ViewModel.HoaDonTraXeViewModel;
@@ -16,7 +17,7 @@ import java.sql.*;
  * @author lilyp
  */
 public class HoaDonTraXeRepo {
-
+    private DBConnections DBConnections1;
     public ArrayList<HoaDonTraXeViewModel> getlistdata() {
         try {
             ArrayList<HoaDonTraXeViewModel> list = new ArrayList<>();
