@@ -6,6 +6,7 @@
 package com.componentfolder.Repository;
 
 
+import Utilities.DBConnections;
 import com.componentfolder.Utilities.DBConnections_Ha;
 import com.componentfolder.ViewModel.KhachHangViewModel;
 import com.componentfolder.Model.KhachHangModel;
@@ -16,10 +17,10 @@ import java.util.ArrayList;
 
 
 public class KhachHangRepo {
-    private DBConnections_Ha connections_Ha;
+    private DBConnections connections_Ha;
     public ArrayList<KhachHangViewModel> getListKh(){
         ArrayList<KhachHangViewModel> listKH = new ArrayList<>();
-        String Sql = "Select  makh, Ten, sdt,gioitinh , cccd from KhachHang";
+        String Sql = "Select  makh, Ten, sdt,gioitinh , cccd,email from KhachHang";
         try(Connection con = connections_Ha.getConnection();
                 PreparedStatement ps = con.prepareStatement(Sql)) {
             ResultSet rs = ps.executeQuery();
@@ -30,6 +31,7 @@ public class KhachHangRepo {
                  kh.setSdt(rs.getString(3));
                  kh.setGioitinh(rs.getInt(4));
                  kh.setCccd(rs.getString(5));
+                 kh.setEmail(rs.getString(6));
                  listKH.add(kh);
             }
             
