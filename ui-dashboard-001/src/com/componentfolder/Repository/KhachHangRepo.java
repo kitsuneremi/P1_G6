@@ -42,7 +42,7 @@ public class KhachHangRepo {
         
     }
     public Boolean add(KhachHangModel kh){
-        String sql = "insert into khachhang(makh,ten,sdt,gioitinh,cccd,gmail) values(?,?,?,?,?,?)";
+        String sql = "insert into khachhang(makh,ten,sdt,gioitinh,cccd,email) values(?,?,?,?,?,?)";
          try (Connection con = connections_Ha.getConnection();){
            PreparedStatement ps2 = con.prepareStatement(sql);
            ps2.setObject(2, kh.getTen());
@@ -79,7 +79,7 @@ public class KhachHangRepo {
     }
     public int getcountDB(){
         int mkh = 0;
-        String Sql = "Select  COUNT(makh) from KhachHang";
+        String Sql = "Select COUNT(makh) from KhachHang";
         try(Connection con = connections_Ha.getConnection();
                 PreparedStatement ps = con.prepareStatement(Sql)) {
             ResultSet rs = ps.executeQuery();
@@ -94,7 +94,7 @@ public class KhachHangRepo {
         
     }
     public ArrayList<KhachHangViewModel> search(String ten){
-        String sql = "Select makh, Ten, sdt,gioitinh , cccd,email from khachhang where makh =? or ten = ? or sdt = ? or cccd = ? or email = ?";
+        String sql = "Select makh, Ten, sdt,gioitinh,cccd,email from khachhang where makh =? or ten = ? or sdt = ? or cccd = ? or email = ?";
         ArrayList<KhachHangViewModel> listKH = new ArrayList<>();
         try (Connection con = connections_Ha.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)) {
@@ -115,11 +115,10 @@ public class KhachHangRepo {
                 listKH.add(g);
 
             }
-            return listKH;
+            
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
-        
+        return listKH;
     }
 }
