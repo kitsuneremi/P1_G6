@@ -126,7 +126,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
                 h.getMahd(),
                 traxerepo.getkh(h.getMahd()).getTen(),
                 traxerepo.getnv(h.getIdnv()),
-                h.getTinhTrang() == 0 ? "chưa ký" : "đã ký",
+                h.getTinhTrangXe() == 0 ? "chưa ký" : "đã ký",
                 convertdate(h.getNgayTao()),
                 convertdate(h.getNgayHetHan()),
                 h.getIdkh(),

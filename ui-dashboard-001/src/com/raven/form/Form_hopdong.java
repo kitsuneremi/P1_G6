@@ -159,7 +159,7 @@ public class Form_hopdong extends javax.swing.JPanel {
         setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel2.setBackground(new java.awt.Color(47, 157, 191));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Quản lý hợp đồng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(255, 0, 51))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Quản lý hợp đồng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(255, 30, 30))); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,7 +240,7 @@ public class Form_hopdong extends javax.swing.JPanel {
         LBL_THUE.setText("Tìm kiếm thông tin thuê");
 
         Panel_chitiet.setBackground(new java.awt.Color(12, 93, 118));
-        Panel_chitiet.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Hợp đồng thuê xe", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(255, 0, 51))); // NOI18N
+        Panel_chitiet.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Hợp đồng thuê xe", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(255, 102, 102))); // NOI18N
         Panel_chitiet.setForeground(new java.awt.Color(102, 102, 102));
 
         btn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/componentfolder/Image/Add.png"))); // NOI18N
@@ -648,11 +648,11 @@ public class Form_hopdong extends javax.swing.JPanel {
        
         hopDongModel.setTinhTrang(tinhTrang);
         if(hopDongService.add(hopDongModel)){
-            JOptionPane.showMessageDialog(this, "thành công");
+            JOptionPane.showMessageDialog(this, "thêm thành công");
             loadHd(hopDongService.getList());
             
         }else
-        JOptionPane.showMessageDialog(this, "thất bại");
+        JOptionPane.showMessageDialog(this, " thêm thất bại");
     }//GEN-LAST:event_btn_addhopdongActionPerformed
 
     private void btn_updatehdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updatehdActionPerformed
@@ -687,7 +687,7 @@ public class Form_hopdong extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "update thành công");
                 loadHd(hopDongService.getList());
             }else
-            JOptionPane.showMessageDialog(this, "thất bại");
+            JOptionPane.showMessageDialog(this, "update thất bại");
     }//GEN-LAST:event_btn_updatehdActionPerformed
     }
     private void txt_searchchitietKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchchitietKeyPressed
@@ -742,13 +742,13 @@ public class Form_hopdong extends javax.swing.JPanel {
         
         
         if(hopDongService.addChiTiet(chiTietHopDongModel)){
-            JOptionPane.showMessageDialog(this, "thành công");
+            JOptionPane.showMessageDialog(this, "thêm thành công");
             loadDataChiTiet(hopDongService.getListChiTiet());
             
             
         
         }else
-        JOptionPane.showMessageDialog(this, "that bai");
+        JOptionPane.showMessageDialog(this, "thêm thất bại");
         
         
     }//GEN-LAST:event_btn_addActionPerformed
@@ -772,7 +772,7 @@ public class Form_hopdong extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "thành công");
                 loadDataChiTiet(hopDongService.getListChiTiet());
             }else
-            JOptionPane.showMessageDialog(this, "that bai");
+            JOptionPane.showMessageDialog(this, "update thất bại");
         }
     }//GEN-LAST:event_btn_updateActionPerformed
 

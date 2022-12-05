@@ -109,7 +109,7 @@ public class HoaDonTraXeRepo {
                 hdvm.setIdkh(rs.getString(3));
                 hdvm.setNgayTao(rs.getDate(4));
                 hdvm.setNgayHetHan(rs.getDate(5));
-                hdvm.setTinhTrang(rs.getInt(6));
+                hdvm.setTinhTrangXe(rs.getInt(6));
                 list.add(hdvm);
             }
             return list;
