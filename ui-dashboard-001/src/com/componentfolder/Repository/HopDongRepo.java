@@ -300,7 +300,7 @@ public class HopDongRepo {
     }
     public ArrayList<String> getCbid(){
         ArrayList<String> list = new ArrayList<>();
-        String sql ="Select bienso from chitietxe";
+        String sql ="Select bienso from chitietxe where (tinhTrangXe = 0) or (tinhTrangXe = 1) ";
           try(Connection con = connections.getConnection();
                     PreparedStatement ps = con.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
