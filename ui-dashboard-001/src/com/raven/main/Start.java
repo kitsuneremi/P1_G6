@@ -116,9 +116,11 @@ public class Start extends javax.swing.JFrame {
         if (dns.get(taikhoan, Mk).equals("Quản Lý")) {
             JOptionPane.showMessageDialog(this, "Đăng nhập tài Khoản Quản Lý thành công!!");
             new Main(dns.get(taikhoan, Mk)).setVisible(true);
+            this.dispose();
         } else if (dns.get(taikhoan, Mk).equals("Nhân Viên")) {
             JOptionPane.showMessageDialog(this, "Đăng nhập tài Khoản Nhân Viên thành công!!");
             new Main(dns.get(taikhoan, Mk)).setVisible(true);
+            this.dispose();
         }else
         {JOptionPane.showMessageDialog(this, "Sai Tài Khoản Hoặc Mật Khẩu! Vui Lòng Nhập Lại!");}
         }catch(Exception e){
@@ -164,6 +166,7 @@ public class Start extends javax.swing.JFrame {
                 Start hi = new Start();
                 hi.setLocationRelativeTo(null);
                 hi.setVisible(true);
+                
             }
         });
     }
