@@ -5,6 +5,7 @@
  */
 package com.componentfolder.Repository;
 
+import Utilities.DBConnections;
 import com.componentfolder.Utilities.DBConnections_Ha;
 import com.componentfolder.Model.DangNhap;
 import java.sql.Connection;
@@ -18,11 +19,11 @@ import java.util.ArrayList;
  */
 public class DangNhapRepo {
 
-    private DBConnections_Ha connections;
+    private DBConnections connections;
 
     public String get(String tk, String mk) {
         DangNhap g = new DangNhap();
-        String sql = "Select chucvu from dangnhap where taikhoan =? or matkhau = ?  ";
+        String sql = "Select chucvu from dangnhap where taikhoan = ? and matkhau = ?";
         try (Connection con = connections.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, tk);
@@ -34,6 +35,7 @@ public class DangNhapRepo {
                 g.setChucvu(rs.getString(1));
                 
             }
+            System.out.println(g.getChucvu());
         } catch (Exception e) {
             e.printStackTrace();
         }
