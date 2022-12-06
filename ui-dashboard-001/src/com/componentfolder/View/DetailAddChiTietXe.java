@@ -228,8 +228,8 @@ public class DetailAddChiTietXe extends javax.swing.JDialog {
             String giaThue = txtGiaThue.getText();
             String moTa = txtMoTa.getText();
             LoaiXe loaiXe = new LoaiXe(maLX);
-            ChiTietXe ct = new ChiTietXe(bienSo, loaiXe, tt, Double.valueOf(giaThue), moTa);
-            JOptionPane.showMessageDialog(this, cTXeSevices.);
+           // ChiTietXe ct = new ChiTietXe(bienSo, loaiXe, Boolean.valueOf(Integer.parseInt(tt)), Double.valueOf(giaThue), moTa);
+           // JOptionPane.showMessageDialog(this, cTXeSevices.);
             this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
