@@ -10,6 +10,7 @@ import com.raven.form.Form_1;
 import com.raven.form.Form_2;
 import com.raven.form.Form_3;
 import com.raven.form.Form_Home;
+import com.raven.form.Form_NhanVien;
 import com.raven.form.Form_hoadon;
 import com.raven.form.Form_hopdong;
 import java.awt.Color;
@@ -31,6 +32,7 @@ public class Main extends javax.swing.JFrame {
     private Form_3 form3;
     private Form_hoadon formhoadon;
     private Form_hopdong formchitiethopdong;
+    private Form_NhanVien formnv;
     
     public Main(){}
     
@@ -43,6 +45,7 @@ public class Main extends javax.swing.JFrame {
         form3 = new Form_3();
         formhoadon = new Form_hoadon();
         formchitiethopdong = new Form_hopdong();
+        formnv = new Form_NhanVien();
         
         
         menu.initMoving(Main.this);
@@ -68,7 +71,7 @@ public class Main extends javax.swing.JFrame {
                     break;
                 case 6:
                     if(chucvu.equals("Quản Lý")){
-                    setForm(home);
+                    setForm(formnv);
                     break;
                     }else{
                         JOptionPane.showMessageDialog(this, "Bạn Không Có Quyền Hạn Này!!");
