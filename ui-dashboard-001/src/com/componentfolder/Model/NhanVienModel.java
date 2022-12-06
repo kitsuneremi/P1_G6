@@ -16,19 +16,27 @@ public class NhanVienModel {
     private String ten;
     private Date ngaySinh;
     private String sdt;
-    private BitSet gioiTinh;
-    private String idcv;
+    private int gioiTinh;
+
+    public DangNhap getTaikhoan() {
+        return taikhoan;
+    }
+
+    public void setTaikhoan(DangNhap taikhoan) {
+        this.taikhoan = taikhoan;
+    }
+    private DangNhap taikhoan;
 
     public NhanVienModel() {
     }
 
-    public NhanVienModel(String id, String ten, Date ngaySinh, String sdt, BitSet gioiTinh, String idcv) {
+    public NhanVienModel(String id, String ten, Date ngaySinh, String sdt, int gioiTinh, DangNhap taikhoan) {
         this.id = id;
         this.ten = ten;
         this.ngaySinh = ngaySinh;
         this.sdt = sdt;
         this.gioiTinh = gioiTinh;
-        this.idcv = idcv;
+        this.taikhoan = taikhoan;
     }
 
     public String getId() {
@@ -63,20 +71,20 @@ public class NhanVienModel {
         this.sdt = sdt;
     }
 
-    public BitSet getGioiTinh() {
+    public int getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(BitSet gioiTinh) {
+    public void setGioiTinh(int gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
-    public String getIdcv() {
-        return idcv;
+    public DangNhap taikhoan() {
+        return taikhoan;
     }
 
-    public void setIdcv(String idcv) {
-        this.idcv = idcv;
+    public void taikhoan(DangNhap taikhoan) {
+        this.taikhoan = taikhoan;
     }
 
     @Override
