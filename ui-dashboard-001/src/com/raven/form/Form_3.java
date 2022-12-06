@@ -195,6 +195,11 @@ public class Form_3 extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Thông Tin Chi Tiết Xe");
 
+        txt_searchct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txt_searchctMousePressed(evt);
+            }
+        });
         txt_searchct.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_searchctKeyReleased(evt);
@@ -313,6 +318,7 @@ public class Form_3 extends javax.swing.JPanel {
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         // TODO add your handling code here:
+       
         dtm = (DefaultTableModel) tblListLoaiXe.getModel();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
         tblListLoaiXe.setRowSorter(tr);
@@ -326,6 +332,12 @@ public class Form_3 extends javax.swing.JPanel {
         tblListChiTietXe.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(txt_searchct.getText().trim()));
     }//GEN-LAST:event_txt_searchctKeyReleased
+
+    private void txt_searchctMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_searchctMousePressed
+        // TODO add your handling code here:
+       listChiTietXe = cTXeSevices.getAll();
+        showDataTableChiTietXe(listChiTietXe);
+    }//GEN-LAST:event_txt_searchctMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

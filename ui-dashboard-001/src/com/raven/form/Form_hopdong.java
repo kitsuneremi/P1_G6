@@ -5,9 +5,11 @@
  */
 package com.raven.form;
 import com.componentfolder.Model.ChiTietHopDongModel;
+import com.componentfolder.Model.ChiTietXe;
 import com.componentfolder.Model.ChiTietXeModel;
 import com.componentfolder.Model.HopDongModel;
 import com.componentfolder.Model.KhachHangModel;
+import com.componentfolder.Model.LoaiXe;
 import com.componentfolder.Model.NhanVienModel;
 import com.componentfolder.Repository.HoaDonTraXeRepo;
 import com.componentfolder.Service.CTXeSevices;
@@ -22,6 +24,7 @@ import com.componentfolder.ViewModel.ChiTietHopDongViewModel;
 import com.componentfolder.ViewModel.ChiTietXeViewModel;
 import com.componentfolder.ViewModel.HoaDonTraXeViewModel;
 import com.componentfolder.ViewModel.HopDongViewModel;
+import com.componentfolder.ViewModel.Top10ViewModel;
 import java.awt.Color;
 import java.awt.Image;
 import java.beans.Customizer;
@@ -58,7 +61,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author RAVEN
  */
-public class Form_hopdong extends javax.swing.JPanel {
+public class Form_hopdong extends javax.swing.JPanel{
        private DefaultTableModel defaultTableModel;
     private HopDongService hopDongService = new HopDongServiceImpl();
     private CTXeSevices cTXeSevices = new CTXeServiceImpl();
@@ -66,6 +69,11 @@ public class Form_hopdong extends javax.swing.JPanel {
      private final HoaDonTraXeRepo traxerepo = new HoaDonTraXeRepo();
     private final ArrayList<HoaDonTraXeViewModel> listx = traxerepo.getlistdata();
     private DefaultComboBoxModel defaultComboBoxModel;
+     private List<LoaiXe> listLoaiXe = new ArrayList<>();
+    private List<ChiTietXe> listChiTietXe = new ArrayList<>();
+    private LoaiXeServices loaiXeServices = new LoaiXeServiceImpl();
+   
+    private Form_3 form_3 = new Form_3();
     String sourceAnh = null;
     /**
      * Creates new form Form_1
@@ -861,6 +869,8 @@ public class Form_hopdong extends javax.swing.JPanel {
             if(hopDongService.update(hopDongModel, id)){
                 
                 loadHd(hopDongService.getList());
+               
+                
             }if(hopDongService.update3(chiTietXeModel, bienso)){
             loadHd(hopDongService.getList());
         }
@@ -960,4 +970,6 @@ boolean sendemail() {
     private javax.swing.JLabel txt_thongtinthem;
     private javax.swing.JTextField txt_tiencoc;
     // End of variables declaration//GEN-END:variables
+
+    
 }
