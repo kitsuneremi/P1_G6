@@ -9,6 +9,7 @@ import com.componentfolder.Model.ChiTietXeModel;
 import com.componentfolder.Model.HopDongModel;
 import com.componentfolder.Model.KhachHangModel;
 import com.componentfolder.Model.NhanVienModel;
+import com.componentfolder.Repository.HoaDonTraXeRepo;
 import com.componentfolder.Service.CTXeSevices;
 
 import com.componentfolder.Service.HopDongService;
@@ -19,6 +20,7 @@ import com.componentfolder.Service.LoaiXeServices;
 import com.componentfolder.View.InHopDong;
 import com.componentfolder.ViewModel.ChiTietHopDongViewModel;
 import com.componentfolder.ViewModel.ChiTietXeViewModel;
+import com.componentfolder.ViewModel.HoaDonTraXeViewModel;
 import com.componentfolder.ViewModel.HopDongViewModel;
 import java.awt.Color;
 import java.awt.Image;
@@ -30,10 +32,19 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Properties;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -52,6 +63,8 @@ public class Form_hopdong extends javax.swing.JPanel {
     private HopDongService hopDongService = new HopDongServiceImpl();
     private CTXeSevices cTXeSevices = new CTXeServiceImpl();
     private DefaultListModel defaultListModel;
+     private final HoaDonTraXeRepo traxerepo = new HoaDonTraXeRepo();
+    private final ArrayList<HoaDonTraXeViewModel> listx = traxerepo.getlistdata();
     private DefaultComboBoxModel defaultComboBoxModel;
     String sourceAnh = null;
     /**
@@ -742,7 +755,7 @@ public class Form_hopdong extends javax.swing.JPanel {
         
         
         if(hopDongService.addChiTiet(chiTietHopDongModel)){
-            JOptionPane.showMessageDialog(this, "thêm thành công");
+            JOptionPane.showMessageDialog(this, "thành công");
             loadDataChiTiet(hopDongService.getListChiTiet());
             
             
@@ -839,7 +852,7 @@ public class Form_hopdong extends javax.swing.JPanel {
             String id = txt_idchitiet.getText().toString();
             int tinhTrang = 1;
             String bienso =cbo_bienso.getSelectedItem().toString();
-        int tinhTrangXe = 1;
+            int tinhTrangXe = 1;
         
         ChiTietXeModel chiTietXeModel = new ChiTietXeModel();
         chiTietXeModel.setTinhTrangXe(tinhTrangXe);
@@ -851,6 +864,12 @@ public class Form_hopdong extends javax.swing.JPanel {
             }if(hopDongService.update3(chiTietXeModel, bienso)){
             loadHd(hopDongService.getList());
         }
+            
+        if(sendemail()){
+            
+            
+        }else
+                        JOptionPane.showMessageDialog(this, "send mail thất bại");
     }//GEN-LAST:event_btn_addMousePressed
 
     private void btn_deleteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_deleteMousePressed
@@ -864,7 +883,40 @@ public class Form_hopdong extends javax.swing.JPanel {
             loadHd(hopDongService.getList());
         }
     }//GEN-LAST:event_btn_deleteMousePressed
+boolean sendemail() {
+//        String to = service.getemail(txtidkhachhang1.getText());
+        String to = "meohangoc@gmail.com";
+        String from = "finaldaybreak12@outlook.com";
 
+        Properties properties = new Properties();
+        properties.setProperty("mail.smtp.host", "smtp.gmail.com");
+        properties.setProperty("mail.smtp.port", "465");
+        properties.setProperty("mail.smtp.startls.enable", "true");
+        properties.setProperty("mail.smtp.auth", "true");
+        properties.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        properties.setProperty("mail.smtp.socketFactory.fallback", "false");
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthenication() {
+                String email = "lilypeachew@gmail.com";
+                String password = "vjslxvolwqpnjaub";
+                return new PasswordAuthentication(email, password);
+            }
+        });
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message.setSubject("Quý khách đã tạo hợp đồng thành công");
+            message.setText("Thank you for belive our service~");
+            Transport.send(message, "lilypeachew@gmail.com", "vjslxvolwqpnjaub");
+            return true;
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+            return false;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane JtablePanel;
