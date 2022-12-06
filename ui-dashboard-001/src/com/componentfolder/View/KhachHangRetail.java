@@ -177,12 +177,39 @@ public class KhachHangRetail extends javax.swing.JFrame implements Runnable, Thr
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        KhachHangModel khh = new KhachHangModel();        
+        KhachHangModel khh = new KhachHangModel();
+        if(txtHoTen.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Vui Lòng Không Để Trống Họ Tên");
+            return;
+        }if(txtEmail.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Vui Lòng Không Để Trống Email");
+            return;
+        }if(txtCCCD.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Vui Lòng Không Để Trống CCCD");
+            return;
+        }if(txtSdt.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Vui Lòng Không Để Trống Số Điện Thoại");
+            return;
+        }
+        if(txtEmail.getText().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")){
+            khh.setEmail(txtEmail.getText());
+        }else{
+            JOptionPane.showMessageDialog(null, "Email phải có dấu @, có ký tự sau dấu . và trước dấu @");
+            return;
+        }
+        if(txtCCCD.getText().matches("\\d+")){
+            khh.setCccd(txtCCCD.getText());
+            
+        }else{JOptionPane.showMessageDialog(null, " CCCD phải là số");
+            return;}
+        if(txtSdt.getText().matches("^(0||\\\\+)+([0-9])")){
+            khh.setSdt(txtSdt.getText());
+            
+        }else{JOptionPane.showMessageDialog(null, " Số điện thoại phải bắt đầu bằng số hoặc dấu + phía trước và chỉ là số");
+            return;}
         khh.setMakh(txtMaKh.getText());
         khh.setTen(txtHoTen.getText());
         khh.setSdt(txtSdt.getText());
-        khh.setCccd(txtCCCD.getText());
-        khh.setEmail(txtEmail.getText());
         System.out.println(txtSdt.getText());
         if (rdoNam.isSelected()) {
             khh.setGioitinh(0);
@@ -201,10 +228,38 @@ public class KhachHangRetail extends javax.swing.JFrame implements Runnable, Thr
             kh.setMakh("KH" + (i + 1));
         }
         makh++;
-        kh.setEmail(txtEmail.getText());
+        if(txtHoTen.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Vui Lòng Không Để Trống Họ Tên");
+            return;
+        }if(txtEmail.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Vui Lòng Không Để Trống Email");
+            return;
+        }if(txtCCCD.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Vui Lòng Không Để Trống CCCD");
+            return;
+        }if(txtSdt.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Vui Lòng Không Để Trống Số Điện Thoại");
+            return;
+        }
+        if(txtEmail.getText().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")){
+            kh.setEmail(txtEmail.getText());
+        }else{
+            JOptionPane.showMessageDialog(null, "Email phải có dấu @, có ký tự sau dấu . và trước dấu @");
+            return;
+        }
+        if(txtSdt.getText().matches("^(0||\\\\+)+([0-9])")){
+            kh.setSdt(txtSdt.getText());
+            
+        }else{JOptionPane.showMessageDialog(null, " Số điện thoại phải bắt đầu bằng số hoặc dấu + phía trước và chỉ là số");
+            return;}
+        
         kh.setTen(txtHoTen.getText());
-        kh.setSdt(txtSdt.getText());
-        kh.setCccd(txtCCCD.getText());
+        if(txtCCCD.getText().matches("\\d+")){
+            kh.setCccd(txtCCCD.getText());
+            
+        }else{JOptionPane.showMessageDialog(null, " CCCD phải là số");
+            return;}
+        
         if (rdoNam.isSelected()) {
             kh.setGioitinh(0);
         }else{ kh.setGioitinh(1);}
