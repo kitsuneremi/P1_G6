@@ -33,9 +33,10 @@ public class Main extends javax.swing.JFrame {
     private Form_hoadon formhoadon;
     private Form_hopdong formchitiethopdong;
     private Form_NhanVien formnv;
-    
-    public Main(){}
-    
+
+    public Main() {
+    }
+
     public Main(String chucvu) {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
@@ -46,8 +47,7 @@ public class Main extends javax.swing.JFrame {
         formhoadon = new Form_hoadon();
         formchitiethopdong = new Form_hopdong();
         formnv = new Form_NhanVien();
-        
-        
+
         menu.initMoving(Main.this);
         menu.addEventMenuSelected((int index) -> {
             switch (index) {
@@ -70,15 +70,15 @@ public class Main extends javax.swing.JFrame {
                     setForm(formhoadon);
                     break;
                 case 6:
-                    if(chucvu.equals("Quản Lý")){
-                    setForm(formnv);
-                    break;
-                    }else{
+                    if (chucvu.equals("Quản Lý")) {
+                        setForm(formnv);
+                        break;
+                    } else {
                         JOptionPane.showMessageDialog(this, "Bạn Không Có Quyền Hạn Này!!");
                         setForm(home);
                         break;
                     }
-                    
+
                 case 9:
                     setForm(home);
                     break;
@@ -87,6 +87,21 @@ public class Main extends javax.swing.JFrame {
                     break;
 
                 case 11:
+                    setForm(home);
+                    break;
+
+                case 12:
+                    setForm(home);
+                    break;
+                case 13:
+                    setForm(home);
+                    break;
+                case 14:
+                    int mess = JOptionPane.showConfirmDialog(this, "Bạn có muốn logOut", "Waring", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if (mess == JOptionPane.YES_OPTION) {
+                        this.dispose();
+                        new Start().setVisible(true);
+                    }
                     break;
                 default:
                     break;

@@ -20,6 +20,7 @@ public class Start extends javax.swing.JFrame {
      */
     public Start() {
         initComponents();
+        setLocationRelativeTo(null);
         
     }
     public Start(String taikhoan) {
