@@ -10,6 +10,6 @@ package com.raven.main;
  */
 public class ap {
     public static void main(String[] args) {
-        new Main().setVisible(true);
+        new Start().setVisible(true);
     }
 }
