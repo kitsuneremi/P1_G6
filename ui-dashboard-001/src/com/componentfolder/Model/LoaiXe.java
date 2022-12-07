@@ -22,13 +22,13 @@ public class LoaiXe {
     public LoaiXe(String maLoai) {
         this.maLoai = maLoai;
     }
-    
 
-    public LoaiXe(String maLoai, String ten) {
+    public LoaiXe(String maLoai, String ten, String dongXe) {
         this.maLoai = maLoai;
         this.ten = ten;
+        this.dongXe = dongXe;
     }
-
+    
     public LoaiXe(String maLoai, String ten, double giaNhap, String dongXe, String tenTheLoai) {
         this.maLoai = maLoai;
         this.ten = ten;

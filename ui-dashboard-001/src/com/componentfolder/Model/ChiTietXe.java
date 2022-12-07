@@ -72,7 +72,7 @@ public class ChiTietXe {
     }
     public Object[] toRowDataChiTietXe(){
         return new Object[]{
-            bienSo,getLoaiXe().getMaLoai(),getLoaiXe().getTen(),tinhTrang==0?"Có thể Thuê":tinhTrang==1?"Đang được thuê":tinhTrang==2?"Đang hỏng hóc":"Đang bảo dưỡng",gia,moTa
+            bienSo,getLoaiXe().getMaLoai(),getLoaiXe().getDongXe(),getLoaiXe().getTen(),tinhTrang==0?"Có thể Thuê":tinhTrang==1?"Đang được thuê":tinhTrang==2?"Đang hỏng hóc":"Đang bảo dưỡng",gia,moTa
         };
     }
 

@@ -10,6 +10,7 @@ import com.componentfolder.Service.CTXeSevices;
 import com.componentfolder.Service.Impl.CTXeServiceImpl;
 import com.componentfolder.Service.Impl.LoaiXeServiceImpl;
 import com.componentfolder.Service.LoaiXeServices;
+import com.raven.main.Main;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -19,7 +20,7 @@ import javax.swing.DefaultComboBoxModel;
  * @author DELL
  */
 public class DetailChiTietXe extends javax.swing.JDialog {
-
+    
     private List<ChiTietXe> listChiTietXe = new ArrayList<>();
     private List<LoaiXe> listLoaiXe = new ArrayList<>();
     private DefaultComboBoxModel dcbMaLoai = new DefaultComboBoxModel();
@@ -36,21 +37,23 @@ public class DetailChiTietXe extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         addCbb(loaiXeServices.getAll());
         this.ctXe = ctXe;
+        lblNhanHieu.setText(ctXe.getLoaiXe().getDongXe());
         lblBienSo.setText(ctXe.getBienSo());
         lblGiaThue.setText(String.valueOf(ctXe.getGia()));
         lblTenXe.setText(ctXe.getLoaiXe().getTen());
         lblTinhTrang.setText(String.valueOf(ctXe.getTinhTrang()) == "0" ? "Có Thể Thuê"
                 : String.valueOf(ctXe.getTinhTrang()) == "1" ? "Đang được Thuê"
                 : String.valueOf(ctXe.getTinhTrang()) == "2" ? "Đang hỏng hóc" : "Đang Bảo dưỡng");
-
+        lblMoTa.setText(ctXe.getMoTa());
+        
     }
-
+    
     public void addCbb(List<LoaiXe> list) {
 //        dcbMaLoai = (DefaultComboBoxModel) cboMaLoai.getModel();
         for (LoaiXe loaiXe : list) {
             dcbMaLoai.addElement(loaiXe.getMaLoai());
         }
-
+        
     }
 
     /**
@@ -93,7 +96,7 @@ public class DetailChiTietXe extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setText("Thông Tin Chi Tiết Xe Thuê");
 
         jButton1.setText("Save");
@@ -104,74 +107,79 @@ public class DetailChiTietXe extends javax.swing.JDialog {
         });
 
         jButton2.setText("Cacel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setText("Công Ty Cho Thuê Xe Máy Hà Nội");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel3.setText("Địa chỉ: 65 Nam Từ Niêm, Hà Nội");
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel4.setText("Phone: 03xx - xxx - xxx");
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel5.setText("Email: dichvuthuexe@gmail.com");
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel6.setText("Biển Số Xe:");
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel7.setText("Nhãn Hiệu:");
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel8.setText("Giá Thuê/ngày:");
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel9.setText("Tình Trạng Xe:");
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel10.setText("Mô Tả:");
 
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel11.setText("Tên Xe:");
 
-        lblBienSo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblBienSo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblBienSo.setText("jLabel12");
 
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel12.setText("......................................................................................................");
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel12.setText("................................................................................................");
 
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel13.setText(".................................................................................................");
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel13.setText(".........................................................................................");
 
-        lblTenXe.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblTenXe.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblTenXe.setText("jLabel14");
 
-        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel15.setText("......................................................................................................");
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel15.setText("...........................................................................................");
 
-        lblGiaThue.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblGiaThue.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblGiaThue.setText("jLabel14");
 
-        jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel16.setText("vnđ.................................................................................");
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel16.setText("vnđ.....................................................................");
 
-        lblTinhTrang.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblTinhTrang.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblTinhTrang.setText("jLabel14");
 
-        jLabel17.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel17.setText("..........................................................................................");
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel17.setText(".....................................................................................");
 
-        lblMoTa.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblMoTa.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblMoTa.setText("jLabel14");
 
-        jLabel18.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel18.setText("......................................................................................................");
 
-        lblNhanHieu.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblNhanHieu.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblNhanHieu.setText("jLabel14");
 
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel14.setText("Số Chỗ Ngồi: 2 Người ............................................................................................");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -187,58 +195,60 @@ public class DetailChiTietXe extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(218, 218, 218))))
             .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblBienSo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblNhanHieu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel12))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTenXe)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblGiaThue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTinhTrang))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblBienSo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel13))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNhanHieu)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel12))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTenXe)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel15))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblGiaThue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblTinhTrang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel16)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel10)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblMoTa)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel18))))))
-                .addContainerGap(132, Short.MAX_VALUE))
+                                .addGap(0, 0, 0)
+                                .addComponent(jLabel16))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblMoTa)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel18))))
+                .addGap(0, 163, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,9 +261,9 @@ public class DetailChiTietXe extends javax.swing.JDialog {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
                 .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel12)
@@ -285,7 +295,7 @@ public class DetailChiTietXe extends javax.swing.JDialog {
                     .addComponent(jLabel18))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -298,6 +308,12 @@ public class DetailChiTietXe extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Main main = new Main();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

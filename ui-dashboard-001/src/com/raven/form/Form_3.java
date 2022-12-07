@@ -112,7 +112,8 @@ public class Form_3 extends javax.swing.JPanel {
             }
         });
 
-        tblListLoaiXe.setBackground(new java.awt.Color(153, 153, 153));
+        tblListLoaiXe.setBackground(new java.awt.Color(204, 204, 204));
+        tblListLoaiXe.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tblListLoaiXe.setForeground(new java.awt.Color(255, 255, 255));
         tblListLoaiXe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -215,16 +216,18 @@ public class Form_3 extends javax.swing.JPanel {
             }
         });
 
-        tblListChiTietXe.setBackground(new java.awt.Color(102, 102, 102));
+        tblListChiTietXe.setBackground(new java.awt.Color(153, 153, 153));
+        tblListChiTietXe.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        tblListChiTietXe.setForeground(new java.awt.Color(255, 255, 255));
         tblListChiTietXe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Biển Số", "Mã Loại", "Tên ", "Tình Trạng", "Giá Thuê/Ngày", "Mô Tả"
+                "Biển Số", "Mã Loại", "Nhãn Hiệu", "Tên Xe", "Tình Trạng", "Giá Thuê/Ngày", "Mô tả"
             }
         ));
         tblListChiTietXe.addMouseListener(new java.awt.event.MouseAdapter() {

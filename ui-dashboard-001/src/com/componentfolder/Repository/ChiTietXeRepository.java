@@ -22,15 +22,15 @@ import java.util.List;
 public class ChiTietXeRepository {
 
     public List<ChiTietXe> getAll() {
-        String query = " SELECT dbo.chiTietXe.bienSo, dbo.loaiXe.maLx, dbo.loaiXe.ten, dbo.chiTietXe.tinhTrangXe, dbo.chiTietXe.giathuetrenngay, dbo.chiTietXe.mota\n"
+        String query = " SELECT dbo.chiTietXe.bienSo, dbo.loaiXe.maLx,dbo.loaiXe.dongXe, dbo.loaiXe.ten, dbo.chiTietXe.tinhTrangXe, dbo.chiTietXe.giathuetrenngay, dbo.chiTietXe.mota\n"
                 + "FROM     dbo.loaiXe INNER JOIN\n"
                 + "                  dbo.chiTietXe ON dbo.loaiXe.maLx = dbo.chiTietXe.maLx";
         try ( Connection con = DBConnections.getConnection();  PreparedStatement ps = con.prepareStatement(query);) {
             List<ChiTietXe> listChiTietXe = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                LoaiXe loaiXe = new LoaiXe(rs.getString(2), rs.getString(3));
-                ChiTietXe ctXe = new ChiTietXe(rs.getString(1), loaiXe, rs.getInt(4), rs.getDouble(5), rs.getString(6));
+                LoaiXe loaiXe = new LoaiXe(rs.getString(2), rs.getString(4), rs.getString(3));
+                ChiTietXe ctXe = new ChiTietXe(rs.getString(1), loaiXe, rs.getInt(5), rs.getDouble(6), rs.getString(7));
                 listChiTietXe.add(ctXe);
             }
             return listChiTietXe;
@@ -103,8 +103,8 @@ public class ChiTietXeRepository {
     }
 
     public static void main(String[] args) {
-        List<Top10ViewModel> list = new ChiTietXeRepository().getTop10ThueXe();
-        for (Top10ViewModel xe : list) {
+        List<ChiTietXe> list = new ChiTietXeRepository().getAll();
+        for (ChiTietXe xe : list) {
             System.out.println(xe.toString());
         }
     }
