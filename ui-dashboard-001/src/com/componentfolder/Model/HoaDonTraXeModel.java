@@ -15,7 +15,7 @@ public class HoaDonTraXeModel {
     private String id;
     private Date Ngaytra;
     private double phiphatsinh, tongtien;
-    private ViPhamModel vipham;
+    private ChiTietViPhamModel ctvpm;
     private HopDongModel hdm;
     private String mota;
 
@@ -51,12 +51,12 @@ public class HoaDonTraXeModel {
         this.phiphatsinh = phiphatsinh;
     }
 
-    public ViPhamModel getVipham() {
-        return vipham;
+    public ChiTietViPhamModel getCtvpm() {
+        return ctvpm;
     }
 
-    public void setVipham(ViPhamModel vipham) {
-        this.vipham = vipham;
+    public void setCtvpm(ChiTietViPhamModel ctvpm) {
+        this.ctvpm = ctvpm;
     }
 
     public HopDongModel getHdm() {

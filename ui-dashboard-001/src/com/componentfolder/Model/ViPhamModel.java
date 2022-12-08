@@ -13,6 +13,9 @@ public class ViPhamModel {
     private int ma;
     private String ten;
 
+    public ViPhamModel() {
+    }
+
     public ViPhamModel(int ma, String ten) {
         this.ma = ma;
         this.ten = ten;
