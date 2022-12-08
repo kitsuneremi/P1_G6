@@ -4,6 +4,7 @@
  */
 package com.componentfolder.ViewModel;
 
+import com.componentfolder.Model.ViPhamModel;
 import java.util.Date;
 
 /**
@@ -15,7 +16,7 @@ public class HoaDonTraXeViewModel {
     private String id, idhd, idkh;
     Date Ngaytra;
     double phiphatsinh, tongtien;
-    int vipham;
+    ViPhamModel vpm;
 
     public String getId() {
         return id;
@@ -65,12 +66,11 @@ public class HoaDonTraXeViewModel {
         this.phiphatsinh = phiphatsinh;
     }
 
-    public int getVipham() {
-        return vipham;
+    public ViPhamModel getVpm() {
+        return vpm;
     }
 
-    public void setVipham(int vipham) {
-        this.vipham = vipham;
+    public void setVpm(ViPhamModel vpm) {
+        this.vpm = vpm;
     }
-
 }
