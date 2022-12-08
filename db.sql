@@ -261,8 +261,6 @@ insert into hopDong Values('HD14','NV7','KH9','2022-11-25','2022-11-27',1,'')
 select * from chiTietXe where tinhTrangXe = 0;
 select * from hopDong
 select * from chiTietHopDong
-delete hopDong
-delete chiTietHopDong
 
 select count(ten) from ViPham
 
@@ -287,12 +285,4 @@ insert into hoaDonTraXe values('HoaDon1','HD12','2022-11-29',0,0,800000,'','')
 insert into hoaDonTraXe values('HoaDon2','HD13','2022-11-25',0,0,1000000,'','')
 insert into hoaDonTraXe values('HoaDon3','HD14','2022-11-27',0,0,800000,'','')
 
-select * from ViPham
-select * from hoaDonTraXe
-select chucvu from dangnhap where taikhoan = 'nguyenngocminh123' and ''
-delete from hoadontraxe where mahopdong = 'hd8'
 
-select * from chitietvipham
-delete from chitietvipham
-select * from hoaDonTraXe
-delete from hoaDonTraXe
