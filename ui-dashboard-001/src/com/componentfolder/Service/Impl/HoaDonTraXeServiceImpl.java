@@ -5,7 +5,9 @@
 package com.componentfolder.Service.Impl;
 
 import com.componentfolder.Model.ChiTietHopDongModel;
+import com.componentfolder.Model.ChiTietViPhamModel;
 import com.componentfolder.Model.HoaDonTraXeModel;
+import com.componentfolder.Model.ViPhamModel;
 import com.componentfolder.Service.HoaDonTraXeService;
 import com.componentfolder.ViewModel.HoaDonTraXeViewModel;
 import com.componentfolder.ViewModel.HopDongViewModel;
@@ -78,11 +80,6 @@ public class HoaDonTraXeServiceImpl implements HoaDonTraXeService {
     }
 
     @Override
-    public ArrayList<String> vipham() {
-        return repo.vipham();
-    }
-
-    @Override
     public String mota(String idhd) {
         return repo.mota(idhd);
     }
@@ -90,6 +87,21 @@ public class HoaDonTraXeServiceImpl implements HoaDonTraXeService {
     @Override
     public HopDongViewModel gethdx(String idhd) {
         return repo.gethdx(idhd);
+    }
+
+    @Override
+    public boolean updatevipham(ChiTietViPhamModel ctvpm) {
+        return repo.updatevipham(ctvpm);
+    }
+
+    @Override
+    public int getsovipham(String mahd) {
+        return repo.getsovipham(mahd);
+    }
+
+    @Override
+    public ArrayList<ViPhamModel> vipham() {
+        return repo.vipham();
     }
 
 }
