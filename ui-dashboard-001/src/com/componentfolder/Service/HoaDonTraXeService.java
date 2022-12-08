@@ -4,12 +4,20 @@
  */
 package com.componentfolder.Service;
 
+import Utilities.DBConnections;
 import com.componentfolder.Model.ChiTietHopDongModel;
+import com.componentfolder.Model.ChiTietViPhamModel;
 import com.componentfolder.Repository.HoaDonTraXeRepo;
 import com.componentfolder.Model.HoaDonTraXeModel;
+import com.componentfolder.Model.HopDongModel;
+import com.componentfolder.Model.ViPhamModel;
 import com.componentfolder.ViewModel.HoaDonTraXeViewModel;
 import com.componentfolder.ViewModel.HopDongViewModel;
 import com.componentfolder.ViewModel.KhachHangViewModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +25,7 @@ import java.util.ArrayList;
  * @author lilyp
  */
 public interface HoaDonTraXeService {
-    public HoaDonTraXeRepo repo = new HoaDonTraXeRepo();
+    HoaDonTraXeRepo repo = new HoaDonTraXeRepo();
 
     public ArrayList<HoaDonTraXeViewModel> getlistdata();
 
@@ -29,9 +37,11 @@ public interface HoaDonTraXeService {
 
     public ArrayList<HopDongViewModel> getlisthd();
 
-    public boolean insert(HoaDonTraXeModel hdhtm);
+    public boolean insert(HoaDonTraXeModel hdtxm);
 
-    public boolean update(HoaDonTraXeModel hdhtm);
+    public boolean update(HoaDonTraXeModel hdtxm);
+
+    public boolean updatevipham(ChiTietViPhamModel ctvpm);
 
     public ArrayList<ChiTietHopDongModel> getdsbienso(String mahd);
 
@@ -43,9 +53,11 @@ public interface HoaDonTraXeService {
 
     public String getemail(String makh);
 
-    public ArrayList<String> vipham();
+    public ArrayList<ViPhamModel> vipham();
 
-    public String mota(String idhd);
+    public String mota(String mahd);
 
-    public HopDongViewModel gethdx(String idhd);
+    public HopDongViewModel gethdx(String mahd);
+
+    public int getsovipham(String mahd);
 }
