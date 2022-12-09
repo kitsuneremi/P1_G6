@@ -646,7 +646,7 @@ public class Form_hopdong extends javax.swing.JPanel{
 
     private void btn_addhopdongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addhopdongActionPerformed
         // TODO add your handling code here:
-        
+        String p_ngay ="([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))";
         String p_hoten = "[a-zA-Z ]+";
         String p_mahd = "[A-Za-z0-9]+";
         if(txt_tenkhachhang.getText().isEmpty()){
@@ -670,6 +670,35 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_mahd.setText("");
             return;
         }
+        if(txt_ngaytao.getText().matches(p_ngay)==false){
+            JOptionPane.showMessageDialog(this, "ngày tạo sai định dạng");
+            txt_ngaytao.requestFocus();
+            txt_ngaytao.setBackground(Color.red);
+            txt_ngaytao.setText("");
+            return;
+        }
+        if(txt_ngaytao.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "chưa điền ngày tạo");
+            txt_ngaytao.requestFocus();
+            txt_ngaytao.setBackground(Color.red);
+            txt_ngaytao.setText("");
+            return;
+        }
+            if(txt_ngayhethan.getText().matches(p_ngay)==false){
+            JOptionPane.showMessageDialog(this, "ngày hết hạn sai định dạng");
+            txt_ngayhethan.requestFocus();
+            txt_ngayhethan.setBackground(Color.red);
+            txt_ngayhethan.setText("");
+            return;
+        }
+        if(txt_ngayhethan.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "chưa điền ngày hết hạn");
+            txt_ngayhethan.requestFocus();
+            txt_ngayhethan.setBackground(Color.red);
+            txt_ngayhethan.setText("");
+            return;
+        }
+        
        
          boolean checkMaTrung = true;
         ArrayList<HopDongViewModel> lst = hopDongService.getList();
@@ -724,7 +753,8 @@ public class Form_hopdong extends javax.swing.JPanel{
             JOptionPane.showMessageDialog(this, "hãy chọn một dòng rồi ấn nút update");
 
         }else{
-            String p_hoten = "[a-zA-Z ]+";
+        String p_ngay ="([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))";
+        String p_hoten = "[a-zA-Z ]+";
         String p_mahd = "[A-Za-z0-9]+";
         if(txt_tenkhachhang.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "chưa điền tên khách hàng");
@@ -745,6 +775,34 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_mahd.requestFocus();
             txt_mahd.setBackground(Color.red);
             txt_mahd.setText("");
+            return;
+        }
+        if(txt_ngaytao.getText().matches(p_ngay)==false){
+            JOptionPane.showMessageDialog(this, "ngày tạo sai định dạng");
+            txt_ngaytao.requestFocus();
+            txt_ngaytao.setBackground(Color.red);
+            txt_ngaytao.setText("");
+            return;
+        }
+        if(txt_ngaytao.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "chưa điền ngày tạo");
+            txt_ngaytao.requestFocus();
+            txt_ngaytao.setBackground(Color.red);
+            txt_ngaytao.setText("");
+            return;
+        }
+            if(txt_ngayhethan.getText().matches(p_ngay)==false){
+            JOptionPane.showMessageDialog(this, "ngày hết hạn sai định dạng");
+            txt_ngayhethan.requestFocus();
+            txt_ngayhethan.setBackground(Color.red);
+            txt_ngayhethan.setText("");
+            return;
+        }
+        if(txt_ngayhethan.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "chưa điền ngày hết hạn");
+            txt_ngayhethan.requestFocus();
+            txt_ngayhethan.setBackground(Color.red);
+            txt_ngayhethan.setText("");
             return;
         }
              boolean checkMaTrung = true;

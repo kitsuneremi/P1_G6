@@ -18,7 +18,7 @@ public class DBConnections1 {
     public static final String PORT = "1433";
     public static final String DBNAME = "DA1_PTPM_IT17327_Nhom6";
     public static final String USERNAME = "sa";
-    public static final String PASSWORD = "123456789sa";
+    public static final String PASSWORD = "12345";
 
     /**
      * Get connection to MSSQL Server
