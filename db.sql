@@ -259,8 +259,7 @@ insert into hopDong Values('HD12','NV5','KH5','2022-11-27','2022-11-29',1,'')
 insert into hopDong Values('HD13','NV2','KH16','2022-11-23','2022-11-25',1,'')
 insert into hopDong Values('HD14','NV7','KH9','2022-11-25','2022-11-27',1,'')
 select * from chiTietXe where tinhTrangXe = 0;
-select * from hopDong
-select * from chiTietHopDong
+
 
 select count(ten) from ViPham
 
