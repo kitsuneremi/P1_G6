@@ -648,6 +648,7 @@ public class Form_hopdong extends javax.swing.JPanel{
         // TODO add your handling code here:
         String p_ngay ="([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))";
         String p_hoten = "[a-zA-Z ]+";
+         String p_scmt = "[0-9]{1,12}";
         String p_mahd = "[A-Za-z0-9]+";
         if(txt_tenkhachhang.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "chưa điền tên khách hàng");
@@ -656,8 +657,22 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_tenkhachhang.setText("");
             return;
         }
+        if(txt_tenkhachhang.getText().matches(p_scmt)==true){
+            JOptionPane.showMessageDialog(this, "tên khách hàng sai");
+            txt_tenkhachhang.requestFocus();
+            txt_tenkhachhang.setBackground(Color.red);
+            txt_tenkhachhang.setText("");
+            return;
+        }
         if(txt_tennv.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "chưa điền tên nhân viên");
+            txt_tennv.requestFocus();
+            txt_tennv.setBackground(Color.red);
+            txt_tennv.setText("");
+            return;
+        }
+         if(txt_tennv.getText().matches(p_scmt)==true){
+            JOptionPane.showMessageDialog(this, "tên nhân viên sai");
             txt_tennv.requestFocus();
             txt_tennv.setBackground(Color.red);
             txt_tennv.setText("");
@@ -756,6 +771,7 @@ public class Form_hopdong extends javax.swing.JPanel{
         String p_ngay ="([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))";
         String p_hoten = "[a-zA-Z ]+";
         String p_mahd = "[A-Za-z0-9]+";
+        String p_scmt = "[0-9]{1,12}";
         if(txt_tenkhachhang.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "chưa điền tên khách hàng");
             txt_tenkhachhang.requestFocus();
@@ -763,8 +779,22 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_tenkhachhang.setText("");
             return;
         }
+        if(txt_tenkhachhang.getText().matches(p_scmt)==true){
+            JOptionPane.showMessageDialog(this, "tên khách hàng sai");
+            txt_tenkhachhang.requestFocus();
+            txt_tenkhachhang.setBackground(Color.red);
+            txt_tenkhachhang.setText("");
+            return;
+        }
         if(txt_tennv.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "chưa điền tên nhân viên");
+            txt_tennv.requestFocus();
+            txt_tennv.setBackground(Color.red);
+            txt_tennv.setText("");
+            return;
+        }
+         if(txt_tennv.getText().matches(p_scmt)==true){
+            JOptionPane.showMessageDialog(this, "tên nhân viên sai");
             txt_tennv.requestFocus();
             txt_tennv.setBackground(Color.red);
             txt_tennv.setText("");
