@@ -94,7 +94,6 @@ create table chitietvipham(
 
 
 
-select * from nhanVien
 select * from khachHang
 select * from loaixe
 select * from ViPham
