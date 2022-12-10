@@ -613,10 +613,10 @@ public class Form_hopdong extends javax.swing.JPanel{
             if(luachon ==0){
                 String id = txt_mahd.getText().toString();
                 if(hopDongService.delete(id)){
-                    JOptionPane.showMessageDialog(this, "thanh cong");
+                    JOptionPane.showMessageDialog(this, "thành công");
                     loadHd(hopDongService.getList());
                 }else
-                JOptionPane.showMessageDialog(this, "that bai");
+                JOptionPane.showMessageDialog(this, "thất bại");
             }
         }
     }//GEN-LAST:event_btn_xoahopdongActionPerformed
@@ -985,11 +985,11 @@ public class Form_hopdong extends javax.swing.JPanel{
             if(luachon ==0){
                 String idhd = txt_idchitiet.getText().toString();
             if(hopDongService.DeleteChiTiet(idhd)){
-                JOptionPane.showMessageDialog(this, "thanh cong");
+                JOptionPane.showMessageDialog(this, "thành công");
                 loadDataChiTiet(hopDongService.getListChiTiet());
                
             }else
-            JOptionPane.showMessageDialog(this, "that bai");
+            JOptionPane.showMessageDialog(this, "thất bại");
         } 
             }
     }//GEN-LAST:event_btn_deleteActionPerformed
@@ -1008,10 +1008,12 @@ public class Form_hopdong extends javax.swing.JPanel{
             Panel_chitiet.setVisible(true);
             txt_searchchitiet.setVisible(true);
             LBL_THUE.setVisible(true);
+            loadDataChiTiet(hopDongService.getListChiTiet());
         }if(row==0){
             Panel_chitiet.setVisible(false);
             txt_searchchitiet.setVisible(false);
             LBL_THUE.setVisible(false);
+            loadHd(hopDongService.getList());
         }
     }//GEN-LAST:event_JtablePanelMouseClicked
 
