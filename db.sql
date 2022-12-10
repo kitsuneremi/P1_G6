@@ -95,8 +95,7 @@ create table chitietvipham(
 
 
 select * from khachHang
-select * from loaixe
-select * from ViPham
+
 insert into dangnhap values('nguyenmanha123','12345678',N'Nhân Viên')
 insert into dangnhap values('nguyenhuubinh123','12345678',N'Nhân Viên')
 insert into dangnhap values('nguyentrunganh123','12345678',N'Nhân Viên')
