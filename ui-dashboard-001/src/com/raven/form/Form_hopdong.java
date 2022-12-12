@@ -85,18 +85,15 @@ public class Form_hopdong extends javax.swing.JPanel{
     loadHd(hopDongService.getList());
         loadDataChiTiet(hopDongService.getListChiTiet());
         loadHd(hopDongService.getList());
-        addGr();
+       
         Panel_chitiet.setVisible(false);
         txt_searchchitiet.setVisible(false);
         LBL_THUE.setVisible(false);
        addCbid(hopDongService.getCbid());
         
     }
-    ButtonGroup btn = new ButtonGroup();
-    void addGr(){
-        btn.add(rdo_chuaky);
-        
-    }
+    
+    
      void addCbid(ArrayList<String> list){
         defaultComboBoxModel = (DefaultComboBoxModel) cbo_bienso.getModel();
         for(String chiTietXeModel:list){
@@ -662,7 +659,10 @@ public class Form_hopdong extends javax.swing.JPanel{
 
         if(tbl_hopdong.getValueAt(row, 5).toString().equalsIgnoreCase("chưa ký")){
             rdo_chuaky.setSelected(true);
-        }else
+        }if(tbl_hopdong.getValueAt(row, 5).toString().equalsIgnoreCase("đã ký")){
+            rdo_chuaky.setSelected(false);
+        }
+            
         
 
          txt_thongtinthem.setText("");
@@ -744,7 +744,10 @@ public class Form_hopdong extends javax.swing.JPanel{
             return;
         }
         
-       
+        if(rdo_chuaky.isSelected()==false){
+            JOptionPane.showMessageDialog(this, "chưa chọn tình trạng");
+            return;
+        }
          boolean checkMaTrung = true;
         ArrayList<HopDongViewModel> lst = hopDongService.getList();
         for (HopDongViewModel hopDongViewModel : lst) {
@@ -789,6 +792,7 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_tennv.setBackground(Color.WHITE);
             txt_tenkhachhang.setBackground(Color.WHITE);
             txt_mahd.setForeground(Color.WHITE);
+            txt_mahd.setBackground(Color.WHITE);
             
             loadHd(hopDongService.getList());
             
@@ -899,6 +903,7 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_ngayhethan.setBackground(Color.WHITE);
             txt_tennv.setBackground(Color.WHITE);
             txt_tenkhachhang.setBackground(Color.WHITE);
+            txt_mahd.setBackground(Color.WHITE);
             txt_mahd.setForeground(Color.WHITE);
                 loadHd(hopDongService.getList());
             }else
@@ -948,6 +953,7 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_tiencoc.setText("");
             return;
         }
+       
         boolean checkMaTrung = true;
         ArrayList<ChiTietHopDongViewModel> lst = hopDongService.getListChiTiet();
         for (ChiTietHopDongViewModel hopDongViewModel : lst) {
@@ -1067,7 +1073,7 @@ public class Form_hopdong extends javax.swing.JPanel{
         txt_idchitiet.setText("");
          txt_tiencoc.setBackground(Color.WHITE);
           
-            txt_idchitiet.setBackground(Color.WHITE);
+            txt_idchitiet.setForeground(Color.WHITE);
     }//GEN-LAST:event_btn_clearchitietActionPerformed
 
     private void JtablePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JtablePanelMouseClicked
