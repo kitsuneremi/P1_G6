@@ -529,7 +529,9 @@ public class Form_hopdong extends javax.swing.JPanel{
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(txt_ngaytao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txt_ngaytao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel14)))
@@ -548,11 +550,9 @@ public class Form_hopdong extends javax.swing.JPanel{
                             .addComponent(btn_addhopdong)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txt_thongtinthem, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
                                 .addGap(129, 129, 129))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txt_search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -784,6 +784,12 @@ public class Form_hopdong extends javax.swing.JPanel{
         hopDongModel.setTinhTrang(tinhTrang);
         if(hopDongService.add(hopDongModel)){
             JOptionPane.showMessageDialog(this, "thêm thành công");
+            txt_ngaytao.setBackground(Color.WHITE);
+            txt_ngayhethan.setBackground(Color.WHITE);
+            txt_tennv.setBackground(Color.WHITE);
+            txt_tenkhachhang.setBackground(Color.WHITE);
+            txt_mahd.setForeground(Color.WHITE);
+            
             loadHd(hopDongService.getList());
             
         }else
@@ -889,6 +895,11 @@ public class Form_hopdong extends javax.swing.JPanel{
             hopDongModel.setTinhTrang(tinhTrang);
             if(hopDongService.update2(hopDongModel, id)){
                 JOptionPane.showMessageDialog(this, "update thành công");
+                txt_ngaytao.setBackground(Color.WHITE);
+            txt_ngayhethan.setBackground(Color.WHITE);
+            txt_tennv.setBackground(Color.WHITE);
+            txt_tenkhachhang.setBackground(Color.WHITE);
+            txt_mahd.setForeground(Color.WHITE);
                 loadHd(hopDongService.getList());
             }else
             JOptionPane.showMessageDialog(this, "update thất bại");
@@ -971,6 +982,9 @@ public class Form_hopdong extends javax.swing.JPanel{
         
         if(hopDongService.addChiTiet(chiTietHopDongModel)){
             JOptionPane.showMessageDialog(this, "thành công");
+            txt_tiencoc.setBackground(Color.WHITE);
+            
+            txt_idchitiet.setForeground(Color.WHITE);
             loadDataChiTiet(hopDongService.getListChiTiet());
             
             
@@ -1016,6 +1030,9 @@ public class Form_hopdong extends javax.swing.JPanel{
             String idhd = txt_idchitiet.getText().toString();
             if(hopDongService.updateChiTiet(chiTietHopDongModel, idhd)){
                 JOptionPane.showMessageDialog(this, "thành công");
+                 txt_tiencoc.setBackground(Color.WHITE);
+            
+            txt_idchitiet.setForeground(Color.WHITE);
                 loadDataChiTiet(hopDongService.getListChiTiet());
             }else
             JOptionPane.showMessageDialog(this, "update thất bại");
@@ -1048,6 +1065,9 @@ public class Form_hopdong extends javax.swing.JPanel{
         txt_tiencoc.setText("");
         
         txt_idchitiet.setText("");
+         txt_tiencoc.setBackground(Color.WHITE);
+          
+            txt_idchitiet.setBackground(Color.WHITE);
     }//GEN-LAST:event_btn_clearchitietActionPerformed
 
     private void JtablePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JtablePanelMouseClicked
@@ -1079,6 +1099,12 @@ public class Form_hopdong extends javax.swing.JPanel{
         txt_ngaytao.setText("");
         txt_tenkhachhang.setText("");
         txt_tennv.setText("");
+        txt_ngaytao.setBackground(Color.WHITE);
+            txt_ngayhethan.setBackground(Color.WHITE);
+            txt_tennv.setBackground(Color.WHITE);
+            txt_tenkhachhang.setBackground(Color.WHITE);
+            txt_mahd.setBackground(Color.WHITE);
+            txt_mahd.setForeground(Color.WHITE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_addMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addMousePressed
