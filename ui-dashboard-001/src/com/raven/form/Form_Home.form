@@ -87,6 +87,9 @@
               <Color blue="a9" green="1d" red="75" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="card1MouseClicked"/>
+          </Events>
         </Component>
         <Component class="com.ViewGiaoDienChinh.component.Card" name="card3">
           <Properties>
@@ -94,6 +97,9 @@
               <Color blue="7b" green="57" red="33" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="card3MouseClicked"/>
+          </Events>
         </Component>
         <Component class="com.ViewGiaoDienChinh.component.Card" name="card5">
           <Properties>
@@ -101,6 +107,9 @@
               <Color blue="1f" green="5d" red="10" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="card5MouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
