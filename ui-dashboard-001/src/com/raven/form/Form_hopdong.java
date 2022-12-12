@@ -280,11 +280,6 @@ public class Form_hopdong extends javax.swing.JPanel{
         btn_add.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/componentfolder/Image/Add.png"))); // NOI18N
         btn_add.setText("Thêm");
-        btn_add.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_addMousePressed(evt);
-            }
-        });
         btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_addActionPerformed(evt);
@@ -303,11 +298,6 @@ public class Form_hopdong extends javax.swing.JPanel{
         btn_delete.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btn_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/componentfolder/Image/Delete.png"))); // NOI18N
         btn_delete.setText("Xóa");
-        btn_delete.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_deleteMousePressed(evt);
-            }
-        });
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_deleteActionPerformed(evt);
@@ -548,9 +538,7 @@ public class Form_hopdong extends javax.swing.JPanel{
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txt_thongtinthem, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(129, 129, 129))
+                            .addComponent(txt_thongtinthem, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txt_search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -638,9 +626,23 @@ public class Form_hopdong extends javax.swing.JPanel{
         }else{
             int luachon= JOptionPane.showConfirmDialog(this, "bạn chắc muốn xóa chứ ?","Xóa",JOptionPane.YES_NO_OPTION);
             if(luachon ==0){
+                  boolean checkMaExist = true;
+        ArrayList<HopDongViewModel> lst = hopDongService.getList();
+        for (HopDongViewModel hopDongViewModel : lst) {
+            if (txt_mahd.getText().equalsIgnoreCase(tbl_hopdong.getValueAt(row, 0).toString())== false) {
+               txt_mahd.setText("mã bạn xóa không tồn tại");
+                txt_mahd.setForeground(Color.red);
+                checkMaExist = false;
+            }
+        }
+        if (checkMaExist == false) {
+            return;
+        }
+          
                 String id = txt_mahd.getText().toString();
                 if(hopDongService.delete(id)){
                     JOptionPane.showMessageDialog(this, "thành công");
+                    txt_mahd.setForeground(Color.BLACK);
                     loadHd(hopDongService.getList());
                 }else
                 JOptionPane.showMessageDialog(this, "thất bại");
@@ -875,6 +877,18 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_ngayhethan.setText("");
             return;
         }
+          boolean checkMaExist = true;
+        ArrayList<HopDongViewModel> lst = hopDongService.getList();
+        for (HopDongViewModel hopDongViewModel : lst) {
+            if (txt_mahd.getText().equalsIgnoreCase(tbl_hopdong.getValueAt(row, 0).toString())== false) {
+                txt_mahd.setText("mã bạn update không tồn tại");
+                txt_mahd.setForeground(Color.red);
+                checkMaExist = false;
+            }
+        }
+        if (checkMaExist == false) {
+            return;
+        }
              
             HopDongModel hopDongModel = new HopDongModel();
             NhanVienModel nhanVienModel = new NhanVienModel();
@@ -937,23 +951,22 @@ public class Form_hopdong extends javax.swing.JPanel{
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
-         String p_scmt = "[0-9]{1,12}";
+        String p_scmt = "[0-9]{1,12}";
 
-        if(txt_tiencoc.getText().isEmpty()){
+        if (txt_tiencoc.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "chưa điền tiền cọc");
             txt_tiencoc.requestFocus();
             txt_tiencoc.setBackground(Color.red);
             txt_tiencoc.setText("");
             return;
-        }else
-        if(txt_tiencoc.getText().matches(p_scmt)==false){
+        } else if (txt_tiencoc.getText().matches(p_scmt) == false) {
             JOptionPane.showMessageDialog(this, "tiền cọc sai định dạng");
             txt_tiencoc.requestFocus();
             txt_tiencoc.setBackground(Color.red);
             txt_tiencoc.setText("");
             return;
         }
-       
+
         boolean checkMaTrung = true;
         ArrayList<ChiTietHopDongViewModel> lst = hopDongService.getListChiTiet();
         for (ChiTietHopDongViewModel hopDongViewModel : lst) {
@@ -978,25 +991,41 @@ public class Form_hopdong extends javax.swing.JPanel{
         if (checkMaTrung2 == false) {
             return;
         }
-        ChiTietHopDongModel chiTietHopDongModel = new ChiTietHopDongModel();
+
         HopDongModel hopDongModel = new HopDongModel();
-       hopDongModel.setMahd(txt_idchitiet.getText().toString());
-       chiTietHopDongModel.setMahd(hopDongModel);
+        String id = txt_idchitiet.getText().toString();
+        int tinhTrang = 1;
+        String bienso = cbo_bienso.getSelectedItem().toString();
+        int tinhTrangXe = 1;
+
+        ChiTietXeModel chiTietXeModel = new ChiTietXeModel();
+        chiTietXeModel.setTinhTrangXe(tinhTrangXe);
+
+        hopDongModel.setTinhTrang(tinhTrang);
+        
+
+        ChiTietHopDongModel chiTietHopDongModel = new ChiTietHopDongModel();
+
+        hopDongModel.setMahd(txt_idchitiet.getText().toString());
+        chiTietHopDongModel.setMahd(hopDongModel);
         chiTietHopDongModel.setBienso(cbo_bienso.getSelectedItem().toString());
-        chiTietHopDongModel.setTienCoc(Float.parseFloat(txt_tiencoc.getText().toString()));
-        
-        
-        if(hopDongService.addChiTiet(chiTietHopDongModel)){
+        chiTietHopDongModel.setTienCoc(Float.parseFloat(txt_tiencoc.getText()));
+
+        if (hopDongService.addChiTiet(chiTietHopDongModel)) {
             JOptionPane.showMessageDialog(this, "thành công");
             txt_tiencoc.setBackground(Color.WHITE);
-            
             txt_idchitiet.setForeground(Color.BLACK);
             loadDataChiTiet(hopDongService.getListChiTiet());
-            
-            
-        
-        }else
-        JOptionPane.showMessageDialog(this, "thêm thất bại");
+            if (hopDongService.update(hopDongModel, id)) {
+
+                loadHd(hopDongService.getList());
+
+            }
+            if (hopDongService.update3(chiTietXeModel, bienso)) {
+                loadHd(hopDongService.getList());
+            }
+        } else
+            JOptionPane.showMessageDialog(this, "thêm thất bại không tồn mã HD treo");
         
         
     }//GEN-LAST:event_btn_addActionPerformed
@@ -1024,6 +1053,29 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_tiencoc.setText("");
             return;
         }
+            boolean checkMaExist = true;
+        ArrayList<ChiTietHopDongViewModel> check = hopDongService.getListChiTiet();
+        for (ChiTietHopDongViewModel hopDongViewModel : check) {
+            if (txt_idchitiet.getText().equalsIgnoreCase(tbl_chitiet.getValueAt(row, 0).toString())==false) {
+               txt_idchitiet.setText("mã bạn update không tồn tại");
+                txt_idchitiet.setForeground(Color.red);
+                checkMaExist = false;
+            }
+        }
+        if (checkMaExist == false) {
+            return;
+        }
+        boolean checkMaTrung2 = true;
+        ArrayList<ChiTietHopDongViewModel> list = hopDongService.getListChiTiet();
+        for (ChiTietHopDongViewModel hopDongViewModel : list) {
+            if (cbo_bienso.getSelectedItem().equals(tbl_chitiet.getValueAt(row, 1).toString())==false) {                             
+                checkMaTrung2 = false;
+            }
+        }
+        if (checkMaTrung2 == false) {
+            JOptionPane.showMessageDialog(this, "xe đang được thuê");
+            return;
+        }
         
        
             ChiTietHopDongModel chiTietHopDongModel = new ChiTietHopDongModel();
@@ -1032,7 +1084,7 @@ public class Form_hopdong extends javax.swing.JPanel{
        chiTietHopDongModel.setMahd(hopDongModel);
             chiTietHopDongModel.setBienso(cbo_bienso.getSelectedItem().toString());
 
-            chiTietHopDongModel.setTienCoc(Float.parseFloat(txt_tiencoc.getText().toString()));
+            chiTietHopDongModel.setTienCoc(Float.parseFloat(txt_tiencoc.getText()));
             String idhd = txt_idchitiet.getText().toString();
             if(hopDongService.updateChiTiet(chiTietHopDongModel, idhd)){
                 JOptionPane.showMessageDialog(this, "thành công");
@@ -1055,6 +1107,26 @@ public class Form_hopdong extends javax.swing.JPanel{
         }else{
             int luachon= JOptionPane.showConfirmDialog(null, "bạn chắc muốn xóa chứ ?","Xóa",JOptionPane.YES_NO_OPTION);
             if(luachon ==0){
+                   boolean checkMaExist = true;
+        ArrayList<ChiTietHopDongViewModel> check = hopDongService.getListChiTiet();
+        for (ChiTietHopDongViewModel hopDongViewModel : check) {
+            if (txt_idchitiet.getText().equalsIgnoreCase(tbl_chitiet.getValueAt(row, 0).toString())==false) {
+               txt_idchitiet.setText("mã bạn xóa không tồn tại");
+                txt_idchitiet.setForeground(Color.red);
+                checkMaExist = false;
+            }
+        }
+        if (checkMaExist == false) {
+            return;
+        }
+          String bienso = cbo_bienso.getSelectedItem().toString();
+        int tinhTrangXe = 0;
+        
+        ChiTietXeModel chiTietXeModel = new ChiTietXeModel();
+        chiTietXeModel.setTinhTrangXe(tinhTrangXe);
+        if(hopDongService.update3(chiTietXeModel, bienso)){
+            loadHd(hopDongService.getList());
+        }
                 String idhd = txt_idchitiet.getText().toString();
             if(hopDongService.DeleteChiTiet(idhd)){
                 JOptionPane.showMessageDialog(this, "thành công");
@@ -1112,42 +1184,6 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_mahd.setBackground(Color.white);
             txt_mahd.setForeground(Color.BLACK);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void btn_addMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addMousePressed
-        // TODO add your handling code here:
-         HopDongModel hopDongModel = new HopDongModel();
-            String id = txt_idchitiet.getText().toString();
-            int tinhTrang = 1;
-            String bienso =cbo_bienso.getSelectedItem().toString();
-            int tinhTrangXe = 1;
-        
-        ChiTietXeModel chiTietXeModel = new ChiTietXeModel();
-        chiTietXeModel.setTinhTrangXe(tinhTrangXe);
-            
-            hopDongModel.setTinhTrang(tinhTrang);
-            if(hopDongService.update(hopDongModel, id)){
-                
-                loadHd(hopDongService.getList());
-               
-                
-            }if(hopDongService.update3(chiTietXeModel, bienso)){
-            loadHd(hopDongService.getList());
-        }
-            
-        
-    }//GEN-LAST:event_btn_addMousePressed
-
-    private void btn_deleteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_deleteMousePressed
-        // TODO add your handling code here:
-         String bienso = cbo_bienso.getSelectedItem().toString();
-        int tinhTrangXe = 0;
-        
-        ChiTietXeModel chiTietXeModel = new ChiTietXeModel();
-        chiTietXeModel.setTinhTrangXe(tinhTrangXe);
-        if(hopDongService.update3(chiTietXeModel, bienso)){
-            loadHd(hopDongService.getList());
-        }
-    }//GEN-LAST:event_btn_deleteMousePressed
 
     private void txt_thongtinthemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_thongtinthemMouseClicked
         // TODO add your handling code here:
