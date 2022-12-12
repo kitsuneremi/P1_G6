@@ -105,12 +105,27 @@ public class Form_Home extends javax.swing.JPanel {
         panel.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
 
         card1.setBackground(new java.awt.Color(117, 29, 169));
+        card1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                card1MouseClicked(evt);
+            }
+        });
         panel.add(card1);
 
         card3.setBackground(new java.awt.Color(51, 87, 123));
+        card3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                card3MouseClicked(evt);
+            }
+        });
         panel.add(card3);
 
         card5.setBackground(new java.awt.Color(16, 93, 31));
+        card5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                card5MouseClicked(evt);
+            }
+        });
         panel.add(card5);
 
         panelBorder1.setBackground(new java.awt.Color(32, 27, 27));
@@ -266,6 +281,31 @@ public class Form_Home extends javax.swing.JPanel {
         pieChart1.clearData();
         loadChart();
     }//GEN-LAST:event_pieChart1MouseClicked
+
+    private void card1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_card1MouseClicked
+        // TODO add your handling code here:
+        ModelCard c1 = new ModelCard();
+        c1.setTitle("Hợp Đồng Đã Ký");
+        c1.setValues(alr.TongHopDong());
+        card1.setData(c1);
+        
+    }//GEN-LAST:event_card1MouseClicked
+
+    private void card3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_card3MouseClicked
+        // TODO add your handling code here:
+        ModelCard c2 = new ModelCard();
+        c2.setTitle("Doanh Thu(Triệu VNĐ)");
+        c2.setValues(alr.HoaDonTong());
+        card3.setData(c2);
+    }//GEN-LAST:event_card3MouseClicked
+
+    private void card5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_card5MouseClicked
+        // TODO add your handling code here:
+        ModelCard c3 = new ModelCard();
+        c3.setTitle("Xe");
+        c3.setValues(alr.TongXe());
+        card5.setData(c3);
+    }//GEN-LAST:event_card5MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
