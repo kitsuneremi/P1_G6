@@ -8,6 +8,8 @@ package com.raven.main;
 import com.componentfolder.Model.DangNhap;
 import com.componentfolder.Service.DangNhapService;
 import com.componentfolder.Service.Impl.DangNhapImpl;
+import java.awt.Color;
+import java.awt.GraphicsEnvironment;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -116,12 +118,16 @@ public class Start extends javax.swing.JFrame {
         try{
         if (dns.get(taikhoan, Mk).equals("Quản Lý")) {
             JOptionPane.showMessageDialog(this, "Đăng nhập tài Khoản Quản Lý thành công!!");
-            new Main(dns.get(taikhoan, Mk)).setVisible(true);
-            this.dispose();
+            Main m = new Main(dns.get(taikhoan, Mk));
+            m.setSize(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width, GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height);
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
         } else if (dns.get(taikhoan, Mk).equals("Nhân Viên")) {
             JOptionPane.showMessageDialog(this, "Đăng nhập tài Khoản Nhân Viên thành công!!");
-            new Main(dns.get(taikhoan, Mk)).setVisible(true);
-            this.dispose();
+            Main m = new Main(dns.get(taikhoan, Mk));
+            m.setSize(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width, GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height);
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
         }else
         {JOptionPane.showMessageDialog(this, "Sai Tài Khoản Hoặc Mật Khẩu! Vui Lòng Nhập Lại!");}
         }catch(Exception e){
