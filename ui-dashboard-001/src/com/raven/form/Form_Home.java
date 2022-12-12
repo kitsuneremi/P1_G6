@@ -15,6 +15,7 @@ import java.awt.Color;
 import com.raven.javaswingdev.chart.ModelPieChart;
 import com.raven.javaswingdev.chart.PieChart;
 import com.raven.javaswingdev.chart.PieChartRepo;
+import com.raven.bar.ModelBarChart;
 
 public class Form_Home extends javax.swing.JPanel {
     private DefaultTableModel dtm = new DefaultTableModel();
@@ -33,11 +34,20 @@ public class Form_Home extends javax.swing.JPanel {
         listTop10 = cTXeSevices.getTop10ThueXe();
         showDataTop10(listTop10);
         loadChart();
+        loadBar();
 
+    }
+    public void loadBar(){
+        barChart1.addLegend("Top 5 Xe được thuê nhiều nhất", new Color(245, 189, 135));
+        barChart1.addData(new ModelBarChart(alr.XeTop1(), new double[]{alr.LanthueXeTop1()}));
+        barChart1.addData(new ModelBarChart(alr.XeTop2(), new double[]{alr.LanthueXeTop2()}));
+        barChart1.addData(new ModelBarChart(alr.XeTop3(), new double[]{alr.LanthueXeTop3()}));
+        barChart1.addData(new ModelBarChart(alr.XeTop4(), new double[]{alr.LanthueXeTop4()}));
+        barChart1.addData(new ModelBarChart(alr.XeTop5(), new double[]{alr.LanthueXeTop5()}));
+        barChart1.start();
     }
     public void loadChart(){
         pieChart1.setBackground(Color.white);
-        pieChart1.setSize(500, 500);
         pieChart1.setChartType(PieChart.PeiChartType.DONUT_CHART);
         pieChart1.addData(new ModelPieChart("Xe có thể cho thuê", repo.XenTrong(), new Color(23, 126, 238)));
         pieChart1.addData(new ModelPieChart("Xe đang cho thuê", repo.XeDangChoThue(), new Color(221, 65, 65)));
@@ -90,6 +100,7 @@ public class Form_Home extends javax.swing.JPanel {
         btnCaNam = new javax.swing.JButton();
         cbbQuy = new javax.swing.JComboBox<>();
         pieChart1 = new com.raven.javaswingdev.chart.PieChart();
+        barChart1 = new com.raven.bar.BarChart();
 
         panel.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
 
@@ -136,6 +147,18 @@ public class Form_Home extends javax.swing.JPanel {
             }
         });
 
+        pieChart1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pieChart1MouseClicked(evt);
+            }
+        });
+
+        barChart1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                barChart1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,11 +173,14 @@ public class Form_Home extends javax.swing.JPanel {
                         .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(btnCaNam)
-                        .addGap(75, 75, 75)
-                        .addComponent(cbbQuy, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(210, 210, 210)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(132, 132, 132)
+                                .addComponent(btnCaNam)
+                                .addGap(75, 75, 75)
+                                .addComponent(cbbQuy, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(barChart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
                         .addComponent(pieChart1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
@@ -165,13 +191,15 @@ public class Form_Home extends javax.swing.JPanel {
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCaNam)
-                            .addComponent(cbbQuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(barChart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(pieChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pieChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCaNam)
+                    .addComponent(cbbQuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
@@ -222,8 +250,26 @@ public class Form_Home extends javax.swing.JPanel {
         chart.start();
     }//GEN-LAST:event_btnCaNamActionPerformed
 
+    private void barChart1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barChart1MouseClicked
+        // TODO add your handling code here:
+        barChart1.clear();
+        barChart1.addData(new ModelBarChart(alr.XeTop1(), new double[]{alr.LanthueXeTop1()}));
+        barChart1.addData(new ModelBarChart(alr.XeTop2(), new double[]{alr.LanthueXeTop2()}));
+        barChart1.addData(new ModelBarChart(alr.XeTop3(), new double[]{alr.LanthueXeTop3()}));
+        barChart1.addData(new ModelBarChart(alr.XeTop4(), new double[]{alr.LanthueXeTop4()}));
+        barChart1.addData(new ModelBarChart(alr.XeTop5(), new double[]{alr.LanthueXeTop5()}));
+        barChart1.start();
+    }//GEN-LAST:event_barChart1MouseClicked
+
+    private void pieChart1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pieChart1MouseClicked
+        // TODO add your handling code here:
+        pieChart1.clearData();
+        loadChart();
+    }//GEN-LAST:event_pieChart1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.raven.bar.BarChart barChart1;
     private javax.swing.JButton btnCaNam;
     private com.ViewGiaoDienChinh.component.Card card1;
     private com.ViewGiaoDienChinh.component.Card card3;
