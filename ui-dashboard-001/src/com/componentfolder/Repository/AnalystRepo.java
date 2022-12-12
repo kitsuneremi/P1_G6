@@ -445,4 +445,195 @@ public class AnalystRepo {
             return 0;
         }   
     }
+    public String XeTop1(){
+        String he = "";
+        String sql = "select top 1 loaixe.ten, COUNT(chiTietHopDong.bienSo) ten from loaiXe join chiTietXe on loaiXe.maLx = chiTietXe.maLx\n" +
+"						join chiTietHopDong on chiTietXe.bienSo = chiTietHopDong.bienSo\n" +
+"						Group by loaixe.ten\n" +
+"						order by COUNT(chiTietHopDong.bienSo) desc";
+        try(Connection conn = connection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);){
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                he = rs.getString(1);
+            }
+            return he;
+            
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+            return null;
+        }   
+    }
+    public String XeTop2(){
+        String he = "";
+        String sql = "select top 2 loaixe.ten, COUNT(chiTietHopDong.bienSo) ten from loaiXe join chiTietXe on loaiXe.maLx = chiTietXe.maLx\n" +
+"						join chiTietHopDong on chiTietXe.bienSo = chiTietHopDong.bienSo\n" +
+"						Group by loaixe.ten\n" +
+"						order by COUNT(chiTietHopDong.bienSo) desc";
+        try(Connection conn = connection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);){
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                he = rs.getString(1);
+            }
+            return he;
+            
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+            return null;
+        }   
+    }
+    public String XeTop3(){
+        String he = "";
+        String sql = "select top 3 loaixe.ten, COUNT(chiTietHopDong.bienSo) ten from loaiXe join chiTietXe on loaiXe.maLx = chiTietXe.maLx\n" +
+"						join chiTietHopDong on chiTietXe.bienSo = chiTietHopDong.bienSo\n" +
+"						Group by loaixe.ten\n" +
+"						order by COUNT(chiTietHopDong.bienSo) desc";
+        try(Connection conn = connection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);){
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                he = rs.getString(1);
+            }
+            return he;
+            
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+            return null;
+        }   
+    }
+    public String XeTop4(){
+        String he = "";
+        String sql = "select top 4 loaixe.ten, COUNT(chiTietHopDong.bienSo) ten from loaiXe join chiTietXe on loaiXe.maLx = chiTietXe.maLx\n" +
+"						join chiTietHopDong on chiTietXe.bienSo = chiTietHopDong.bienSo\n" +
+"						Group by loaixe.ten\n" +
+"						order by COUNT(chiTietHopDong.bienSo) desc";
+        try(Connection conn = connection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);){
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                he = rs.getString(1);
+            }
+            return he;
+            
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+            return null;
+        }   
+    }
+    public String XeTop5(){
+        String he = "";
+        String sql = "select top 5 loaixe.ten, COUNT(chiTietHopDong.bienSo) ten from loaiXe join chiTietXe on loaiXe.maLx = chiTietXe.maLx\n" +
+"						join chiTietHopDong on chiTietXe.bienSo = chiTietHopDong.bienSo\n" +
+"						Group by loaixe.ten\n" +
+"						order by COUNT(chiTietHopDong.bienSo) desc";
+        try(Connection conn = connection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);){
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                he = rs.getString(1);
+            }
+            return he;
+            
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+            return null;
+        }   
+    }
+    public int LanthueXeTop1(){
+        int he = 0;
+        String sql = "select top 1 loaixe.ten, COUNT(chiTietHopDong.bienSo) ten from loaiXe join chiTietXe on loaiXe.maLx = chiTietXe.maLx\n" +
+"						join chiTietHopDong on chiTietXe.bienSo = chiTietHopDong.bienSo\n" +
+"						Group by loaixe.ten\n" +
+"						order by COUNT(chiTietHopDong.bienSo) desc";
+        try(Connection conn = connection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);){
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                he = rs.getInt(2);
+            }
+            return he;
+            
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+            return 0;
+        }   
+    }
+    public int LanthueXeTop2(){
+        int he = 0;
+        String sql = "select top 2 loaixe.ten, COUNT(chiTietHopDong.bienSo) ten from loaiXe join chiTietXe on loaiXe.maLx = chiTietXe.maLx\n" +
+"						join chiTietHopDong on chiTietXe.bienSo = chiTietHopDong.bienSo\n" +
+"						Group by loaixe.ten\n" +
+"						order by COUNT(chiTietHopDong.bienSo) desc";
+        try(Connection conn = connection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);){
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                he = rs.getInt(2);
+            }
+            return he;
+            
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+            return 0;
+        }   
+    }
+    public int LanthueXeTop3(){
+        int he = 0;
+        String sql = "select top 3 loaixe.ten, COUNT(chiTietHopDong.bienSo) ten from loaiXe join chiTietXe on loaiXe.maLx = chiTietXe.maLx\n" +
+"						join chiTietHopDong on chiTietXe.bienSo = chiTietHopDong.bienSo\n" +
+"						Group by loaixe.ten\n" +
+"						order by COUNT(chiTietHopDong.bienSo) desc";
+        try(Connection conn = connection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);){
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                he = rs.getInt(2);
+            }
+            return he;
+            
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+            return 0;
+        }   
+    }
+    public int LanthueXeTop4(){
+        int he = 0;
+        String sql = "select top 4 loaixe.ten, COUNT(chiTietHopDong.bienSo) ten from loaiXe join chiTietXe on loaiXe.maLx = chiTietXe.maLx\n" +
+"						join chiTietHopDong on chiTietXe.bienSo = chiTietHopDong.bienSo\n" +
+"						Group by loaixe.ten\n" +
+"						order by COUNT(chiTietHopDong.bienSo) desc";
+        try(Connection conn = connection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);){
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                he = rs.getInt(2);
+            }
+            return he;
+            
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+            return 0;
+        }   
+    }
+    public int LanthueXeTop5(){
+        int he = 0;
+        String sql = "select top 5 loaixe.ten, COUNT(chiTietHopDong.bienSo) ten from loaiXe join chiTietXe on loaiXe.maLx = chiTietXe.maLx\n" +
+"						join chiTietHopDong on chiTietXe.bienSo = chiTietHopDong.bienSo\n" +
+"						Group by loaixe.ten\n" +
+"						order by COUNT(chiTietHopDong.bienSo) desc";
+        try(Connection conn = connection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);){
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                he = rs.getInt(2);
+            }
+            return he;
+            
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+            return 0;
+        }   
+    }
+    
 }
