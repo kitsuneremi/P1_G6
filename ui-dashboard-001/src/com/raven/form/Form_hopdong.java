@@ -791,7 +791,7 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_ngayhethan.setBackground(Color.WHITE);
             txt_tennv.setBackground(Color.WHITE);
             txt_tenkhachhang.setBackground(Color.WHITE);
-            txt_mahd.setForeground(Color.WHITE);
+            txt_mahd.setForeground(Color.BLACK);
             txt_mahd.setBackground(Color.WHITE);
             
             loadHd(hopDongService.getList());
@@ -904,7 +904,7 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_tennv.setBackground(Color.WHITE);
             txt_tenkhachhang.setBackground(Color.WHITE);
             txt_mahd.setBackground(Color.WHITE);
-            txt_mahd.setForeground(Color.WHITE);
+            txt_mahd.setForeground(Color.BLACK);
                 loadHd(hopDongService.getList());
             }else
             JOptionPane.showMessageDialog(this, "update thất bại");
@@ -990,7 +990,7 @@ public class Form_hopdong extends javax.swing.JPanel{
             JOptionPane.showMessageDialog(this, "thành công");
             txt_tiencoc.setBackground(Color.WHITE);
             
-            txt_idchitiet.setForeground(Color.WHITE);
+            txt_idchitiet.setForeground(Color.BLACK);
             loadDataChiTiet(hopDongService.getListChiTiet());
             
             
@@ -1038,7 +1038,7 @@ public class Form_hopdong extends javax.swing.JPanel{
                 JOptionPane.showMessageDialog(this, "thành công");
                  txt_tiencoc.setBackground(Color.WHITE);
             
-            txt_idchitiet.setForeground(Color.WHITE);
+            txt_idchitiet.setForeground(Color.BLACK);
                 loadDataChiTiet(hopDongService.getListChiTiet());
             }else
             JOptionPane.showMessageDialog(this, "update thất bại");
@@ -1073,7 +1073,7 @@ public class Form_hopdong extends javax.swing.JPanel{
         txt_idchitiet.setText("");
          txt_tiencoc.setBackground(Color.WHITE);
           
-            txt_idchitiet.setForeground(Color.WHITE);
+            txt_idchitiet.setForeground(Color.BLACK);
     }//GEN-LAST:event_btn_clearchitietActionPerformed
 
     private void JtablePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JtablePanelMouseClicked
@@ -1109,8 +1109,8 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_ngayhethan.setBackground(Color.WHITE);
             txt_tennv.setBackground(Color.WHITE);
             txt_tenkhachhang.setBackground(Color.WHITE);
-            txt_mahd.setBackground(Color.WHITE);
-            txt_mahd.setForeground(Color.WHITE);
+            txt_mahd.setBackground(Color.white);
+            txt_mahd.setForeground(Color.BLACK);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_addMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addMousePressed
