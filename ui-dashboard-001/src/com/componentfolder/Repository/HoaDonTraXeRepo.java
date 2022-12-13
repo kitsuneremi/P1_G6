@@ -1,6 +1,6 @@
 package com.componentfolder.Repository;
 
-import Utilities.DBConnections;
+import com.componentfolder.Utilities.DBConnections;
 import com.componentfolder.Model.ChiTietHopDongModel;
 import com.componentfolder.Model.ChiTietViPhamModel;
 import com.componentfolder.ViewModel.HoaDonTraXeViewModel;

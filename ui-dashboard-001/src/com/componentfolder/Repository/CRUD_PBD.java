@@ -5,7 +5,7 @@
 package com.componentfolder.Repository;
 
 
-import Utilities.DBConnections;
+import com.componentfolder.Utilities.DBConnections;
 import ViewModel.PBDViewModel;
 import com.componentfolder.Model.PBD;
 import java.util.ArrayList;

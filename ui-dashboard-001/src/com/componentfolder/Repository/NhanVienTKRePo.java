@@ -4,7 +4,7 @@
  */
 package com.componentfolder.Repository;
 
-import Utilities.DBConnections;
+import com.componentfolder.Utilities.DBConnections;
 import com.componentfolder.Model.DangNhap;
 import com.componentfolder.Model.NhanVienModel;
 import com.componentfolder.ViewModel.KhachHangViewModel;

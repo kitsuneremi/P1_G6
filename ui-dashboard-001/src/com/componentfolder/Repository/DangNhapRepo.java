@@ -5,7 +5,7 @@
  */
 package com.componentfolder.Repository;
 
-import Utilities.DBConnections;
+import com.componentfolder.Utilities.DBConnections;
 import com.componentfolder.Utilities.DBConnections_Ha;
 import com.componentfolder.Model.DangNhap;
 import java.sql.Connection;

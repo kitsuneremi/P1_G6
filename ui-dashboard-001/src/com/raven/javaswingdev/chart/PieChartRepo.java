@@ -4,7 +4,7 @@
  */
 package com.raven.javaswingdev.chart;
 
-import Utilities.DBConnections;
+import com.componentfolder.Utilities.DBConnections;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

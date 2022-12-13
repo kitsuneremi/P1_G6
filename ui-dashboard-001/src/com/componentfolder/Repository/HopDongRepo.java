@@ -9,7 +9,7 @@ import com.componentfolder.Model.ChiTietXeModel;
 import com.componentfolder.Model.HopDongModel;
 import com.componentfolder.Model.KhachHangModel;
 import com.componentfolder.Model.NhanVienModel;
-import Utilities.DBConnections;
+import com.componentfolder.Utilities.DBConnections;
 import com.componentfolder.ViewModel.ChiTietHopDongViewModel;
 import com.componentfolder.ViewModel.HopDongViewModel;
 import com.componentfolder.ViewModel.InHopDongViewModel;
