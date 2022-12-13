@@ -94,12 +94,12 @@ public class KhachHangRepo {
         
     }
     public ArrayList<KhachHangViewModel> search(String ten){
-        String sql = "Select makh, Ten, sdt,gioitinh,cccd,email from khachhang where makh =? or ten = ? or sdt = ? or cccd = ? or email = ?";
+        String sql = "Select makh, Ten, sdt,gioitinh,cccd,email from khachhang where makh Like ? or ten like ? or sdt = ? or cccd = ? or email = ?";
         ArrayList<KhachHangViewModel> listKH = new ArrayList<>();
         try (Connection con = connections_Ha.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, ten);
-            ps.setString(2, ten);
+            ps.setString(1, "%"+ten+"%");
+            ps.setString(2, "%"+ten+"%");
             ps.setString(3, ten);
             ps.setString(4, ten);
             ps.setString(5, ten);
