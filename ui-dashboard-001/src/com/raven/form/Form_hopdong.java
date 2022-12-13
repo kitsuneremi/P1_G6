@@ -1002,6 +1002,7 @@ public class Form_hopdong extends javax.swing.JPanel{
             JOptionPane.showMessageDialog(this, "thành công");
             txt_tiencoc.setBackground(Color.WHITE);
             txt_idchitiet.setForeground(Color.BLACK);
+            cbo_bienso.setForeground(Color.BLACK);
             loadDataChiTiet(hopDongService.getListChiTiet());
             if (hopDongService.update(hopDongModel, id)) {
 
