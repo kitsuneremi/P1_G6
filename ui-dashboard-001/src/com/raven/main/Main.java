@@ -52,7 +52,7 @@ public class Main extends javax.swing.JFrame {
         menu.addEventMenuSelected((int index) -> {
             switch (index) {
                 case 0:
-                    setForm(home);
+                    setForm(new Form_Home());
                     break;
                 case 1:
                     setForm(form2);
