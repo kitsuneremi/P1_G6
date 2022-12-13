@@ -122,12 +122,14 @@ public class Start extends javax.swing.JFrame {
             m.setSize(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width, GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height);
             m.setLocationRelativeTo(null);
             m.setVisible(true);
+            this.dispose();
         } else if (dns.get(taikhoan, Mk).equals("Nhân Viên")) {
             JOptionPane.showMessageDialog(this, "Đăng nhập tài Khoản Nhân Viên thành công!!");
             Main m = new Main(dns.get(taikhoan, Mk));
             m.setSize(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width, GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height);
             m.setLocationRelativeTo(null);
             m.setVisible(true);
+            this.dispose();
         }else
         {JOptionPane.showMessageDialog(this, "Sai Tài Khoản Hoặc Mật Khẩu! Vui Lòng Nhập Lại!");}
         }catch(Exception e){
