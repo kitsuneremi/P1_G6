@@ -4,7 +4,7 @@
  */
 package com.componentfolder.Repository;
 
-import Utilities.DBConnections;
+import com.componentfolder.Utilities.DBConnections;
 import com.componentfolder.Model.ChiTietXe;
 import com.componentfolder.Model.LoaiXe;
 import com.componentfolder.ViewModel.Top10ViewModel;

@@ -954,18 +954,18 @@ public class Form_hopdong extends javax.swing.JPanel{
             return;
         }
 
-        boolean checkMaTrung = true;
-        ArrayList<ChiTietHopDongViewModel> lst = hopDongService.getListChiTiet();
-        for (ChiTietHopDongViewModel hopDongViewModel : lst) {
-            if (hopDongViewModel.getMahd().equalsIgnoreCase(txt_idchitiet.getText())) {
-                txt_idchitiet.setText("Mã trùng");
-                txt_idchitiet.setForeground(Color.red);
-                checkMaTrung = false;
-            }
-        }
-        if (checkMaTrung == false) {
-            return;
-        }
+       // boolean checkMaTrung = true;
+      //  ArrayList<ChiTietHopDongViewModel> lst = hopDongService.getListChiTiet();
+        //for (ChiTietHopDongViewModel hopDongViewModel : lst) {
+           // if (hopDongViewModel.getMahd().equalsIgnoreCase(txt_idchitiet.getText())) {
+           //     txt_idchitiet.setText("Mã trùng");
+                //txt_idchitiet.setForeground(Color.red);
+                //checkMaTrung = false;
+            //}
+       // }
+       /// if (checkMaTrung == false) {
+           // return;
+       // }
         boolean checkMaTrung2 = true;
         ArrayList<ChiTietHopDongViewModel> list = hopDongService.getListChiTiet();
         for (ChiTietHopDongViewModel hopDongViewModel : list) {
