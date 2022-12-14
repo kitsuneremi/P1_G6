@@ -1004,7 +1004,7 @@ public class Form_hopdong extends javax.swing.JPanel{
             cbo_bienso.setForeground(Color.BLACK);
             loadDataChiTiet(hopDongService.getListChiTiet());
             if (hopDongService.update(hopDongModel, id)) {
-
+                sendemail();
                 loadHd(hopDongService.getList());
 
             }
