@@ -69,6 +69,11 @@ public class Start extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txttaikhoan.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txttaikhoan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txttaikhoanKeyPressed(evt);
+            }
+        });
 
         txtmk.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtmk.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -144,6 +149,12 @@ public class Start extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_txtmkKeyPressed
+
+    private void txttaikhoanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttaikhoanKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            signin();
+        }
+    }//GEN-LAST:event_txttaikhoanKeyPressed
 
     public static void main(String args[]) {
         try {
