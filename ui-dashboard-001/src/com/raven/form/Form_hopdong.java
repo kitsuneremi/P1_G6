@@ -1219,7 +1219,7 @@ boolean sendemail() {
             message.setFrom(new InternetAddress(from));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject("Quý khách đã tạo hợp đồng thành công");
-            message.setText("Thank you for belive our service~ Hợp đồng của quý khách sẽ hết hạn vào ngày: " + txt_ngayhethan);
+            message.setText("Thank you for belive our service~ Hợp đồng của quý khách sẽ hết hạn vào ngày: " + txt_ngayhethan.getText());
             Transport.send(message, "lilypeachew@gmail.com", "qgvvffdbtvsfpsav");
             return true;
         } catch (MessagingException mex) {
