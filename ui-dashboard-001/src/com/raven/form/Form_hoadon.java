@@ -30,6 +30,8 @@ import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
 import javax.mail.*;
 import javax.mail.internet.*;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 public final class Form_hoadon extends javax.swing.JPanel {
 
@@ -59,8 +61,8 @@ public final class Form_hoadon extends javax.swing.JPanel {
         tblhopdong12.removeColumn(tblhopdong12.getColumnModel().getColumn(6));
         tblhopdong12.removeColumn(tblhopdong12.getColumnModel().getColumn(6));
     }
-    
-    void ResizeTable(){
+
+    void ResizeTable() {
         tblhoadon.setRowHeight(27);
         tblhopdong12.setRowHeight(27);
     }
@@ -133,6 +135,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
             dtm.addRow(rowData);
         }
     }
+
     HoaDonTraXeModel gethoadonformdata() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         HoaDonTraXeModel hdtxm = new HoaDonTraXeModel();
@@ -163,6 +166,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
         hdtxm.setHdm(hdm);
         return hdtxm;
     }
+
     int strvipham(String vipham) {
         switch (vipham) {
             case "Không Vi Phạm":
@@ -183,6 +187,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
                 return 0;
         }
     }
+
     void openFileExplorer(String filepath) {
         try {
             File file = new File(filepath);
@@ -192,6 +197,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
             ex.printStackTrace();
         }
     }
+
     boolean tracuu(String init, String value) {
         boolean x = false;
         for (int i = 0; i < init.length() - value.length() + 1; i++) {
@@ -204,6 +210,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
         }
         return x;
     }
+
     HashSet<HopDongViewModel> hx(HashSet<String> list) {
         HashSet<HopDongViewModel> set = new HashSet<>();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -229,6 +236,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
         }
         return set;
     }
+
     HashSet<HoaDonTraXeViewModel> hy(HashSet<String> list) {
         HashSet<HoaDonTraXeViewModel> set = new HashSet<>();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -250,6 +258,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
         }
         return set;
     }
+
     HashSet<ChiTietViPhamModel> getlistvp(String mahd) {
         HashSet<ChiTietViPhamModel> list = new HashSet<>();
         for (int i = 0; i < txtvipham1.getText().length(); i++) {
@@ -260,7 +269,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
         }
         return list;
     }
-    
+
     boolean sendemail(String mahd, double tongtien) {
         String to = "erinasaiyukii@gmail.com";
         String from = "lilypeachew@gmail.com";
@@ -291,6 +300,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
             return false;
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -314,7 +324,6 @@ public final class Form_hoadon extends javax.swing.JPanel {
         btnpayment = new javax.swing.JButton();
         btnQR = new javax.swing.JButton();
         txtsearchvaluehoadon = new javax.swing.JTextField();
-        lblsearchcounthoadon = new javax.swing.JLabel();
         btnreload = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblhoadon = new javax.swing.JTable();
@@ -430,9 +439,6 @@ public final class Form_hoadon extends javax.swing.JPanel {
             }
         });
 
-        lblsearchcounthoadon.setFont(new java.awt.Font("Calibri", 0, 20)); // NOI18N
-        lblsearchcounthoadon.setText("tìm thấy ");
-
         btnreload.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         btnreload.setText("reload");
         btnreload.addActionListener(new java.awt.event.ActionListener() {
@@ -447,7 +453,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(btnthemhoadon, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
@@ -455,10 +461,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
                         .addGap(44, 44, 44)
                         .addComponent(btnpayment, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtsearchvaluehoadon, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblsearchcounthoadon)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnreload, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnreload, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -472,9 +475,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(txtsearchvaluehoadon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblsearchcounthoadon)
-                    .addComponent(btnreload))
+                .addComponent(btnreload)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -628,7 +629,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE))
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -968,64 +969,10 @@ public final class Form_hoadon extends javax.swing.JPanel {
     }//GEN-LAST:event_btnQRActionPerformed
 
     private void txtsearchvaluehoadonCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtsearchvaluehoadonCaretUpdate
-        if (txtsearchvaluehoadon.getText().equalsIgnoreCase("")) {
-            loadtablehoadon();
-            return;
-        }
-        HashSet<HoaDonTraXeViewModel> fList = new HashSet<>();
-        HashSet<String> newset = new HashSet<>();
-        loadtablehoadon();
         DefaultTableModel dtm = (DefaultTableModel) tblhoadon.getModel();
-        int rowcount = dtm.getRowCount();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        for (int j = 0; j < rowcount; j++) {
-            for (int i = 0; i < 5; i++) {
-                if (i == 2) {
-                    break;
-                }
-                if (tracuu(dtm.getValueAt(j, i).toString(), txtsearchvaluehoadon.getText())) {
-                    if (fList.isEmpty()) {
-                        HoaDonTraXeViewModel hdtxvm = new HoaDonTraXeViewModel();
-                        hdtxvm.setIdkh(dtm.getValueAt(j, 7).toString());
-                        hdtxvm.setId(dtm.getValueAt(j, 5).toString());
-                        hdtxvm.setIdhd(dtm.getValueAt(j, 6).toString());
-                        try {
-                            hdtxvm.setNgaytra(sdf.parse(dtm.getValueAt(j, 1).toString()));
-                        } catch (ParseException ex) {
-                            ex.printStackTrace();
-                        }
-                        hdtxvm.setPhiphatsinh(Double.parseDouble(dtm.getValueAt(j, 3).toString()));
-                        hdtxvm.setTongtien(Double.parseDouble(dtm.getValueAt(j, 4).toString()));
-                        hdtxvm.setVpm(new ViPhamModel(0, "Không Vi Phạm"));
-
-                        fList.add(hdtxvm);
-                    }
-                    for (HoaDonTraXeViewModel hy : fList) {
-                        if (!hy.getId().equals(dtm.getValueAt(j, 5))) {
-                            newset.add(String.valueOf(j));
-                        }
-                    }
-                }
-            }
-        }
-        HashSet<HoaDonTraXeViewModel> settronang = hy(newset);
-        for (HoaDonTraXeViewModel h : settronang) {
-            fList.add(h);
-        }
-        dtm.setRowCount(0);
-        for (HoaDonTraXeViewModel h : fList) {
-            Object[] rowData = {
-                service.getkh(h.getIdhd()).getTen(),
-                convertdate(h.getNgaytra()),
-                service.getsovipham(h.getId()),
-                h.getPhiphatsinh(),
-                h.getTongtien(),
-                h.getId(),
-                h.getIdhd(),
-                h.getIdkh()
-            };
-            dtm.addRow(rowData);
-        }
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(dtm);
+        tblhoadon.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txtsearchvaluehoadon.getText().trim()));
     }//GEN-LAST:event_txtsearchvaluehoadonCaretUpdate
 
     private void btnreloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreloadActionPerformed
@@ -1033,7 +980,20 @@ public final class Form_hoadon extends javax.swing.JPanel {
     }//GEN-LAST:event_btnreloadActionPerformed
 
     private void tblhopdong12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblhopdong12MouseClicked
-        int row=tblhopdong12.getSelectedRow();DefaultTableModel dtm=(DefaultTableModel)tblhopdong12.getModel();txtidhopdong2.setText(dtm.getValueAt(row,0).toString());txttenkhachhang2.setText(dtm.getValueAt(row,1).toString());txttennhanvien2.setText(dtm.getValueAt(row,2).toString());if(dtm.getValueAt(row,3).toString().equalsIgnoreCase("chưa ký")){rdochuaky.setSelected(true);}else{rdodaky.setSelected(true);}txtngaytao12.setText(dtm.getValueAt(row,4).toString());txtngayhethan12.setText(dtm.getValueAt(row,5).toString());txtmakhachhang2.setText(dtm.getValueAt(row,6).toString());txtidnhanvien2.setText(dtm.getValueAt(row,7).toString());
+        int row = tblhopdong12.getSelectedRow();
+        DefaultTableModel dtm = (DefaultTableModel) tblhopdong12.getModel();
+        txtidhopdong2.setText(dtm.getValueAt(row, 0).toString());
+        txttenkhachhang2.setText(dtm.getValueAt(row, 1).toString());
+        txttennhanvien2.setText(dtm.getValueAt(row, 2).toString());
+        if (dtm.getValueAt(row, 3).toString().equalsIgnoreCase("chưa ký")) {
+            rdochuaky.setSelected(true);
+        } else {
+            rdodaky.setSelected(true);
+        }
+        txtngaytao12.setText(dtm.getValueAt(row, 4).toString());
+        txtngayhethan12.setText(dtm.getValueAt(row, 5).toString());
+        txtmakhachhang2.setText(dtm.getValueAt(row, 6).toString());
+        txtidnhanvien2.setText(dtm.getValueAt(row, 7).toString());
     }//GEN-LAST:event_tblhopdong12MouseClicked
 
     private void btnselecthopdongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnselecthopdongActionPerformed
@@ -1053,64 +1013,10 @@ public final class Form_hoadon extends javax.swing.JPanel {
     }//GEN-LAST:event_txtidkhachhang1ActionPerformed
 
     private void txtsearchvaluehopdongCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtsearchvaluehopdongCaretUpdate
-        if (txtsearchvaluehopdong.getText().equalsIgnoreCase("")) {
-            loadtablehopdong();
-            return;
-        }
-        HashSet<String> newset = new HashSet<>();
-        loadtablehopdong();
         DefaultTableModel dtm = (DefaultTableModel) tblhopdong12.getModel();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        for (int j = 0; j < dtm.getRowCount() - 1; j++) {
-            for (int i = 0; i < 5; i++) {
-                if (tracuu(dtm.getValueAt(j, i).toString(), txtsearchvaluehopdong.getText())) {
-                    if (finalList.isEmpty()) {
-                        HopDongViewModel hdvm = new HopDongViewModel();
-                        hdvm.setIdkh(dtm.getValueAt(j, 6).toString());
-                        hdvm.setIdnv(dtm.getValueAt(j, 7).toString());
-                        hdvm.setMahd(dtm.getValueAt(j, 0).toString());
-                        try {
-                            hdvm.setNgayHetHan(sdf.parse(dtm.getValueAt(j, 5).toString()));
-                            hdvm.setNgayTao(sdf.parse(dtm.getValueAt(j, 4).toString()));
-                        } catch (ParseException ex) {
-                            ex.printStackTrace();
-                        }
-                        if (dtm.getValueAt(j, 4).equals("đã ký")) {
-                            hdvm.setTinhTrangXe(1);
-                        } else {
-                            hdvm.setTinhTrangXe(0);
-                        }
-                        finalList.add(hdvm);
-                    }
-                    for (HopDongViewModel hx : finalList) {
-                        if (!hx.getMahd().equals(dtm.getValueAt(j, 0))) {
-                            newset.add(String.valueOf(j));
-                        }
-                    }
-
-                }
-            }
-        }
-        HashSet<HopDongViewModel> settronang = hx(newset);
-        for (HopDongViewModel hopDongViewModel : settronang) {
-            finalList.add(hopDongViewModel);
-        }
-        dtm.setRowCount(0);
-        for (HopDongViewModel h : finalList) {
-            Object[] rowData = {
-                h.getMahd(),
-                service.getkh(h.getMahd()).getTen(),
-                service.getnv(h.getIdnv()),
-                h.getTinhTrangXe() == 0 ? "chưa ký" : "đã ký",
-                convertdate(h.getNgayTao()),
-                convertdate(h.getNgayHetHan()),
-                h.getIdkh(),
-                h.getIdnv()
-            };
-
-            dtm.addRow(rowData);
-        }
-        finalList = new HashSet<>();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(dtm);
+        tblhopdong12.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txtsearchvaluehopdong.getText().trim()));
     }//GEN-LAST:event_txtsearchvaluehopdongCaretUpdate
 
     private void txtsearchvaluehopdongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchvaluehopdongActionPerformed
@@ -1217,7 +1123,6 @@ public final class Form_hoadon extends javax.swing.JPanel {
     private javax.swing.JLabel lblmota;
     private javax.swing.JLabel lblngaytra;
     private javax.swing.JLabel lblphuphi;
-    private javax.swing.JLabel lblsearchcounthoadon;
     private javax.swing.JLabel lbltenkhachhang1;
     private javax.swing.JLabel lbltongtien;
     private javax.swing.JRadioButton rdochuaky;
