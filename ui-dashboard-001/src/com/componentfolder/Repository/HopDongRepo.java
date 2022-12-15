@@ -8,6 +8,7 @@ import com.componentfolder.Model.ChiTietHopDongModel;
 import com.componentfolder.Model.ChiTietXeModel;
 import com.componentfolder.Model.HopDongModel;
 import com.componentfolder.Model.KhachHangModel;
+import com.componentfolder.Model.LoaiXe;
 import com.componentfolder.Model.NhanVienModel;
 import com.componentfolder.Utilities.DBConnections;
 import com.componentfolder.ViewModel.ChiTietHopDongViewModel;
@@ -16,6 +17,7 @@ import com.componentfolder.ViewModel.InHopDongViewModel;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.sql.*;
+import java.util.List;
 /**
  *
  * @author User
@@ -24,8 +26,7 @@ public class HopDongRepo {
     private DBConnections connections;
     public ArrayList<HopDongViewModel> getList(){
         ArrayList<HopDongViewModel> listHopDongViewModels = new ArrayList<>();
-        String sql = "Select mahopdong,idNv,makh,ngaytao,ngayhethan,tinhtrang,sourceAnh \n"
-                + "From hopdong";
+        String sql = "Select mahopdong,idNv,makh,ngaytao,ngayHetHan,tinhtrang,sourceAnh From hopdong where tinhTrang =0";
         try(Connection con = connections.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
@@ -60,15 +61,15 @@ public class HopDongRepo {
     }
     public ArrayList<NhanVienModel> getCbNhanVien(){
         ArrayList<NhanVienModel> list = new ArrayList<>();
-        String sql = "Select id,ten"
+        String sql = "Select ten"
                 + "From nhanvien";
         try (Connection con = connections.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)){
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 NhanVienModel nhanVienModel = new NhanVienModel();
-                nhanVienModel.setId(rs.getString(1));
-                nhanVienModel.setTen(rs.getString(2));
+               
+                nhanVienModel.setTen(rs.getString(1));
                 list.add(nhanVienModel);
             }
             
@@ -96,7 +97,7 @@ public class HopDongRepo {
     }
     public Boolean add(HopDongModel hopDongModel){
         int checkInsert = 0;
-        String sql = "INSERT INTO hopdong(mahopdong,idnv,maKh,ngaytao,ngayhethan,tinhtrang,sourceAnh) values (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO hopdong(mahopdong,idnv,maKh,ngaytao,ngayHetHan,tinhtrang,sourceAnh) values (?,?,?,?,?,?,?)";
         try (Connection con = connections.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)){
             ps.setObject(1, hopDongModel.getMahd());           
@@ -150,7 +151,7 @@ public class HopDongRepo {
     }
     public ArrayList<ChiTietHopDongViewModel> getListChiTiet(){
         ArrayList<ChiTietHopDongViewModel> listHopDongViewModels = new ArrayList<>();
-        String sql = "SELECT mahopdong,bienso,tiencoc from chitiethopdong";
+        String sql = "SELECT mahopdong,bienso,tiencoc from chiTietHopDong";
         try(Connection con = connections.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
@@ -167,7 +168,7 @@ public class HopDongRepo {
         return listHopDongViewModels;
     }
     public Boolean addChiTiet(ChiTietHopDongModel chiTietHopDongModel){
-        String sql ="INSERT INTO chitiethopdong(mahopdong,bienso,tiencoc) values (?,?,?)";
+        String sql ="INSERT INTO chiTietHopDong(mahopdong,bienso,tiencoc) values (?,?,?)";
         try (Connection con = connections.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)){
            ps.setObject(1,chiTietHopDongModel.getMahd().getMahd());
@@ -213,7 +214,7 @@ public class HopDongRepo {
         return null;
     }
     public Boolean DeleteChiTiet(String idhd){
-        String sql = "DELETE FROM chitiethopdong where mahopdong = ?";
+        String sql = "DELETE FROM chiTietHopDong where mahopdong = ?";
         try (Connection con = connections.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)){
             ps.setObject(1, idhd);
@@ -224,7 +225,7 @@ public class HopDongRepo {
         }
     }
     public Boolean updateChiTiet(ChiTietHopDongModel chiTietHopDongModel,String idhd){
-        String sql = "UPDATE chitiethopdong set bienso = ?, tiencoc = ? where mahopdong = ?";
+        String sql = "UPDATE chiTietHopDong set bienso = ?, tiencoc = ? where mahopdong = ?";
         try(Connection con = connections.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)) {
            ps.setObject(1, chiTietHopDongModel.getBienso());
@@ -376,8 +377,8 @@ public class HopDongRepo {
 }
        public ArrayList<InHopDongViewModel> getListIn(){
         ArrayList<InHopDongViewModel> listHopDongViewModels = new ArrayList<>();
-        String sql = "Select khachhang.ten,khachhang.cCCD,chitiethopdong.bienso,chitiethopdong.tiencoc,hopdong.ngayTao,hopdong.ngayHetHan from chitiethopdong join hopdong \n" +
-"on chitiethopdong.mahopdong = hopDong.mahopdong join khachhang on khachhang.makh = hopdong.makh";
+        String sql = "Select khachhang.ten,khachhang.cCCD,chiTietHopDong.bienso,chiTietHopdong.tiencoc,hopdong.ngayTao,hopdong.ngayHetHan from chiTietHopDong join hopdong \n" +
+"on chiTietHopDong.mahopdong = hopDong.mahopdong join khachhang on khachhang.makh = hopdong.makh";
                 
         try(Connection con = connections.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql)) {
@@ -411,6 +412,11 @@ public class HopDongRepo {
            }
        }
     
-    
+    public static void main(String[] args) {
+        ArrayList<HopDongViewModel> list = new HopDongRepo().getList();
+        for (HopDongViewModel xe : list) {
+            System.out.println(xe.toString());
+        }
+    }
     
 }
