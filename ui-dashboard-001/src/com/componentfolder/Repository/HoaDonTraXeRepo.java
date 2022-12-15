@@ -131,6 +131,7 @@ public class HoaDonTraXeRepo {
             ps.executeUpdate();
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
+            ex.printStackTrace();
             return true;
         }
     }
