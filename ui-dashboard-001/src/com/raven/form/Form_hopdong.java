@@ -90,12 +90,19 @@ public class Form_hopdong extends javax.swing.JPanel{
         txt_searchchitiet.setVisible(false);
         LBL_THUE.setVisible(false);
        addCbid(hopDongService.getCbid());
+        addCbNV(hopDongService.getCbNhanVien());
         
     }
     
     
      void addCbid(ArrayList<String> list){
         defaultComboBoxModel = (DefaultComboBoxModel) cbo_bienso.getModel();
+        for(String chiTietXeModel:list){
+            defaultComboBoxModel.addElement(chiTietXeModel);
+        }
+    }
+     void addCbNV(ArrayList<String> list){
+        defaultComboBoxModel = (DefaultComboBoxModel) cbo_nhanvien.getModel();
         for(String chiTietXeModel:list){
             defaultComboBoxModel.addElement(chiTietXeModel);
         }
@@ -146,7 +153,6 @@ public class Form_hopdong extends javax.swing.JPanel{
         btn_addhopdong = new javax.swing.JButton();
         btn_updatehd = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        txt_tennv = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         txt_mahd = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -172,6 +178,7 @@ public class Form_hopdong extends javax.swing.JPanel{
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        cbo_nhanvien = new javax.swing.JComboBox<>();
         JtablePanel = new javax.swing.JTabbedPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_hopdong = new javax.swing.JTable();
@@ -229,8 +236,6 @@ public class Form_hopdong extends javax.swing.JPanel{
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel15.setText("Mã Hợp Đồng");
-
-        txt_tennv.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel16.setText("Tên Nhân Viên");
@@ -414,12 +419,12 @@ public class Form_hopdong extends javax.swing.JPanel{
         });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("(yyyy-MM-dd)");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("(yyyy-MM-dd)");
+
+        cbo_nhanvien.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -433,13 +438,13 @@ public class Form_hopdong extends javax.swing.JPanel{
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel16)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txt_tennv, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(cbo_nhanvien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel11)
                                         .addComponent(jLabel12))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(rdo_chuaky)
                                         .addComponent(txt_tenkhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -479,7 +484,7 @@ public class Form_hopdong extends javax.swing.JPanel{
                     .addComponent(txt_searchchitiet, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LBL_THUE)
                     .addComponent(Panel_chitiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -488,7 +493,7 @@ public class Form_hopdong extends javax.swing.JPanel{
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel16)
-                        .addComponent(txt_tennv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbo_nhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel15)
                         .addComponent(txt_mahd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -640,7 +645,7 @@ public class Form_hopdong extends javax.swing.JPanel{
         DefaultTableModel dtm = new DefaultTableModel();
         int row = tbl_hopdong.getSelectedRow();
         txt_mahd.setText(tbl_hopdong.getValueAt(row, 0).toString());
-        txt_tennv.setText(tbl_hopdong.getValueAt(row, 1).toString());
+        cbo_nhanvien.setSelectedItem(tbl_hopdong.getValueAt(row, 1).toString());
         txt_tenkhachhang.setText(tbl_hopdong.getValueAt(row, 2).toString());
         txt_ngaytao.setText(tbl_hopdong.getValueAt(row, 3).toString());
         txt_ngayhethan.setText(tbl_hopdong.getValueAt(row, 4).toString());
@@ -682,20 +687,7 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_tenkhachhang.setText("");
             return;
         }
-        if(txt_tennv.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "chưa điền tên nhân viên");
-            txt_tennv.requestFocus();
-            txt_tennv.setBackground(Color.red);
-            txt_tennv.setText("");
-            return;
-        }
-         if(txt_tennv.getText().matches(p_scmt)==true){
-            JOptionPane.showMessageDialog(this, "tên nhân viên sai");
-            txt_tennv.requestFocus();
-            txt_tennv.setBackground(Color.red);
-            txt_tennv.setText("");
-            return;
-        }
+      
         if(txt_mahd.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "chưa điền mã hợp đồng");
             txt_mahd.requestFocus();
@@ -754,7 +746,7 @@ public class Form_hopdong extends javax.swing.JPanel{
         KhachHangModel khachHangModel = new KhachHangModel();
         HopDongModel hopDongModel = new HopDongModel();
         hopDongModel.setMahd(txt_mahd.getText().toString());
-        nhanVienModel.setId(hopDongService.idnhanvien(txt_tennv.getText().toString()));
+        nhanVienModel.setId(hopDongService.idnhanvien(cbo_nhanvien.getSelectedItem().toString()));
         hopDongModel.setIdnv(nhanVienModel);
         khachHangModel.setMakh(hopDongService.idkhachhang(txt_tenkhachhang.getText().toString()));
         hopDongModel.setIdkh(khachHangModel);
@@ -777,7 +769,7 @@ public class Form_hopdong extends javax.swing.JPanel{
             JOptionPane.showMessageDialog(this, "thêm thành công");
             txt_ngaytao.setBackground(Color.WHITE);
             txt_ngayhethan.setBackground(Color.WHITE);
-            txt_tennv.setBackground(Color.WHITE);
+            cbo_nhanvien.setBackground(Color.WHITE);
             txt_tenkhachhang.setBackground(Color.WHITE);
             txt_mahd.setForeground(Color.BLACK);
             txt_mahd.setBackground(Color.WHITE);
@@ -814,20 +806,7 @@ public class Form_hopdong extends javax.swing.JPanel{
             txt_tenkhachhang.setText("");
             return;
         }
-        if(txt_tennv.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "chưa điền tên nhân viên");
-            txt_tennv.requestFocus();
-            txt_tennv.setBackground(Color.red);
-            txt_tennv.setText("");
-            return;
-        }
-         if(txt_tennv.getText().matches(p_scmt)==true){
-            JOptionPane.showMessageDialog(this, "tên nhân viên sai");
-            txt_tennv.requestFocus();
-            txt_tennv.setBackground(Color.red);
-            txt_tennv.setText("");
-            return;
-        }
+       
         if(txt_mahd.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "chưa điền mã hợp đồng");
             txt_mahd.requestFocus();
@@ -881,7 +860,7 @@ public class Form_hopdong extends javax.swing.JPanel{
             KhachHangModel khachHangModel = new KhachHangModel();
             String id = txt_mahd.getText().toString();
             hopDongModel.setMahd(txt_mahd.getText().toString());
-        nhanVienModel.setId(hopDongService.idnhanvien(txt_tennv.getText().toString()));
+        nhanVienModel.setId(hopDongService.idnhanvien(cbo_nhanvien.getSelectedItem().toString()));
         hopDongModel.setIdnv(nhanVienModel);
         khachHangModel.setMakh(hopDongService.idkhachhang(txt_tenkhachhang.getText().toString()));
         hopDongModel.setIdkh(khachHangModel);
@@ -901,7 +880,7 @@ public class Form_hopdong extends javax.swing.JPanel{
                 JOptionPane.showMessageDialog(this, "update thành công");
                 txt_ngaytao.setBackground(Color.WHITE);
             txt_ngayhethan.setBackground(Color.WHITE);
-            txt_tennv.setBackground(Color.WHITE);
+            cbo_nhanvien.setBackground(Color.WHITE);
             txt_tenkhachhang.setBackground(Color.WHITE);
             txt_mahd.setBackground(Color.WHITE);
             txt_mahd.setForeground(Color.BLACK);
@@ -1163,10 +1142,10 @@ public class Form_hopdong extends javax.swing.JPanel{
         txt_tenkhachhang.setText("");
         txt_ngaytao.setText("");
         txt_tenkhachhang.setText("");
-        txt_tennv.setText("");
+        
         txt_ngaytao.setBackground(Color.WHITE);
             txt_ngayhethan.setBackground(Color.WHITE);
-            txt_tennv.setBackground(Color.WHITE);
+            cbo_nhanvien.setBackground(Color.WHITE);
             txt_tenkhachhang.setBackground(Color.WHITE);
             txt_mahd.setBackground(Color.white);
             txt_mahd.setForeground(Color.BLACK);
@@ -1241,6 +1220,7 @@ boolean sendemail() {
     private javax.swing.JButton btn_updatehd;
     private javax.swing.JButton btn_xoahopdong;
     private javax.swing.JComboBox<String> cbo_bienso;
+    private javax.swing.JComboBox<String> cbo_nhanvien;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1268,7 +1248,6 @@ boolean sendemail() {
     private javax.swing.JTextField txt_search1;
     private javax.swing.JTextField txt_searchchitiet;
     private javax.swing.JTextField txt_tenkhachhang;
-    private javax.swing.JTextField txt_tennv;
     private javax.swing.JLabel txt_thongtinthem;
     private javax.swing.JTextField txt_tiencoc;
     // End of variables declaration//GEN-END:variables

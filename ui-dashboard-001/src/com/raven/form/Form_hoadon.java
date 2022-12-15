@@ -889,7 +889,7 @@ public final class Form_hoadon extends javax.swing.JPanel {
     private void btnthemhoadonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemhoadonActionPerformed
         HoaDonTraXeModel hdtxm = new HoaDonTraXeModel();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        hdtxm.setId("HoaDon" + service.getlistdata().size());
+        hdtxm.setId("HoaDon" + String.valueOf(service.getlistdata().size() + service.getemptylist().size() + 1));
         try {
             hdtxm.setNgaytra(sdf.parse("30/12/2099"));
         } catch (ParseException ex) {
